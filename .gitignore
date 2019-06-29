@@ -1,0 +1,42 @@
+*.class
+*.log
+logs
+
+# sbt specific
+.cache/
+.history/
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.idea
+.idea/*
+
+# Scala-IDE specific
+.scala_dependencies
+.worksheet
+build
+.classpath
+.project
+.settings
+.cache-main
+bin
+org.scala-ide.sdt.core/META-INF/MANIFEST.MF
+org.scala-ide.sdt.update-site/site.xml
+
+#VIM specific
+tags
+.*.swp
+.*.swo
+
+#MAC OS specific
+.DS_Store
+
+services/data/mysql/*
+services/data/cromwell-executions/*
+services/data/cromwell-workflow-logs/*
+services/data/cromwell-client-logs/*
+services/config/*
