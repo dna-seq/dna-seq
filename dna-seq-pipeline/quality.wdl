@@ -1,7 +1,5 @@
 version development
 
-import "common.wdl" as common
-
 workflow quality{
     input {
         Array[File] reads
@@ -10,7 +8,9 @@ workflow quality{
     call fastp { input: reads = reads, is_paired = is_paired }
 
     output {
-
+        File report_json = fastp.report_json
+        File report_html = fastp.report_html
+        Array[File] reads_cleaned = fastp.reads_cleaned
     }
 }
 

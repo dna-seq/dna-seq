@@ -1,13 +1,42 @@
 version development
 
-import "common.wdl" as common
-
 workflow alignment {
     input {
         Array[File] reads
         File reference
         String name
-        Int threads
+        Int threads = 4
+    }
+
+    call minimap2 {
+        input:
+            reads = reads,
+            reference = reference,
+            name = name,
+            threads = threads
+    }
+
+    call samtools_conversion {
+        input:
+            sam = minimap2.out
+    }
+
+    call samtools_sort {
+        input:
+            bam = samtools_conversion.out
+    }
+
+    call gencore{
+        input:
+            reference = reference,
+            sorted_bam = samtools_sort.out,
+            name = name
+    }
+
+    output {
+       File out = gencore.out
+       File html = gencore.html
+       File json = gencore.json
     }
 }
 
@@ -25,7 +54,7 @@ task minimap2 {
     }
 
     runtime {
-        docker: "docker pull quay.io/biocontainers/minimap2:2.17--h84994c4_0"
+        docker: "quay.io/biocontainers/minimap2@sha256:e7ec93ae6c9dcdad362333932ad8f509cbee6de691c72cb9e600972c770340f4" #2.17--h8b12597_1
         maxRetries: 2
       }
 
@@ -46,7 +75,7 @@ task samtools_conversion {
     }
 
     runtime {
-        docker: "biocontainers/samtools@sha256:6644f6b3bb8893c1b10939406bb9f9cda58da368100d8c767037558142631cf3"
+        docker: "quay.io/biocontainers/samtools@sha256:f8d74e566c4a250d35bc3194298a034ae096e348532188ca743354a7d5fff50c" #1.9--h10a08f8_12
         maxRetries: 2
       }
 
@@ -77,6 +106,31 @@ task samtools_sort {
       }
 }
 
+task gencore {
+    input {
+        File reference
+        File sorted_bam
+        String name
+        Int supporting_reads = 2
+        Float ratio_threshold = 0.8
+        String? quality #"--high_qual"
+    }
+    command {
+        gencore --ratio_threshold=~{ratio_threshold} -s ~{supporting_reads} ~{quality} -i ~{sorted_bam} -o ~{name}.bam -r ~{reference} --coverage_sampling=50000
+    }
+
+    runtime {
+        docker: "quay.io/comp-bio-aging/gencore"
+    }
+    output {
+        File out = name + ".bam"
+        File html = "gencore.html"
+        File json = "gencore.json"
+    }
+}
+
+
+
 task coverage {
     input {
         File bam
@@ -95,47 +149,5 @@ task coverage {
 
     output {
         File out = name + ".bedgraph"
-    }
-}
-
-
-task picard_mark_duplicates {
-    input {
-        File bam
-        String outputBamPath
-        String metricsPath
-
-        Int memory = 4
-        Float memoryMultiplier = 3.0
-    }
-
-    command {
-        set -e
-        mkdir -p $(dirname ~{outputBamPath})
-        picard -Xmx~{memory}G \
-        MarkDuplicates \
-        INPUT=~{bam} \
-        OUTPUT=~{outputBamPath} \
-        METRICS_FILE=~{metricsPath} \
-        VALIDATION_STRINGENCY=SILENT \
-        OPTICAL_DUPLICATE_PIXEL_DISTANCE=2500 \
-        CLEAR_DT="false" \
-        CREATE_INDEX=true \
-        ADD_PG_TAG_TO_READS=false \
-        CREATE_MD5_FILE=true
-    }
-
-    output {
-        IndexedBamFile out = object {
-          file: outputBamPath,
-          index: sub(outputBamPath, ".bam$", ".bai"),
-          md5sum: outputBamPath + ".md5"
-        }
-        File metricsFile = metricsPath
-    }
-
-    runtime {
-        docker: "quay.io/biocontainers/picard:sha256:b5750bf51f4223e0274430d07483c1be54e66fd5b96533c2d07a079c55da6972" #2.20.2--0
-        memory: ceil(memory * memoryMultiplier)
     }
 }

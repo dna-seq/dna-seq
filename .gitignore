@@ -22,3 +22,8 @@ project/boot/
 project/plugins/project/
 .idea
 .idea/*
+
+services/data/cromwell-client-logs/*
+services/data/cromwell-executions/*
+services/data/cromwell-workflow-logs/*
+dna-seq-pipeline/inputs/test.json
