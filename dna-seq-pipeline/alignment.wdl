@@ -33,8 +33,13 @@ workflow alignment {
             name = name
     }
 
+    call samtools_sort as sort_gencore{
+        input:
+            bam = gencore.out
+    }
+
     output {
-       File out = gencore.out
+       File out = sort_gencore.out
        File html = gencore.html
        File json = gencore.json
     }
@@ -111,12 +116,12 @@ task gencore {
         File reference
         File sorted_bam
         String name
-        Int supporting_reads = 2
+        Int supporting_reads = 1
         Float ratio_threshold = 0.8
         String? quality #"--high_qual"
     }
     command {
-        gencore --ratio_threshold=~{ratio_threshold} -s ~{supporting_reads} ~{quality} -i ~{sorted_bam} -o ~{name}.bam -r ~{reference} --coverage_sampling=50000
+        gencore --ratio_threshold=~{ratio_threshold} -s ~{supporting_reads} ~{quality} -i ~{sorted_bam} -o ~{name}.bam -r ~{reference}
     }
 
     runtime {

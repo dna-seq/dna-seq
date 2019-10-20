@@ -24,7 +24,7 @@ workflow dna_seq_pipeline {
     call common.copy as copy_quality {
         input:
             destination = destination + "/cleaned",
-            files = [cleaning.reads_cleaned, cleaning.report_json, cleaning.report_html, cleaning.reads_cleaned]
+            files = [cleaning.reads_cleaned[0], cleaning.reads_cleaned[1], cleaning.report_json, cleaning.report_html]
     }    
 
     call alignment.alignment as aligning {
