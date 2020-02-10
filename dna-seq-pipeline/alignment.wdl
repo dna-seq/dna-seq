@@ -6,6 +6,7 @@ workflow alignment {
         File reference
         String name
         Int threads = 4
+        String? gencore_quality
     }
 
     call minimap2 {
@@ -23,23 +24,27 @@ workflow alignment {
 
     call samtools_sort {
         input:
-            bam = samtools_conversion.out
+            bam = samtools_conversion.out,
+            threads = 4
     }
 
     call gencore{
         input:
             reference = reference,
             sorted_bam = samtools_sort.out,
-            name = name
+            name = name,
+            quality  = gencore_quality
     }
 
     call samtools_sort as sort_gencore{
         input:
-            bam = gencore.out
+            bam = gencore.out,
+            threads = 4
     }
 
     output {
-       File out = sort_gencore.out
+       File bam = sort_gencore.out
+       File bai = sort_gencore.bai
        File html = gencore.html
        File json = gencore.json
     }
@@ -93,21 +98,24 @@ task samtools_conversion {
 task samtools_sort {
     input {
         File bam
+        Int threads
     }
 
     String name = basename(bam, ".bam")
 
     command {
-       samtools sort ~{bam}  -o ~{name}_sorted.bam
+       samtools sort ~{bam} --threads ~{threads} -o ~{name}_sorted.bam
+       samtools index ~{name}_sorted.bam  ~{name}_sorted.bai
     }
 
     runtime {
-        docker: "biocontainers/samtools@sha256:6644f6b3bb8893c1b10939406bb9f9cda58da368100d8c767037558142631cf3"
+        docker: "biocontainers/samtools@sha256:da61624fda230e94867c9429ca1112e1e77c24e500b52dfc84eaf2f5820b4a2a" #v1.9-4-deb_cv1
         maxRetries: 2
       }
 
     output {
         File out = name + "_sorted.bam"
+        File bai = name + "_sorted.bai"
       }
 }
 
@@ -125,7 +133,7 @@ task gencore {
     }
 
     runtime {
-        docker: "quay.io/comp-bio-aging/gencore"
+        docker: "quay.io/comp-bio-aging/gencore@sha256:71d64d00e1a50478136ed292d2ca28a1b4ae85856b61d1282989b47ed22e5d2e"
     }
     output {
         File out = name + ".bam"
@@ -148,7 +156,7 @@ task coverage {
     }
 
      runtime {
-            docker: "quay.io/biocontainers/bedtools@sha256:a0bb135afdec53be4b953a9a8efbc801cdb90706e6e63e11e3f60b06b8444f78" #2.23.0--he941832_1
+            docker: "quay.io/biocontainers/bedtools@sha256:02e198f8f61329f9eafd1b9fc55828a31020b383403adec22079592b7d868006" #2.29.2--hc088bd4_0
             maxRetries: 2
           }
 

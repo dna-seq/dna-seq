@@ -26,4 +26,4 @@ project/plugins/project/
 services/data/cromwell-client-logs/*
 services/data/cromwell-executions/*
 services/data/cromwell-workflow-logs/*
-dna-seq-pipeline/inputs/test.json
+dna-seq-pipeline/inputs/OC_plus.json
