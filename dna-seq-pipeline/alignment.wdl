@@ -85,7 +85,7 @@ task samtools_conversion {
     }
 
     runtime {
-        docker: "quay.io/biocontainers/samtools@sha256:f8d74e566c4a250d35bc3194298a034ae096e348532188ca743354a7d5fff50c" #1.9--h10a08f8_12
+        docker: "quay.io/biocontainers/samtools@sha256:70581cfc34eb40cb9b55e49cf5805fce820ec059d7bca9bbb762368ac3c1ac0a" #1.10--h9402c20_2
         maxRetries: 2
       }
 
@@ -133,8 +133,9 @@ task gencore {
     }
 
     runtime {
-        docker: "quay.io/comp-bio-aging/gencore@sha256:71d64d00e1a50478136ed292d2ca28a1b4ae85856b61d1282989b47ed22e5d2e"
+        docker: "quay.io/comp-bio-aging/gencore@sha256:2bde467b5d57ee17397a9a2aeb82e18279032f12d760baaad9e6d38227157565"
     }
+
     output {
         File out = name + ".bam"
         File html = "gencore.html"

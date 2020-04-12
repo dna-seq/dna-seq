@@ -50,6 +50,7 @@ workflow dna_seq_pipeline_fastq {
             bam = gencore.out,
             threads = 4
     }
+
     call copy as copy_alignemnt {
         input:
               destination = destination + "/aligned",
