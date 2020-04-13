@@ -34,8 +34,12 @@ task create_reference_dict {
         String? assembly
         String? species
     }
+
+    String name = sub(basename(reference, ".fasta"), ".fa", "")
+
     command {
-        gatk CreateSequenceDictionary -R ~{reference} ~{"--SPECIES " + species} ~{"--GENOME_ASSEMBLY " + assembly}
+        set -e
+        gatk CreateSequenceDictionary -R ~{reference} -O ~{name}.dict ~{"--SPECIES " + species} ~{"--GENOME_ASSEMBLY " + assembly}
     }
 
     runtime {
@@ -43,7 +47,7 @@ task create_reference_dict {
     }
 
     output {
-        File out = basename(reference, "fasta") + ".dict"
+        File out = name + ".dict"
     }
 }
 
@@ -51,15 +55,19 @@ task create_reference_fai {
     input {
         File reference
     }
+
+    String name = basename(reference)
+
     command {
-        samtools faidx ~{reference}
+        ln -s ~{reference} ~{name}
+        samtools faidx ~{name}
     }
     runtime {
         docker: "quay.io/biocontainers/samtools@sha256:97b9627711c16125fe1b57cf8745396064fd88ebeff6ab00cf6a68aeacecfcda" #1.2-0
     }
 
     output {
-       File out = basename(reference, "fasta")+".fai"
+       File out = name+".fai"
     }
 }
 

@@ -41,17 +41,17 @@ task samtools_sort_by_name {
     runtime {
         docker: "quay.io/biocontainers/samtools@sha256:70581cfc34eb40cb9b55e49cf5805fce820ec059d7bca9bbb762368ac3c1ac0a" #1.10--h9402c20_2
         maxRetries: 2
-      }
+    }
 
     output {
         File out = name + "_sorted.bam"
-      }
+    }
 }
 
 task bam2fastq{
     input {
             File bam #750018002018_WGZ.bam
-        }
+    }
 
     command {
         bedtools bamtofastq -i ~{bam} -fq ~{basename(bam, ".bam")}_1.fq -fq2 ~{basename(bam)}_2.fq
