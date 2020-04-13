@@ -1,5 +1,4 @@
 {
-  "bam_to_fastq.bai": "/data/results/anton/result_alignment/750018002018_WGZ.bam",
   "bam_to_fastq.bam": "/data/results/anton/result_alignment/750018002018_WGZ.bam",
   "bam_to_fastq.destination": "/data/results/anton/result_alignment/fastq"
 }

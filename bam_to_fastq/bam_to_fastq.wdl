@@ -4,17 +4,16 @@ workflow bam_to_fastq {
 
     input {
         File bam #750018002018_WGZ.bam
-        File? bai #750018002018_WGZ.bam.bai
-        Int threads = 16
+        Int threads = 28
         String destination
     }
 
-    call samtools_sort {
+    call samtools_sort_by_name {
         input:   bam = bam, threads = threads
     }
 
     call bam2fastq{
-        input: bam = samtools_sort.out, bai = samtools_sort.bai
+        input: bam = samtools_sort_by_name.out
     }
 
     call copy {
@@ -27,7 +26,7 @@ workflow bam_to_fastq {
     }
 }
 
-task samtools_sort {
+task samtools_sort_by_name {
     input {
         File bam
         Int threads
@@ -37,7 +36,6 @@ task samtools_sort {
 
     command {
        samtools sort -n ~{bam} --threads ~{threads} -o ~{name}_sorted.bam
-       samtools index ~{name}_sorted.bam  ~{name}_sorted.bai
     }
 
     runtime {
@@ -47,18 +45,16 @@ task samtools_sort {
 
     output {
         File out = name + "_sorted.bam"
-        File bai = name + "_sorted.bai"
       }
 }
 
 task bam2fastq{
     input {
             File bam #750018002018_WGZ.bam
-            File? bai #750018002018_WGZ.bam.bai
         }
 
     command {
-        bedtools bamtofastq -i ~{bam} -fq ~{basename(bam)}_1.fq -fq2 ~{basename(bam)}_2.fq
+        bedtools bamtofastq -i ~{bam} -fq ~{basename(bam, ".bam")}_1.fq -fq2 ~{basename(bam)}_2.fq
     }
 
     runtime {
@@ -66,7 +62,7 @@ task bam2fastq{
     }
 
     output {
-        Array[File] out = [basename(bam)+"_1.fq", basename(bam)+"_2.fq"]
+        Array[File] out = [basename(bam, ".bam")+"_1.fq", basename(bam, ".bam")+"_2.fq"]
     }
 }
 
