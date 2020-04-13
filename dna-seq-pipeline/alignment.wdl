@@ -85,7 +85,7 @@ task samtools_conversion {
     }
 
     runtime {
-        docker: "quay.io/biocontainers/samtools@sha256:70581cfc34eb40cb9b55e49cf5805fce820ec059d7bca9bbb762368ac3c1ac0a" #1.10--h9402c20_2
+        docker: "quay.io/biocontainers/samtools@sha256:97b9627711c16125fe1b57cf8745396064fd88ebeff6ab00cf6a68aeacecfcda"
         maxRetries: 2
       }
 
@@ -109,7 +109,7 @@ task samtools_sort {
     }
 
     runtime {
-        docker: "biocontainers/samtools@sha256:da61624fda230e94867c9429ca1112e1e77c24e500b52dfc84eaf2f5820b4a2a" #v1.9-4-deb_cv1
+        docker: "quay.io/biocontainers/samtools@sha256:97b9627711c16125fe1b57cf8745396064fd88ebeff6ab00cf6a68aeacecfcda" #1.2-0
         maxRetries: 2
       }
 
