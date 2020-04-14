@@ -1,13 +1,44 @@
 version development
 
-workflow preprocess {
+workflow recalibration {
     input {
-       File reference
-       String? genome_assembly
-       String? species
+        File reference
+        File referenceDict
+        File referenceFai
+        File bam
+        File bai
+        String? genome_assembly
+        String? species
+
+
+    }
+
+    call recalibration_model{
+        input:
+        bam = bam,
+        bai = bai,
+        reference = reference,
+        referenceDict = referenceDict,
+        referenceFai = referenceFai
     }
 
 
+    call apply_recalibration{
+        input:
+        bam = bam,
+        bai = bai,
+        recalibration_report = recalibration_model.out,
+        reference = reference,
+        referenceDict = referenceDict,
+        referenceFai = referenceFai
+    }
+
+    output {
+        File recalibratedBam = apply_recalibration.recalibratedBam
+        File recalibratedBamIndex =  apply_recalibration.recalibratedBamIndex
+        File recalibratedBamMd5 =  apply_recalibration.recalibratedBamMd5
+        File report = recalibration_model.out
+    }
 }
 
 
@@ -16,7 +47,6 @@ task recalibration_model {
     input {
                File bam
                File bai
-               String report
                File reference
                File referenceDict
                File referenceFai
@@ -83,7 +113,6 @@ task apply_recalibration {
         File recalibratedBam = filename+".bam"
         File recalibratedBamIndex =  filename+".bai"
         File recalibratedBamMd5 =  filename+".md5"
-        File report = filename+"_report"
     }
 
     runtime {

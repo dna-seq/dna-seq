@@ -2,10 +2,10 @@ version development
 
 workflow alignment {
     input {
-        Array[File] reads
+        Array[File]+ reads
         File reference
         String name
-        Int threads = 4
+        Int threads = 8
         String? gencore_quality
     }
 
