@@ -1,8 +1,7 @@
 version development
 
 import "alignment.wdl" as alignment
-import "recalibration.wdl" as recalibration
-import "variant_calling.wdl" as variant_calling
+import "variant_calling.wdl" as vc
 
 struct Reference{
     File genome #i.e. Homo_sapiens.GRCh38.dna.primary_assembly.fa
@@ -16,8 +15,8 @@ workflow dna_seq_pipeline {
         String destination
         Boolean is_paired = true
         Reference reference
-        String name
         Int threads = 8
+        String name
     }
 
     call fastp { input: reads = reads, is_paired = is_paired }
@@ -27,7 +26,7 @@ workflow dna_seq_pipeline {
         input:
           reads = fastp.reads_cleaned,
           reference = reference.genome,
-          name = "",
+          name = name,
           threads = threads
     }
 
@@ -37,27 +36,44 @@ workflow dna_seq_pipeline {
         files = [ align.bam, align.bai, align.html, align.json]
     }
 
-    call recalibration.recalibration as recalib {
+    call vc.variant_calling as variant_calling{
         input:
-            reference = reference.genome,
-            referenceDict = reference.dict,
-            referenceFai = reference.fai,
-            bam = copy_alignment.out[0],
-            bai = copy_alignment.out[1]
+                bam = copy_alignment.out[0],
+                bai = copy_alignment.out[1],
+                referenceFasta = reference.genome,
+                referenceFai = reference.fai
     }
 
-    call copy as copy_recalibration{
+    call copy as copy_variants{
         input:
-        destination = destination + "/bam/recalibrated",
-        files = [ recalib.recalibratedBam, recalib.recalibratedBamIndex, recalib.recalibratedBamMd5, recalib.report]
+        destination = destination + "/variants",
+        files =[
+                variant_calling.results_SNP,
+        ]
+    }
+
+
+    call copy as copy_annotations{
+        input:
+        destination = destination + "/variants/annotations",
+        files =[
+               variant_calling.annotations,
+               variant_calling.vep_summary
+        ]
+    }
+
+    call copy as copy_CNV{
+        input:
+        destination = destination + "/CNV",
+        files =[
+                variant_calling.results_CNV,
+        ]
     }
 
     output {
-        File recalibratedBam = copy_recalibration.out[0]
-        File recalibratedBamIndex =  copy_recalibration.out[1]
-        File recalibratedBamMd5 =  copy_recalibration.out[2]
-        File report = copy_recalibration.out[3]
-        File results_folder = destination
+        File results_SNP = copy_variants.out[0]
+        File results_CNV =  copy_variants.out[0]
+        File annotations = copy_annotations.out[0]
     }
 
 
