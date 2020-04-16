@@ -15,7 +15,9 @@ workflow dna_seq_pipeline {
         String destination
         Boolean is_paired = true
         Reference reference
-        Int threads = 8
+        Int align_threads = 8
+        Int sort_threads = 16
+        Int variant_calling_threads = 16
         String name
     }
 
@@ -27,7 +29,8 @@ workflow dna_seq_pipeline {
           reads = fastp.reads_cleaned,
           reference = reference.genome,
           name = name,
-          threads = threads
+          align_threads = align_threads,
+          sort_threads = sort_threads
     }
 
     call copy as copy_alignment{
@@ -41,14 +44,15 @@ workflow dna_seq_pipeline {
                 bam = copy_alignment.out[0],
                 bai = copy_alignment.out[1],
                 referenceFasta = reference.genome,
-                referenceFai = reference.fai
+                referenceFai = reference.fai,
+                threads = variant_calling_threads
     }
 
     call copy as copy_variants{
         input:
         destination = destination + "/variants",
         files =[
-                variant_calling.results_SNP,
+                variant_calling.results_SNP
         ]
     }
 

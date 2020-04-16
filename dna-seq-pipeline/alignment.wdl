@@ -5,7 +5,8 @@ workflow alignment {
         Array[File]+ reads
         File reference
         String name
-        Int threads = 8
+        Int align_threads = 12
+        Int sort_threads = 16
         String? gencore_quality
     }
 
@@ -14,7 +15,7 @@ workflow alignment {
             reads = reads,
             reference = reference,
             name = name,
-            threads = threads
+            threads = align_threads
     }
 
     call samtools_conversion {
@@ -25,7 +26,7 @@ workflow alignment {
     call samtools_sort {
         input:
             bam = samtools_conversion.out,
-            threads = 4
+            threads = sort_threads
     }
 
     call gencore{
@@ -39,7 +40,7 @@ workflow alignment {
     call samtools_sort as sort_gencore{
         input:
             bam = gencore.out,
-            threads = 4
+            threads = sort_threads
     }
 
     output {
@@ -85,7 +86,7 @@ task samtools_conversion {
     }
 
     runtime {
-        docker: "quay.io/biocontainers/samtools@sha256:97b9627711c16125fe1b57cf8745396064fd88ebeff6ab00cf6a68aeacecfcda"
+        docker: "quay.io/biocontainers/samtools@sha256:70581cfc34eb40cb9b55e49cf5805fce820ec059d7bca9bbb762368ac3c1ac0a"
         maxRetries: 2
       }
 
@@ -99,18 +100,25 @@ task samtools_sort {
     input {
         File bam
         Int threads
+        Int gb_per_thread = 3
+
     }
 
     String name = basename(bam, ".bam")
 
     command {
-       samtools sort ~{bam} --threads ~{threads} -o ~{name}_sorted.bam
-       samtools index ~{name}_sorted.bam  ~{name}_sorted.bai
+       samtools sort ~{bam} -@ ~{threads} -m ~{gb_per_thread}G -o ~{name}_sorted.bam
+       echo "samtools sorting finished, starting indexing..."
+       samtools index -@ ~{threads} ~{name}_sorted.bam
+       echo "samtools index finished, renaming the results..."
+       mv -f ~{name}_sorted.bam.bai ~{name}_sorted.bai
     }
 
     runtime {
-        docker: "quay.io/biocontainers/samtools@sha256:97b9627711c16125fe1b57cf8745396064fd88ebeff6ab00cf6a68aeacecfcda" #1.2-0
+        docker: "quay.io/biocontainers/samtools@sha256:70581cfc34eb40cb9b55e49cf5805fce820ec059d7bca9bbb762368ac3c1ac0a"#:1.10--h9402c20_2
         maxRetries: 2
+        docker_memory: "~{gb_per_thread * (threads+1)}G"
+        docker_cpu: "~{threads}"
       }
 
     output {

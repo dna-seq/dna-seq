@@ -7,13 +7,13 @@ workflow variant_calling {
         File bai
         File referenceFasta
         File referenceFai
-        Int cores = 8
-        Int ram = 28
+        Int threads = 16
+        Int max_memory = 28
     }
 
     call strelka2_germline{
         input:
-            bam = bam, bai = bai, reference_fasta = referenceFasta, reference_fai= referenceFai
+            bam = bam, bai = bai, reference_fasta = referenceFasta, reference_fai= referenceFai, cores = threads
     }
 
     call parlament2{
@@ -46,7 +46,7 @@ task strelka2_germline{
         Boolean rna = false
 
         Int cores = 8
-        Int ram = 28
+        Int max_memory = 28
     }
 
     command {
@@ -59,7 +59,7 @@ task strelka2_germline{
         ~{runDir}/runWorkflow.py \
         -m local \
         -j ~{cores} \
-        -g ~{ram}
+        -g ~{max_memory}
     }
 
     output {
@@ -70,8 +70,8 @@ task strelka2_germline{
 
     runtime {
         docker: "quay.io/biocontainers/strelka:2.9.10--0"
-        cpu: cores
-        memory: "~{ram}G"
+        docker_memory: "~{max_memory}G"
+        docker_cpu: "~{cores}"
     }
 }
 

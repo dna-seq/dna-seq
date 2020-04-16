@@ -6,7 +6,5 @@
   },
   "dna_seq_pipeline.reads": ["/data/gwas/anton/fastq/750018002018_WGZ_1.fq",  "/data/gwas/anton/fastq/750018002018_WGZ_2.fq"],
   "dna_seq_pipeline.destination": "/data/gwas/anton",
-  "dna_seq_pipeline.recalib.species": "Homo_sapiens",
-  "dna_seq_pipeline.recalib.genome_assembly": "GRCh38",
   "dna_seq_pipeline.name": "antonkulaga"
 }
