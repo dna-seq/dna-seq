@@ -16,8 +16,8 @@ workflow dna_seq_pipeline {
         Boolean is_paired = true
         Reference reference
         Int align_threads = 8
-        Int sort_threads = 16
-        Int variant_calling_threads = 16
+        Int sort_threads = 12
+        Int variant_calling_threads = 8
         String name
     }
 

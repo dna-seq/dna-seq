@@ -6,7 +6,7 @@ workflow alignment {
         File reference
         String name
         Int align_threads = 12
-        Int sort_threads = 16
+        Int sort_threads = 12
         String? gencore_quality
     }
 
@@ -23,7 +23,7 @@ workflow alignment {
             sam = minimap2.out
     }
 
-    call samtools_sort {
+    call sambamba_sort {
         input:
             bam = samtools_conversion.out,
             threads = sort_threads
@@ -32,12 +32,12 @@ workflow alignment {
     call gencore{
         input:
             reference = reference,
-            sorted_bam = samtools_sort.out,
+            sorted_bam = sambamba_sort.out,
             name = name,
             quality  = gencore_quality
     }
 
-    call samtools_sort as sort_gencore{
+    call sambamba_sort as sort_gencore{
         input:
             bam = gencore.out,
             threads = sort_threads
@@ -96,6 +96,37 @@ task samtools_conversion {
 }
 
 
+task sambamba_sort{
+    input {
+        File bam
+        Int threads
+        Int gb_per_thread = 3
+    }
+
+    String name = basename(bam, ".bam")
+
+    command {
+       ln -s ~{bam} ~{basename(bam)}
+       sambamba sort -m ~{gb_per_thread}G -t ~{threads} -p ~{basename(bam)}
+       mv -f ~{name}.sorted.bam.bai ~{name}.sorted.bai
+    }
+
+    runtime {
+        docker: "quay.io/biocontainers/sambamba@sha256:8aa120d440ff188d447eaa0e6d5cac82bd9e35bfa42d5c7857c401736629c299" #:0.7.1--h148d290_2
+        maxRetries: 1
+        docker_memory: "~{gb_per_thread * (threads+1)}G"
+        docker_cpu: "~{threads+1}"
+        docker_swap: "~{gb_per_thread * (threads+1) * 2}G"
+      }
+
+    output {
+      File out = name + ".sorted.bam"
+      File bai = name + ".sorted.bai"
+    }
+}
+
+
+
 task samtools_sort {
     input {
         File bam
@@ -116,9 +147,9 @@ task samtools_sort {
 
     runtime {
         docker: "quay.io/biocontainers/samtools@sha256:70581cfc34eb40cb9b55e49cf5805fce820ec059d7bca9bbb762368ac3c1ac0a"#:1.10--h9402c20_2
-        maxRetries: 2
+        maxRetries: 1
         docker_memory: "~{gb_per_thread * (threads+1)}G"
-        docker_cpu: "~{threads}"
+        docker_cpu: "~{threads+1}"
       }
 
     output {
