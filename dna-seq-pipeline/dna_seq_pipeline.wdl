@@ -56,16 +56,6 @@ workflow dna_seq_pipeline {
             ]
         }
 
-       call copy as copy_SV{
-        input:
-        destination = destination + "/variants/manta",
-        files =[
-                variant_calling.manta_SV,
-                variant_calling.manta_SV_index
-
-        ]
-    }
-
 
         call copy as copy_annotations{
             input:
@@ -76,20 +66,11 @@ workflow dna_seq_pipeline {
             ]
         }
 
-        call copy as copy_manta_annotations{
-            input:
-            destination = destination + "/variants/manta/annotations",
-            files =[
-                   variant_calling.manta_annotations,
-                   variant_calling.manta_vep_summary
-            ]
-        }
-
     output {
         File results_SNP = copy_variants.out[0]
-        File results_SV =  copy_SV.out[0]
+        #File results_SV =  copy_SV.out[0]
         File annotations = copy_annotations.out[0]
-        File manta_annotations = copy_manta_annotations.out[0]
+        #File manta_annotations = copy_manta_annotations.out[0]
     }
 
 
