@@ -48,36 +48,48 @@ workflow dna_seq_pipeline {
                 threads = variant_calling_threads
     }
 
-    call copy as copy_variants{
+     call copy as copy_variants{
+            input:
+            destination = destination + "/variants",
+            files =[
+                    variant_calling.results_SNP
+            ]
+        }
+
+       call copy as copy_SV{
         input:
-        destination = destination + "/variants",
+        destination = destination + "/variants/manta",
         files =[
-                variant_calling.results_SNP
+                variant_calling.manta_SV,
+                variant_calling.manta_SV_index
+
         ]
     }
 
 
-    call copy as copy_annotations{
-        input:
-        destination = destination + "/variants/annotations",
-        files =[
-               variant_calling.annotations,
-               variant_calling.vep_summary
-        ]
-    }
+        call copy as copy_annotations{
+            input:
+            destination = destination + "/variants/annotations",
+            files =[
+                   variant_calling.annotations,
+                   variant_calling.vep_summary
+            ]
+        }
 
-    call copy as copy_CNV{
-        input:
-        destination = destination + "/CNV",
-        files =[
-                variant_calling.results_CNV,
-        ]
-    }
+        call copy as copy_manta_annotations{
+            input:
+            destination = destination + "/variants/manta/annotations",
+            files =[
+                   variant_calling.manta_annotations,
+                   variant_calling.manta_vep_summary
+            ]
+        }
 
     output {
         File results_SNP = copy_variants.out[0]
-        File results_CNV =  copy_variants.out[0]
+        File results_SV =  copy_SV.out[0]
         File annotations = copy_annotations.out[0]
+        File manta_annotations = copy_manta_annotations.out[0]
     }
 
 

@@ -11,27 +11,78 @@ workflow variant_calling {
         Int max_memory = 28
     }
 
+    call manta_germline_sv{
+            input:
+                bam = bam, bai = bai, reference_fasta = referenceFasta, reference_fai= referenceFai, cores = threads
+        }
+
     call strelka2_germline{
         input:
-            bam = bam, bai = bai, reference_fasta = referenceFasta, reference_fai= referenceFai, cores = threads
-    }
-
-    call parlament2{
-        input:
-            bam = bam, bai = bai, reference_fasta = referenceFasta, reference_fai= referenceFai
+            bam = bam, bai = bai, reference_fasta = referenceFasta, reference_fai= referenceFai, cores = threads,
+            indel_candidates = manta_germline_sv.manta_indel_candidates
     }
 
     call vep_annotation{
         input: vcf = strelka2_germline.variants
     }
 
+    call vep_annotation as manta_vep_annotation{
+        input: vcf = manta_germline_sv.manta_SV
+    }
+
     output {
         File variants = strelka2_germline.variants
         File variantsIndex = strelka2_germline.variantsIndex
         File results_SNP = strelka2_germline.results
-        File results_CNV = parlament2.out
+        File manta_SV = manta_germline_sv.manta_SV
+        File manta_SV_index = manta_germline_sv.manta_SV_index
+
         File annotations = vep_annotation.out
         File vep_summary = vep_annotation.summary
+
+        File manta_annotations = manta_vep_annotation.out
+        File manta_vep_summary = manta_vep_annotation.summary
+    }
+}
+
+
+task manta_germline_sv {
+    input {
+        String runDir = "./manta_run"
+        File bam
+        File bai
+        File reference_fasta
+        File reference_fai
+        Boolean exome = false
+        Boolean rna = false
+
+        Int cores = 8
+        Int max_memory = 28
+    }
+
+    command {
+        set -e
+        configManta.py \
+        ~{"--normalBam " + bam} \
+        --referenceFasta ~{reference_fasta} \
+        --runDir ~{runDir} \
+        ~{true="--exome" false="" exome}
+        ~{runDir}/runWorkflow.py \
+        -m local \
+        -j ~{cores} \
+        -g ~{max_memory}
+    }
+
+    output {
+        File manta_SV = runDir + "/results/variants/diploidSV.vcf.gz"
+        File manta_SV_index = runDir + "/results/variants/diploidSV.vcf.gz.tbi"
+        File? manta_indel_candidates = runDir + "/results/variants/candidateSmallIndels.vcf.gz"
+    }
+
+    runtime {
+        docker: "quay.io/biocontainers/manta@sha256:81a24337616d9bceaf5afdeed1c5b70ba5f238194389717ad7ab2f188de17bfa"#:1.6.0--py27_0"
+        docker_memory: "~{max_memory}G"
+        docker_cpu: "~{cores}"
     }
 }
 
@@ -42,6 +93,7 @@ task strelka2_germline{
         File bai
         File reference_fasta
         File reference_fai
+        File? indel_candidates
         Boolean exome = false
         Boolean rna = false
 
@@ -57,6 +109,7 @@ task strelka2_germline{
         ~{true="--rna" false="" rna}
         ~{true="--exome" false="" exome} \
         ~{runDir}/runWorkflow.py \
+        ~{"--indelCandidates " + indel_candidates} \
         -m local \
         -j ~{cores} \
         -g ~{max_memory}
@@ -75,38 +128,6 @@ task strelka2_germline{
     }
 }
 
-# This task takes a BAM file and runs parliament2 on it.
-task parlament2 {
-
-  input
-  {
-    File bam
-    File bai
-    File reference_fai
-    File reference_fasta
-  }
-
-  String name = basename(bam, ".bam")
-
-  command {
-      /home/dnanexus/parliament2.sh --bam ~{bam} --bai ~{bai} --fai ~{reference_fai} -r ~{reference_fasta} \
-      --breakdancer --breakseq --manta --cnvnator --lumpy \
-      --delly_deletion --delly_insertion --delly_inversion --delly_duplication \
-      --genotype --svviz
-  }
-
-  runtime {
-    docker: "dnanexus/parliament2:latest"
-  }
-
-  output {
-    File out = "output"
-    #Array[File] vcfs = glob("output/*.vcf")
-    #Array[File] sv_caller_results = glob("output/sv_caller_results/*")
-    #Array[File] svtyped_vcfs = glob("output/svtyped_vcfs/*.vcf")
-  }
-
-}
 
 
 task vep_annotation {
