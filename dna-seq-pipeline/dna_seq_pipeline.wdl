@@ -18,6 +18,8 @@ workflow dna_seq_pipeline {
         Int align_threads = 8
         Int sort_threads = 12
         Int variant_calling_threads = 8
+        File ensembl_cache
+        File ensembl_plugins
         String name
     }
 
@@ -35,7 +37,7 @@ workflow dna_seq_pipeline {
 
     call copy as copy_alignment{
         input:
-        destination = destination + "/bam/aligned",
+        destination = destination + "/aligned",
         files = [ align.bam, align.bai, align.html, align.json]
     }
 
@@ -45,32 +47,36 @@ workflow dna_seq_pipeline {
                 bai = copy_alignment.out[1],
                 referenceFasta = reference.genome,
                 referenceFai = reference.fai,
-                threads = variant_calling_threads
+                threads = variant_calling_threads,
+                ensembl_cache = ensembl_cache,
+                name = name,
+                ensembl_plugins = ensembl_plugins
     }
 
      call copy as copy_variants{
             input:
             destination = destination + "/variants",
             files =[
-                    variant_calling.results_SNP
+                    variant_calling.results_SNP,variant_calling.results_SV
             ]
         }
 
 
         call copy as copy_annotations{
             input:
-            destination = destination + "/variants/annotations",
+            destination = destination + "/annotations",
             files =[
                    variant_calling.annotations,
+                   variant_calling.annotations_smoove,
                    variant_calling.vep_summary
             ]
         }
 
     output {
         File results_SNP = copy_variants.out[0]
-        #File results_SV =  copy_SV.out[0]
+        File results_SV =  copy_variants.out[1]
         File annotations = copy_annotations.out[0]
-        #File manta_annotations = copy_manta_annotations.out[0]
+        File smoove_annotations = copy_annotations.out[0]
     }
 
 

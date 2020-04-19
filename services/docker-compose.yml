@@ -3,31 +3,32 @@ services:
   cromwell:
     image: "quay.io/comp-bio-aging/cromwell:master"
     volumes:
-      - ./data:/data
-      - ./config:/config
+      - /data:/data
       - /var/run/docker.sock:/var/run/docker.sock
-    command: ["/wait-for-it/wait-for-it.sh mysql-db:3306 -t 120 -- java -Dconfig.file=/config/cromwell/application.conf -jar /app/cromwell.jar server"]
+    command: ["/wait-for-it/wait-for-it.sh mysql-db:3306 -t 120 -- java -Dconfig.file=/data/sources/cromwell-client/services/cromwell/app-config/application.conf -jar /app/cromwell.jar server"]
     ports:
       - "8000:8000"
   mysql-db:
-    image: "mysql:5.7"
+    image: "mysql:8"
     environment:
       - MYSQL_ROOT_PASSWORD=cromwell
       - MYSQL_DATABASE=cromwell_db
     volumes:
-      - ./config/mysql:/docker-entrypoint-initdb.d
-      - ./data/mysql:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+      - ./mysql/my.cnf:/etc/mysql/my.cnf
+      - /data/databases/mysql:/var/lib/mysql
+      - /data/databases/mysql:/var/lib/mysql-files
     ports:
       - "3307:3306"
   cromwell-client:
-    image: quay.io/comp-bio-aging/cromwell-web:0.2.3
+    image: quay.io/comp-bio-aging/cromwell-web:latest
     environment:
       - CROMWELL=http://cromwell:8000
-      - CROMWELL_LOGS=/data/cromwell-client-logs
     ports:
       - 8001:8001
     volumes:
-         - ./data:/data
+      - /data:/data
+      - /etc/hosts:/etc/hosts
     deploy:
       placement:
         constraints:
