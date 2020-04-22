@@ -6,6 +6,7 @@ workflow annotations{
         String name
         String species = "human"
         Int threads = 8
+        File reference
         #Boolean offline = true
         Boolean database = false
         File ensembl_cache
@@ -14,7 +15,7 @@ workflow annotations{
     }
 
     call vep_annotation{
-            input: vcf = vcf, ensembl_cache = ensembl_cache, name = name+"_variant_annotations.tsv", ensembl_plugins = ensembl_plugins
+            input: vcf = vcf, ensembl_cache = ensembl_cache, name = name+"_variant_annotations.tsv", ensembl_plugins = ensembl_plugins, fasta = reference
         }
 
     call copy as copy_annotations{
@@ -34,6 +35,7 @@ task vep_annotation {
         String species = "homo_sapiens"
         Int threads = 8
         Boolean database = false
+        File fasta
         #Boolean offline = true
         File ensembl_cache
         File ensembl_plugins
@@ -43,7 +45,7 @@ task vep_annotation {
 
     command {
         set -e
-        vep --verbose --input_file ~{vcf} -o ~{name} --tab --species ~{species} --fork ~{threads} --everything \
+        vep --verbose --input_file ~{vcf} -o ~{name} --tab --species ~{species} --fork ~{threads} --everything --fasta ~{fasta} \
         ~{if(database) then "--database" else  "--cache"} --dir_cache ~{ensembl_cache} --dir_plugins ~{ensembl_plugins}
     }
     #  --gene_phenotype --biotype --uniprot --symbol --allele_number --total_length --allele_number --regulatory --af

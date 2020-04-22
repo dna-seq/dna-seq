@@ -126,38 +126,6 @@ task sambamba_sort{
 }
 
 
-
-task samtools_sort {
-    input {
-        File bam
-        Int threads
-        Int gb_per_thread = 3
-
-    }
-
-    String name = basename(bam, ".bam")
-
-    command {
-       samtools sort ~{bam} -@ ~{threads} -m ~{gb_per_thread}G -o ~{name}_sorted.bam
-       echo "samtools sorting finished, starting indexing..."
-       samtools index -@ ~{threads} ~{name}_sorted.bam
-       echo "samtools index finished, renaming the results..."
-       mv -f ~{name}_sorted.bam.bai ~{name}_sorted.bai
-    }
-
-    runtime {
-        docker: "quay.io/biocontainers/samtools@sha256:70581cfc34eb40cb9b55e49cf5805fce820ec059d7bca9bbb762368ac3c1ac0a"#:1.10--h9402c20_2
-        maxRetries: 1
-        docker_memory: "~{gb_per_thread * (threads+1)}G"
-        docker_cpu: "~{threads+1}"
-      }
-
-    output {
-        File out = name + "_sorted.bam"
-        File bai = name + "_sorted.bai"
-      }
-}
-
 task gencore {
     input {
         File reference
