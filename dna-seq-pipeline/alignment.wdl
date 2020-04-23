@@ -7,6 +7,8 @@ workflow alignment {
         String name
         Int align_threads = 12
         Int sort_threads = 12
+        Int max_memory_gb = 36
+        Int coverage_sampling = 1000
         String? gencore_quality
     }
 
@@ -15,17 +17,13 @@ workflow alignment {
             reads = reads,
             reference = reference,
             name = name,
-            threads = align_threads
-    }
-
-    call samtools_conversion {
-        input:
-            sam = minimap2.out
+            threads = align_threads,
+            max_memory = max_memory_gb
     }
 
     call sambamba_sort {
         input:
-            bam = samtools_conversion.out,
+            bam = minimap2.bam,
             threads = sort_threads
     }
 
@@ -34,18 +32,15 @@ workflow alignment {
             reference = reference,
             sorted_bam = sambamba_sort.out,
             name = name,
-            quality  = gencore_quality
+            quality  = gencore_quality,
+            coverage_sampling = coverage_sampling,
+            max_memory = max_memory_gb
     }
 
-    call sambamba_sort as sort_gencore{
-        input:
-            bam = gencore.out,
-            threads = sort_threads
-    }
 
     output {
-       File bam = sort_gencore.out
-       File bai = sort_gencore.bai
+       File bam = gencore.bam
+       File bai = gencore.bai
        File html = gencore.html
        File json = gencore.json
     }
@@ -58,43 +53,24 @@ task minimap2 {
         File reference
         String name
         Int threads
+        Int max_memory
     }
 
     command {
-        minimap2 -ax sr  -t ~{threads} -2 ~{reference} ~{sep=' ' reads} > ~{name}.sam
+        minimap2 -ax sr  -t ~{threads} -2 ~{reference} ~{sep=' ' reads} | samtools view -bS - > ~{name}.bam
     }
 
     runtime {
-        docker: "quay.io/biocontainers/minimap2@sha256:e7ec93ae6c9dcdad362333932ad8f509cbee6de691c72cb9e600972c770340f4" #2.17--h8b12597_1
+        docker_memory: "~{max_memory}G"
+        docker_cpu: "~{threads+1}"
+        docker: "quay.io/comp-bio-aging/minimap2:sha256:f5d43a4d857fc56bfa4e98df1049a7b9c8af0f1bf604580eb074953a00b455c" #latest
         maxRetries: 2
       }
 
     output {
-      File out = name + ".sam"
+      File bam = name + ".bam"
     }
 }
-
-task samtools_conversion {
-    input {
-        File sam
-    }
-
-    String name = basename(sam, ".sam")
-
-    command {
-       samtools view -bS ~{sam} > ~{name}.bam
-    }
-
-    runtime {
-        docker: "quay.io/biocontainers/samtools@sha256:70581cfc34eb40cb9b55e49cf5805fce820ec059d7bca9bbb762368ac3c1ac0a"
-        maxRetries: 2
-      }
-
-    output {
-        File out = name + ".bam"
-      }
-}
-
 
 task sambamba_sort{
     input {
@@ -131,20 +107,25 @@ task gencore {
         File reference
         File sorted_bam
         String name
+        Int max_memory
         Int supporting_reads = 1
         Float ratio_threshold = 0.8
         String? quality #"--high_qual"
+        Int coverage_sampling = 1000
     }
     command {
-        gencore --ratio_threshold=~{ratio_threshold} -s ~{supporting_reads} ~{quality} -i ~{sorted_bam} -o ~{name}.bam -r ~{reference}
+        gencore --coverage_sampling ~{1000} --ratio_threshold=~{ratio_threshold} -s ~{supporting_reads} ~{quality} -i ~{sorted_bam} -o ~{name}.bam -r ~{reference}
+        samtools index ~{name}.bam  ~{name}.bai
     }
 
     runtime {
-        docker: "quay.io/comp-bio-aging/gencore@sha256:2bde467b5d57ee17397a9a2aeb82e18279032f12d760baaad9e6d38227157565"
+        docker_memory: "~{max_memory}G"
+        docker: "quay.io/comp-bio-aging/gencore@sha256:8bd1ef4984300abf194d94e1885c6642a72803fb8f81439205077c8db9f31103"
     }
 
     output {
-        File out = name + ".bam"
+        File bam = name + ".bam"
+        File bai = name + ".bai"
         File html = "gencore.html"
         File json = "gencore.json"
     }

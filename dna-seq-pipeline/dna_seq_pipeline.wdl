@@ -15,11 +15,11 @@ workflow dna_seq_pipeline {
         String destination
         Boolean is_paired = true
         Reference reference
-        Int align_threads = 8
+        Int align_threads = 12
         Int sort_threads = 12
-        Int variant_calling_threads = 8
-        File ensembl_cache
-        File ensembl_plugins
+        Int variant_calling_threads = 12
+        Int coverage_sampling = 1000
+        Int max_memory_gb = 36
         String name
     }
 
@@ -32,13 +32,15 @@ workflow dna_seq_pipeline {
           reference = reference.genome,
           name = name,
           align_threads = align_threads,
-          sort_threads = sort_threads
+          sort_threads = sort_threads,
+          coverage_sampling = coverage_sampling,
+          max_memory_gb = max_memory_gb
     }
 
     call copy as copy_alignment{
         input:
         destination = destination + "/aligned",
-        files = [ align.bam, align.bai, align.html, align.json]
+        files = [align.bam, align.bai, align.html, align.json]
     }
 
     call vc.variant_calling as variant_calling{
@@ -48,9 +50,7 @@ workflow dna_seq_pipeline {
                 referenceFasta = reference.genome,
                 referenceFai = reference.fai,
                 threads = variant_calling_threads,
-                ensembl_cache = ensembl_cache,
-                name = name,
-                ensembl_plugins = ensembl_plugins
+                name = name
     }
 
      call copy as copy_variants{
@@ -62,21 +62,12 @@ workflow dna_seq_pipeline {
         }
 
 
-        call copy as copy_annotations{
-            input:
-            destination = destination + "/annotations",
-            files =[
-                   variant_calling.annotations,
-                   variant_calling.annotations_smoove,
-                   variant_calling.vep_summary
-            ]
-        }
 
     output {
+        File alignment = copy_alignment.out[0]
+        File coverage = copy_alignment.out[2]
         File results_SNP = copy_variants.out[0]
         File results_SV =  copy_variants.out[1]
-        File annotations = copy_annotations.out[0]
-        File smoove_annotations = copy_annotations.out[0]
     }
 
 

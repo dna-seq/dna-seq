@@ -8,6 +8,7 @@
   "dna_seq_pipeline.destination": "/data/gwas/anton",
   "dna_seq_pipeline.name": "antonkulaga",
   "dna_seq_pipeline.sort_threads": 12,
-  "dna_seq_pipeline.ensembl_cache": "/data/ensembl/99/cache",
-  "dna_seq_pipeline.ensembl_plugins": "/data/ensembl/99/plugins"
+  "dna_seq_pipeline.align_threads": 12,
+  "dna_seq_pipeline.coverage_sampling": 100,
+  "dna_seq_pipeline.max_memory_gb": 48
 }
