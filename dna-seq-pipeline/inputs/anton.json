@@ -1,8 +1,8 @@
 {
   "dna_seq_pipeline.reference": {
-    "genome": "/data/gwas/references/homo_sapiens_ensembl_99/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
-    "fai": "/data/gwas/references/homo_sapiens_ensembl_99/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai",
-    "dict": "/data/gwas/references/homo_sapiens_ensembl_99/Homo_sapiens.GRCh38.dna.primary_assembly.dict"
+    "genome": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
+    "fai": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai",
+    "dict": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.dict"
   },
   "dna_seq_pipeline.reads": ["/data/gwas/anton/fastq/750018002018_WGZ_1.fq",  "/data/gwas/anton/fastq/750018002018_WGZ_2.fq"],
   "dna_seq_pipeline.destination": "/data/gwas/anton",

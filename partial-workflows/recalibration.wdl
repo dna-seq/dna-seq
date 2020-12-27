@@ -9,8 +9,6 @@ workflow recalibration {
         File bai
         String? genome_assembly
         String? species
-
-
     }
 
     call recalibration_model{
@@ -73,7 +71,7 @@ task recalibration_model {
 
 
     runtime {
-        docker: "quay.io/biocontainers/gatk4@sha256:4dcf52066fbee23130bf46b969adf85b55f6aec2c8871aba8d20b4b0a7115e1b" #4.1.6.0--py38_0
+        docker: "quay.io/biocontainers/gatk4@sha256:7b0b112b595861b140cbebdec5a0534bea9c40ef8bea4b3927fcea7ec53f5f57" #4.1.9.0--py39_0
         memory: "16G"
     }
 }
@@ -116,7 +114,7 @@ task apply_recalibration {
     }
 
     runtime {
-        docker: "quay.io/biocontainers/gatk4@sha256:4dcf52066fbee23130bf46b969adf85b55f6aec2c8871aba8d20b4b0a7115e1b" #4.1.6.0--py38_0
+        docker: "a" #4.1.6.0--py38_0
         memory: "16G"
     }
 

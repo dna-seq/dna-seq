@@ -1,6 +1,6 @@
 {
-  "index_reference.destination": "/data/homo_sapiens_ensembl_99",
-  "index_reference.reference": "/data/ensembl/99/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
-  "index_reference.assembly_name": "GRCh38_ensembl_99",
+  "index_reference.destination": "/data/gwas/homo_sapiens_ensembl_102",
+  "index_reference.reference": "/data/ensembl/102/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
+  "index_reference.assembly_name": "GRCh38_ensembl_102",
   "index_reference.species": "Homo_sapiens"
 }

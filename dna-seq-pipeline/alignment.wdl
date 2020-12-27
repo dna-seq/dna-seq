@@ -64,6 +64,7 @@ task minimap2 {
         docker_memory: "~{max_memory}G"
         docker_cpu: "~{threads+1}"
         docker: "quay.io/comp-bio-aging/minimap2@sha256:f5d43a4d857fc56bfa4e98df1049a7b9c8af0f1bf604580eb074953a00b455cd" #latest
+        #docker: "quay.io/biocontainers/minimap2@sha256:7f95eecc8eeee8ef8ae7e24d1d1a49ee056fb21d72aea4e2def97484f8a206c5" #2.17--hed695b0_3
         maxRetries: 2
       }
 
@@ -88,7 +89,7 @@ task sambamba_sort{
     }
 
     runtime {
-        docker: "quay.io/biocontainers/sambamba@sha256:8aa120d440ff188d447eaa0e6d5cac82bd9e35bfa42d5c7857c401736629c299" #:0.7.1--h148d290_2
+        docker: "quay.io/biocontainers/sambamba@sha256:9ec72d3d0991c4209830e4ff17937986808c64c430780071559e7072e8317ab3" #:0.7.1--h984e79f_3
         maxRetries: 1
         docker_memory: "~{gb_per_thread * (threads+1)}G"
         docker_cpu: "~{threads+1}"
@@ -120,7 +121,7 @@ task gencore {
 
     runtime {
         docker_memory: "~{max_memory}G"
-        docker: "quay.io/comp-bio-aging/gencore@sha256:8bd1ef4984300abf194d94e1885c6642a72803fb8f81439205077c8db9f31103"
+        docker: "quay.io/comp-bio-aging/gencore@sha256:14b0da6c870766e04ea80a3d010ee593bf6a0bd071c5d4cdee002095a632a828"
     }
 
     output {

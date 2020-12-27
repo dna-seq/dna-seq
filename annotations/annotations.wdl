@@ -51,7 +51,7 @@ task vep_annotation {
     #  --gene_phenotype --biotype --uniprot --symbol --allele_number --total_length --allele_number --regulatory --af
 
     runtime {
-        docker: "ensemblorg/ensembl-vep:release_99.2"
+        docker: "ensemblorg/ensembl-vep:release_102.0"
     }
 
     output {

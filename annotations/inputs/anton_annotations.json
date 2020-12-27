@@ -1,7 +1,7 @@
 {
   "annotations.vcf": "/data/gwas/anton/strelka_run/results/variants/variants.vcf.gz",
-  "annotations.ensembl_cache": "/data/ensembl/99/cache",
-  "annotations.ensembl_plugins": "/data/ensembl/99/plugins",
+  "annotations.ensembl_cache": "/data/ensembl/102/cache",
+  "annotations.ensembl_plugins": "/data/ensembl/102/plugins",
   "annotations.name": "antonkulaga",
   "annotations.destination": "/data/gwas/anton/vep"
 }

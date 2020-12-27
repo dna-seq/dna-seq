@@ -43,7 +43,7 @@ task create_reference_dict {
     }
 
     runtime {
-        docker: "quay.io/biocontainers/gatk4@sha256:4dcf52066fbee23130bf46b969adf85b55f6aec2c8871aba8d20b4b0a7115e1b"
+        docker: "quay.io/biocontainers/gatk4@sha256:7b0b112b595861b140cbebdec5a0534bea9c40ef8bea4b3927fcea7ec53f5f57" #4.1.9.0--py39_0
     }
 
     output {
@@ -63,7 +63,7 @@ task create_reference_fai {
         samtools faidx ~{name}
     }
     runtime {
-        docker: "quay.io/biocontainers/samtools@sha256:97b9627711c16125fe1b57cf8745396064fd88ebeff6ab00cf6a68aeacecfcda" #1.2-0
+        docker: "quay.io/biocontainers/samtools@sha256:141120f19f849b79e05ae2fac981383988445c373b8b5db7f3dd221179af382b" #1.11--h6270b1f_0
     }
 
     output {

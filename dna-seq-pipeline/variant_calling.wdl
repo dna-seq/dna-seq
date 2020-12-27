@@ -104,7 +104,7 @@ task smoove {
     }
 
     runtime {
-        docker: "brentp/smoove@sha256:1bbf81b1c3c109e62c550783c2241acc1b10e2b161c79ee658e6abd011000c67"
+        docker: "brentp/smoove@sha256:d0d6977dcd636e8ed048ae21199674f625108be26d0d0acd39db4446a0bbdced"
         docker_memory: "~{max_memory}G"
         docker_cpu: "~{max_cores}"
     }
