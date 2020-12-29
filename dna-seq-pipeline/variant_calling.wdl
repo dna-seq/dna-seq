@@ -92,6 +92,8 @@ task smoove {
         set -e
         mkdir -p ~{outputDir}
         smoove call \
+        --genotype \
+        --duphold \
         --outdir ~{outputDir} \
         --name ~{sample} \
         --fasta ~{reference} \

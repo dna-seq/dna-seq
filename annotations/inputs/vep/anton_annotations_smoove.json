@@ -1,0 +1,11 @@
+{
+  "vep_annotations.vcf": "/data/gwas/anton/variants/smoove/antonkulaga-smoove.vcf",
+  "vep_annotations.ensembl_cache": "/data/ensembl/102/cache",
+  "vep_annotations.ensembl_plugins": "/data/ensembl/102/plugins",
+  "vep_annotations.name": "antonkulaga",
+  "vep_annotations.species": "homo_sapiens",
+  "vep_annotations.destination": "/data/gwas/anton/vep/smoove",
+  "vep_annotations.reference": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
+  "vep_annotations.G2P": "/data/gwas/annotations/DDG2P_29_12_2020.csv",
+  "vep_annotations.check_sorted": false
+}

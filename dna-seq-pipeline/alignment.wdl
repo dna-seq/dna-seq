@@ -63,7 +63,7 @@ task minimap2 {
     runtime {
         docker_memory: "~{max_memory}G"
         docker_cpu: "~{threads+1}"
-        docker: "quay.io/comp-bio-aging/minimap2@sha256:f5d43a4d857fc56bfa4e98df1049a7b9c8af0f1bf604580eb074953a00b455cd" #latest
+        docker: "quay.io/comp-bio-aging/minimap2@sha256:7d7ee2187e62720c88ae8facf9a0db87a5cf0517749dead432e92ec81bd30bb1" #latest
         #docker: "quay.io/biocontainers/minimap2@sha256:7f95eecc8eeee8ef8ae7e24d1d1a49ee056fb21d72aea4e2def97484f8a206c5" #2.17--hed695b0_3
         maxRetries: 2
       }

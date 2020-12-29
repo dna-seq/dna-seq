@@ -1,34 +1,47 @@
 version development
 
-workflow annotations{
+workflow vep_annotations{
     input{
         File vcf
         String name
-        String species = "human"
-        Int threads = 8
+        String species = "homo_sapiens"
+        Int threads = 16
         File reference
         #Boolean offline = true
         Boolean database = false
         File ensembl_cache
         File ensembl_plugins
         String destination
+        #File disease_associations
+        File G2P
+        Boolean check_sorted = true
+        Int buffer_size = 5000
     }
 
-    call vep_annotation{
-            input: vcf = vcf, ensembl_cache = ensembl_cache, name = name+"_variant_annotations.tsv", ensembl_plugins = ensembl_plugins, fasta = reference
+    call vep{
+            input: vcf = vcf,
+                ensembl_cache = ensembl_cache,
+                name = name+"_variant_annotations.tsv",
+                ensembl_plugins = ensembl_plugins,
+                fasta = reference,
+                species = species,
+                #disease_associations = disease_associations,
+                G2P = G2P,
+                check_sorted = check_sorted,
+                buffer_size = buffer_size
         }
 
     call copy as copy_annotations{
             input:
             destination = destination + "/annotations",
             files =[
-                   vep_annotation.out,
-                   vep_annotation.summary
+                   vep.out,
+                   vep.summary
             ]
         }
 }
 
-task vep_annotation {
+task vep {
     input {
         File vcf
         String name = "variant_effect_output.tsv"
@@ -39,6 +52,10 @@ task vep_annotation {
         #Boolean offline = true
         File ensembl_cache
         File ensembl_plugins
+        #File disease_associations
+        File G2P
+        Boolean check_sorted
+        Int buffer_size = 5000
     }
 
     #TODO add VEP plugins http://www.ensembl.org/info/docs/tools/vep/script/vep_plugins.html
@@ -46,8 +63,12 @@ task vep_annotation {
     command {
         set -e
         vep --verbose --input_file ~{vcf} -o ~{name} --tab --species ~{species} --fork ~{threads} --everything --fasta ~{fasta} \
-        ~{if(database) then "--database" else  "--cache"} --dir_cache ~{ensembl_cache} --dir_plugins ~{ensembl_plugins}
+        ~{if(database) then "--database" else  "--cache"} --dir_cache ~{ensembl_cache} --dir_plugins ~{ensembl_plugins} \
+        --symbol --check_existing ~{if(check_sorted) then "" else "--no_check_variants_order"} \
+        --max_sv_size 1000000000 --buffer_size ~{buffer_size}   \
+        --plugin G2P,file=~{G2P},html_report=g2p_report.html,txt_report=g2p_report.txt
     }
+    #--plugin DisGeNET,file=all_variant_disease_pmid_associations.tsv.gz \
     #  --gene_phenotype --biotype --uniprot --symbol --allele_number --total_length --allele_number --regulatory --af
 
     runtime {
