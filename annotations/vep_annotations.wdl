@@ -3,6 +3,7 @@ version development
 workflow vep_annotations{
     input{
         File vcf
+        File? vcf_tbi
         String name
         String species = "homo_sapiens"
         Int threads = 16
@@ -12,11 +13,13 @@ workflow vep_annotations{
         File ensembl_cache
         File ensembl_plugins
         String destination
-        File disease_associations
-        File G2P
         Boolean check_sorted = true
         Int buffer_size = 5000
+        File? G2P
+        File disease_associations
+        File? disease_associations_tbi
         File clinvar
+        File? clinvar_tbi
     }
 
     call vep{
@@ -27,10 +30,12 @@ workflow vep_annotations{
                 fasta = reference,
                 species = species,
                 disease_associations = disease_associations,
+                disease_associations_tbi = disease_associations_tbi,
                 G2P = G2P,
                 check_sorted = check_sorted,
                 buffer_size = buffer_size,
-                clinvar = clinvar
+                clinvar = clinvar,
+                clinvar_tbi = clinvar_tbi
         }
 
     call copy as copy_annotations{
@@ -46,6 +51,7 @@ workflow vep_annotations{
 task vep {
     input {
         File vcf
+        File? vcf_tbi
         String name = "variant_effect_output.tsv"
         String species = "homo_sapiens"
         Int threads = 8
@@ -54,24 +60,32 @@ task vep {
         #Boolean offline = true
         File ensembl_cache
         File ensembl_plugins
-        File disease_associations
-        File G2P
         Boolean check_sorted
         Int buffer_size = 5000
+        File? G2P
+        File disease_associations
+        File? disease_associations_tbi
         File clinvar
+        File? clinvar_tbi
     }
 
     #TODO add VEP plugins http://www.ensembl.org/info/docs/tools/vep/script/vep_plugins.html
 
     command {
         set -e
-        vep --verbose --input_file ~{vcf} -o ~{name} --tab --species ~{species} --fork ~{threads} --everything --fasta ~{fasta} \
+        ln -s ~{vcf} .
+        ~{"ln -s "+ vcf_tbi  +" ."}
+        ~{"ln -s "+ clinvar  +" ."}
+        ~{"ln -s "+ clinvar_tbi  +" ."}
+        ~{"ln -s "+ disease_associations  +" ."}
+        ~{"ln -s "+ disease_associations_tbi  +" ."}
+        vep --verbose --input_file ~{basename(vcf)} -o ~{name} --tab --species ~{species} --fork ~{threads} --everything --fasta ~{fasta} \
         ~{if(database) then "--database" else  "--cache"} --dir_cache ~{ensembl_cache} --dir_plugins ~{ensembl_plugins} \
         --symbol --check_existing ~{if(check_sorted) then "" else "--no_check_variants_order"} \
         --max_sv_size 1000000000 --buffer_size ~{buffer_size}   \
-        --plugin G2P,file=~{G2P},html_report=g2p_report.html,txt_report=g2p_report.txt \
-        --plugin DisGeNET,file=all_variant_disease_pmid_associations.tsv.gz,disease=1 \
-        --custom ~{clinvar},ClinVar,vcf,exact,0,CLNSIG,CLNREVSTAT,CLNDN
+        ~{"--plugin G2P,file="+G2P+",html_report=g2p_report.html,txt_report=g2p_report.txt"} \
+        ~{"--plugin DisGeNET,file=" + basename(disease_associations) + ",disease=1"} \
+        ~{"--custom " + basename(clinvar) + ",ClinVar,vcf,exact,0,CLNSIG,CLNREVSTAT,CLNDN"}
     }
     #--plugin DisGeNET,file=all_variant_disease_pmid_associations.tsv.gz \
     #  --gene_phenotype --biotype --uniprot --symbol --allele_number --total_length --allele_number --regulatory --af

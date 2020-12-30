@@ -34,6 +34,7 @@ workflow haplo_annotations{
 task haplo {
     input {
         File vcf
+        File? vcf_tbi
         String name = "haplo_output.json"
         String species = "homo_sapiens"
         Boolean database = false
@@ -44,10 +45,16 @@ task haplo {
     }
 
     #TODO add haplo plugins http://www.ensembl.org/info/docs/tools/haplo/script/haplo_plugins.html
+    #NOTE: the container has weird user permissions, using ln-s to avoid issues
 
     command {
         set -e
-        haplo --verbose --input_file ~{vcf} -o ~{name} --species ~{species} --fasta ~{fasta} \
+        ln -s ~{vcf} .
+        ~{"ln -s "+ vcf_tbi  +" ."}
+        ln -s ~{fasta} .
+        mkdir .vep
+        ln -s .vep /opt/vep/.vep
+        haplo --verbose --input_file ~{basename(vcf)} -o ~{name} --species ~{species} --fasta ~{basename(fasta)} \
         ~{if(database) then "--database" else  "--cache"} --dir_cache ~{ensembl_cache}
     }
     runtime {
