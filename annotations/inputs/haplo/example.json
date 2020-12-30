@@ -1,0 +1,8 @@
+{
+  "haplo_annotations.vcf": "/data/sources/ensembl-vep/examples/homo_sapiens_GRCh38.vcf",
+  "haplo_annotations.ensembl_cache": "/data/ensembl/102/cache",
+  "haplo_annotations.name": "example",
+  "haplo_annotations.species": "homo_sapiens",
+  "haplo_annotations.destination": "/data/gwas/example/haplo",
+  "haplo_annotations.reference": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa"
+}

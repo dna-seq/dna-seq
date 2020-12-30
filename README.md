@@ -37,3 +37,19 @@ There are three major ways of running any of the pipelines in the repository:
 * with [CromwellClient](https://github.com/antonkulaga/cromwell-client) and Cromwell in server mode (recommended)
 * directly from Swagger API with Cromwell in a server mode: similar to running with CromwellClient but instead of the Client swagger server API is used.
 * with Cromwell or any other WDL-compartible tool in the console. Documented at [Official cromwell documentation](https://cromwell.readthedocs.io/en/stable/tutorials/FiveMinuteIntro/#step-3-running-the-workflow)
+
+VEP annotations
+---------------
+
+The most important part of the pipeline is VEP annotations.
+To make it work you must download Ensembl cache and Ensembl plugins.
+
+TODOs
+-----
+
+This repository is a work in progress, so I list todos:
+* longevity annotations
+* docs on how to configure VEP (maybe dvc-based resolved cache)
+* making haplausauras work and comparing with VEP
+* eye and skin color annotations (stuff like http://mathgene.usc.es/snipper/eyeclassifier.html)
+* moving to DeepVariant as a main variant caller
