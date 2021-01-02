@@ -15,11 +15,13 @@ workflow vep_annotations{
         String destination
         Boolean check_sorted = true
         Int buffer_size = 5000
-        File? G2P
+        File G2P
         File disease_associations
         File? disease_associations_tbi
         File clinvar
         File? clinvar_tbi
+        Boolean condel = false
+        Boolean conservation = false
     }
 
     call vep{
@@ -35,7 +37,9 @@ workflow vep_annotations{
                 check_sorted = check_sorted,
                 buffer_size = buffer_size,
                 clinvar = clinvar,
-                clinvar_tbi = clinvar_tbi
+                clinvar_tbi = clinvar_tbi,
+                conservation = conservation,
+                condel = condel
         }
 
     call copy as copy_annotations{
@@ -43,7 +47,8 @@ workflow vep_annotations{
             destination = destination + "/annotations",
             files =[
                    vep.out,
-                   vep.summary
+                   vep.summary,
+                   vep.g2p_report
             ]
         }
 }
@@ -62,11 +67,13 @@ task vep {
         File ensembl_plugins
         Boolean check_sorted
         Int buffer_size = 5000
-        File? G2P
+        File G2P
         File disease_associations
         File? disease_associations_tbi
         File clinvar
         File? clinvar_tbi
+        Boolean conservation
+        Boolean condel
     }
 
     #TODO add VEP plugins http://www.ensembl.org/info/docs/tools/vep/script/vep_plugins.html
@@ -85,18 +92,20 @@ task vep {
         --max_sv_size 1000000000 --buffer_size ~{buffer_size}   \
         ~{"--plugin G2P,file="+G2P+",html_report=g2p_report.html,txt_report=g2p_report.txt"} \
         ~{"--plugin DisGeNET,file=" + basename(disease_associations) + ",disease=1"} \
-        ~{"--custom " + basename(clinvar) + ",ClinVar,vcf,exact,0,CLNSIG,CLNREVSTAT,CLNDN"}
+        ~{"--custom " + basename(clinvar) + ",ClinVar,vcf,exact,0,CLNSIG,CLNREVSTAT,CLNDN"} \
+        --plugin Phenotypes,output_format=json,phenotype_feature=1 \
+        ~{if(condel) then "--plugin Condel --plugin ExACpLI" else ""} \
+        ~{if(conservation) then "--plugin Conservation,method_link_type=GERP_CONSERVATION_SCORE,species_set=mammals" else ""}
     }
-    #--plugin DisGeNET,file=all_variant_disease_pmid_associations.tsv.gz \
-    #  --gene_phenotype --biotype --uniprot --symbol --allele_number --total_length --allele_number --regulatory --af
 
     runtime {
-        docker: "ensemblorg/ensembl-vep:release_102.0"
+        docker: "quay.io/comp-bio-aging/vep" #based on ensemblorg/ensembl-vep:release_102.0
     }
 
     output {
         File out = name
         File summary = name+ "_summary.html"
+        File g2p_report = "g2p_report.html"
     }
 }
 

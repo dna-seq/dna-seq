@@ -3,6 +3,7 @@ version development
 workflow haplo_annotations{
     input{
         File vcf
+        File? vcf_tbi
         String name
         String species = "homo_sapiens"
         Int threads = 16
@@ -14,7 +15,7 @@ workflow haplo_annotations{
     }
 
     call haplo{
-        input: vcf = vcf,
+        input: vcf = vcf,vcf_tbi = vcf_tbi,
             ensembl_cache = ensembl_cache,
             name = name+"_variant_annotations.tsv",
             fasta = reference,
@@ -58,7 +59,7 @@ task haplo {
         ~{if(database) then "--database" else  "--cache"} --dir_cache ~{ensembl_cache}
     }
     runtime {
-        docker: "ensemblorg/ensembl-vep:release_102.0"
+        docker: "quay.io/antonkulaga/vep"
     }
 
     output {

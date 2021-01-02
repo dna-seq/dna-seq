@@ -1,11 +1,9 @@
 {
   "haplo_annotations.vcf": "/data/gwas/anton/variants/strelka_run/results/variants/variants.vcf",
+  "haplo_annotations.vcf_tbi": "/data/gwas/anton/variants/strelka_run/results/variants/variants.vcf.tbi",
   "haplo_annotations.ensembl_cache": "/data/ensembl/102/cache",
-  "haplo_annotations.ensembl_plugins": "/data/ensembl/102/plugins",
   "haplo_annotations.name": "antonkulaga",
   "haplo_annotations.species": "homo_sapiens",
   "haplo_annotations.destination": "/data/gwas/anton/haplo/strelka",
-  "haplo_annotations.reference": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
-  "haplo_annotations.G2P": "/data/gwas/annotations/DDG2P_29_12_2020.csv"
-
+  "haplo_annotations.reference": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa"
 }

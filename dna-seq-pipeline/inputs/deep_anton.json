@@ -1,0 +1,10 @@
+{
+  "DeepVariant.bam": "/data/gwas/anton/aligned/antonkulaga.bam",
+  "DeepVariant.bai": "/data/gwas/anton/aligned/antonkulaga.bam.bai",
+  "DeepVariant.name": "anton",
+  "DeepVariant.reference": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
+  "DeepVariant.reference_fai": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai",
+  "DeepVariant.threads": 16,
+  "DeepVariant.mode": "WGS",
+  "DeepVariant.destination": "/data/gwas/anton/deepvariant"
+}

@@ -85,7 +85,6 @@ task sambamba_sort{
     command {
        ln -s ~{bam} ~{basename(bam)}
        sambamba sort -m ~{gb_per_thread}G -t ~{threads} -p ~{basename(bam)}
-       mv -f ~{name}.sorted.bam.bai ~{name}.sorted.bai
     }
 
     runtime {
@@ -98,7 +97,7 @@ task sambamba_sort{
 
     output {
       File out = name + ".sorted.bam"
-      File bai = name + ".sorted.bai"
+      File bai = name + ".sorted.bam.bai"
     }
 }
 
@@ -116,7 +115,7 @@ task gencore {
     }
     command {
         gencore --coverage_sampling ~{1000} --ratio_threshold=~{ratio_threshold} -s ~{supporting_reads} ~{quality} -i ~{sorted_bam} -o ~{name}.bam -r ~{reference}
-        samtools index ~{name}.bam  ~{name}.bai
+        samtools index ~{name}.bam  ~{name}.bam.bai
     }
 
     runtime {
@@ -126,7 +125,7 @@ task gencore {
 
     output {
         File bam = name + ".bam"
-        File bai = name + ".bai"
+        File bai = name + ".bam.bai"
         File html = "gencore.html"
         File json = "gencore.json"
     }

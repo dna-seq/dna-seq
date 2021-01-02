@@ -48,8 +48,8 @@ TODOs
 -----
 
 This repository is a work in progress, so I list todos:
+* moving to DeepVariant as a main variant caller
 * longevity annotations
 * docs on how to configure VEP (maybe dvc-based resolved cache)
 * making haplausauras work and comparing with VEP
 * eye and skin color annotations (stuff like http://mathgene.usc.es/snipper/eyeclassifier.html)
-* moving to DeepVariant as a main variant caller
