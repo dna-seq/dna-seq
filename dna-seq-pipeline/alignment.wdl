@@ -5,6 +5,7 @@ workflow alignment {
         Array[File]+ reads
         File reference
         String name
+        String destination
         Int align_threads = 12
         Int sort_threads = 12
         Int max_memory_gb = 36
@@ -38,11 +39,18 @@ workflow alignment {
     }
 
 
+    call copy as copy_alignment {
+        input:
+            destination = destination,
+            files = [gencore.bam, gencore.bai, gencore.html, gencore.json]
+    }
+
+
     output {
-       File bam = gencore.bam
-       File bai = gencore.bai
-       File html = gencore.html
-       File json = gencore.json
+       File bam =  copy_alignment.out[0]
+       File bai = copy_alignment.out[1]
+       File html = copy_alignment.out[2]
+       File json = copy_alignment.out[3]
     }
 }
 
@@ -63,8 +71,7 @@ task minimap2 {
     runtime {
         docker_memory: "~{max_memory}G"
         docker_cpu: "~{threads+1}"
-        docker: "quay.io/comp-bio-aging/minimap2@sha256:7d7ee2187e62720c88ae8facf9a0db87a5cf0517749dead432e92ec81bd30bb1" #latest
-        #docker: "quay.io/biocontainers/minimap2@sha256:7f95eecc8eeee8ef8ae7e24d1d1a49ee056fb21d72aea4e2def97484f8a206c5" #2.17--hed695b0_3
+        docker: "quay.io/comp-bio-aging/minimap2@sha256:69e9515a0cb5b5e9f47c3d0f95700d5064f0db04f86d49b6626b66a012daf0a5" #latest
         maxRetries: 2
       }
 
@@ -88,7 +95,7 @@ task sambamba_sort{
     }
 
     runtime {
-        docker: "quay.io/biocontainers/sambamba@sha256:9ec72d3d0991c4209830e4ff17937986808c64c430780071559e7072e8317ab3" #:0.7.1--h984e79f_3
+        docker: "quay.io/biocontainers/sambamba@sha256:ae92faef4c53a632b2120dfffa7b6dcfe5366a0647e61bbbd6188aedc89da4e8" #:0.8.0--h984e79f_0
         maxRetries: 1
         docker_memory: "~{gb_per_thread * (threads+1)}G"
         docker_cpu: "~{threads+1}"
@@ -131,11 +138,10 @@ task gencore {
     }
 }
 
-
-
 task coverage {
     input {
         File bam
+        #takes a lot of time and consumes space, so far it is switched off
     }
 
     String name = basename(bam, ".bam")
@@ -151,5 +157,29 @@ task coverage {
 
     output {
         File out = name + ".bedgraph"
+    }
+}
+
+task copy {
+    input {
+        Array[File] files
+        String destination
+    }
+
+    String where = sub(destination, ";", "_")
+
+    command {
+        mkdir -p ~{where}
+        cp -L -R -u ~{sep=' ' files} ~{where}
+        declare -a files=(~{sep=' ' files})
+        for i in ~{"$"+"{files[@]}"};
+        do
+        value=$(basename ~{"$"}i)
+        echo ~{where}/~{"$"}value
+        done
+    }
+
+    output {
+        Array[File] out = read_lines(stdout())
     }
 }

@@ -1,10 +1,11 @@
 version development
 
-workflow variant_calling {
+workflow simple_variant_calling {
 
     input {
         File bam
         File bai
+        String destination
         File referenceFasta
         File referenceFai
         Int threads = 16
@@ -23,18 +24,29 @@ workflow variant_calling {
             #,indel_candidates = manta_germline_sv.manta_indel_candidates
     }
 
+    call copy as copy_variants{
+        input:
+            destination = destination + "/variants",
+            files =[
+                   strelka2_germline.results,smoove.smooveVcf
+                   ]
+    }
+
 
     output {
         File variants = strelka2_germline.variants
         File variantsIndex = strelka2_germline.variantsIndex
-        File variants_SV = smoove.smooveVcf
-        File results_SNP = strelka2_germline.results
+        File results_SNP = copy_variants.out[0]
+        File variants_SV = copy_variants.out[1]
         File results_SV = smoove.out
     }
 }
 
 
 task strelka2_germline{
+
+    #deepvariant seems to be superior, but we keep strelka for the comparison purposes
+
     input {
         String runDir = "./strelka_run"
         File bam
@@ -109,5 +121,30 @@ task smoove {
         docker: "brentp/smoove@sha256:d0d6977dcd636e8ed048ae21199674f625108be26d0d0acd39db4446a0bbdced"
         docker_memory: "~{max_memory}G"
         docker_cpu: "~{max_cores}"
+    }
+}
+
+
+task copy {
+    input {
+        Array[File] files
+        String destination
+    }
+
+    String where = sub(destination, ";", "_")
+
+    command {
+        mkdir -p ~{where}
+        cp -L -R -u ~{sep=' ' files} ~{where}
+        declare -a files=(~{sep=' ' files})
+        for i in ~{"$"+"{files[@]}"};
+        do
+        value=$(basename ~{"$"}i)
+        echo ~{where}/~{"$"}value
+        done
+    }
+
+    output {
+        Array[File] out = read_lines(stdout())
     }
 }

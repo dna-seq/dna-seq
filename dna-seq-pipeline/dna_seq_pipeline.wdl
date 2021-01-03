@@ -1,35 +1,36 @@
 version development
 
+import "cleanup.wdl" as clean
 import "alignment.wdl" as alignment
-import "variant_calling.wdl" as vc
-
-struct Reference{
-    File genome #i.e. Homo_sapiens.GRCh38.dna.primary_assembly.fa
-    File fai #i.e. Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
-    File dict #i.e. Homo_sapiens.GRCh38.dna.primary_assembly.dict
-}
+import "simple_variant_calling.wdl" as vc
+import "deep_variant.wdl" as deep
 
 workflow dna_seq_pipeline {
     input {
         Array[File]+ reads
         String destination
         Boolean is_paired = true
-        Reference reference
+        File reference #i.e. Homo_sapiens.GRCh38.dna.primary_assembly.fa
+        File reference_fai #i.e. Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
         Int align_threads = 12
         Int sort_threads = 12
-        Int variant_calling_threads = 12
+        Int variant_calling_threads = 16
         Int coverage_sampling = 1000
-        Int max_memory_gb = 36
+        Int max_memory_gb = 42
         String name
     }
 
-    call fastp { input: reads = reads, is_paired = is_paired }
-    call copy as copy_cleaned { input: destination = destination + "/fastq/cleaned", files = fastp.out }
+    call clean.cleanup as cleanup{
+        input:
+            reads = reads, destination = destination + "/fastq/cleaned"
+    }
+
 
     call alignment.alignment as align{
         input:
-          reads = fastp.reads_cleaned,
-          reference = reference.genome,
+          reads = cleanup.reads_cleaned,
+          reference = reference,
+          destination = destination + "/aligned",
           name = name,
           align_threads = align_threads,
           sort_threads = sort_threads,
@@ -37,90 +38,39 @@ workflow dna_seq_pipeline {
           max_memory_gb = max_memory_gb
     }
 
-    call copy as copy_alignment{
-        input:
-        destination = destination + "/aligned",
-        files = [align.bam, align.bai, align.html, align.json]
-    }
 
-    call vc.variant_calling as variant_calling{
+    call vc.simple_variant_calling as simple_variant_calling{
         input:
-                bam = copy_alignment.out[0],
-                bai = copy_alignment.out[1],
-                referenceFasta = reference.genome,
-                referenceFai = reference.fai,
+                bam = align.bam,
+                bai = align.bai,
+                destination = destination + "/variants",
+                referenceFasta = reference,
+                referenceFai = reference_fai,
                 threads = variant_calling_threads,
                 name = name
     }
 
-     call copy as copy_variants{
-            input:
-            destination = destination + "/variants",
-            files =[
-                    variant_calling.results_SNP,variant_calling.results_SV
-            ]
-        }
+    call deep.DeepVariant as deepvariant {
+        input:
+            bam = align.bam,
+            bai = align.bai,
+            name = name,
+            reference = reference,
+            reference_fai = reference_fai,
+            threads = variant_calling_threads,
+            destination = destination + "/variants/deepvariant",
+            mode = "WGS" #[WGS,WES,PACBIO,HYBRID_PACBIO_ILLUMINA]
+    }
 
 
 
     output {
-        File alignment = copy_alignment.out[0]
-        File coverage = copy_alignment.out[2]
-        File results_SNP = copy_variants.out[0]
-        File results_SV =  copy_variants.out[1]
+        File alignment = align.bam
+        File deep_SNP = deepvariant.vcf
+        File deep_g_SNP = deepvariant.gvcf
+        File results_SNP = simple_variant_calling.results_SNP
+        File results_SV =  simple_variant_calling.variants_SV
     }
 
 
-}
-
-task fastp {
-    input {
-        Array[File]+ reads
-        Boolean is_paired
-    }
-
-    command {
-        fastp --cut_front --cut_tail --cut_right --overrepresentation_analysis \
-            -i ~{reads[0]} -o ~{basename(reads[0], ".fastq.gz")}_cleaned.fastq.gz \
-            ~{if( is_paired ) then "--detect_adapter_for_pe " + "--correction -I "+reads[1]+" -O " + basename(reads[1], ".fastq.gz") +"_cleaned.fastq.gz" else ""}
-    }
-
-    runtime {
-        docker: "quay.io/biocontainers/fastp@sha256:56ca79fc827c1e9f48120cfa5adb654c029904d8e0b75d01d5f86fdd9b567bc5" #0.20.1--h8b12597_0
-    }
-
-    output {
-        File report_json = "fastp.json"
-        File report_html = "fastp.html"
-        Array[File] reads_cleaned = if( is_paired )
-            then [basename(reads[0], ".fastq.gz") + "_cleaned.fastq.gz", basename(reads[1], ".fastq.gz") + "_cleaned.fastq.gz"]
-            else [basename(reads[0], ".fastq.gz") + "_cleaned.fastq.gz"]
-        Array[File] out = if( is_paired )
-        then [reads_cleaned[0], reads_cleaned[1], report_json, report_html] else
-        [reads_cleaned[0], report_json, report_html]
-    }
-}
-
-task copy {
-    input {
-        Array[File] files
-        String destination
-    }
-
-    String where = sub(destination, ";", "_")
-
-    command {
-        mkdir -p ~{where}
-        cp -L -R -u ~{sep=' ' files} ~{where}
-        declare -a files=(~{sep=' ' files})
-        for i in ~{"$"+"{files[@]}"};
-          do
-              value=$(basename ~{"$"}i)
-              echo ~{where}/~{"$"}value
-          done
-    }
-
-    output {
-        Array[File] out = read_lines(stdout())
-    }
 }

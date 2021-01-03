@@ -9,7 +9,7 @@ workflow DeepVariant {
         File bai
         String? regions
         String name = "output"
-        File reference #/input/ucsc.hg19.chr20.unittest.fasta
+        File reference
         File reference_fai
         Int threads
         String destination
@@ -23,15 +23,15 @@ workflow DeepVariant {
             reference=reference, reference_fai = reference_fai,
             threads = threads, mode = mode
     }
-    call copy {
+    call copy as copy_deepvariant {
         input: files = [go_deep.vcf, go_deep.gvcf, go_deep.report, go_deep.interim], destination = destination
     }
 
     output {
-        File vcf = copy.out[0]
-        File gvcf = copy.out[1]
-        File report = copy.out[2]
-        File interim = copy.out[3]
+        File vcf = copy_deepvariant.out[0]
+        File gvcf = copy_deepvariant.out[1]
+        File report = copy_deepvariant.out[2]
+        File interim = copy_deepvariant.out[3]
     }
 }
 task go_deep{

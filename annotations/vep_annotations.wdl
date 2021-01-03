@@ -93,10 +93,11 @@ task vep {
         ~{"--plugin G2P,file="+G2P+",html_report=g2p_report.html,txt_report=g2p_report.txt"} \
         ~{"--plugin DisGeNET,file=" + basename(disease_associations) + ",disease=1"} \
         ~{"--custom " + basename(clinvar) + ",ClinVar,vcf,exact,0,CLNSIG,CLNREVSTAT,CLNDN"} \
-        --plugin Phenotypes,output_format=json,phenotype_feature=1 \
         ~{if(condel) then "--plugin Condel --plugin ExACpLI" else ""} \
         ~{if(conservation) then "--plugin Conservation,method_link_type=GERP_CONSERVATION_SCORE,species_set=mammals" else ""}
     }
+
+    #--plugin Phenotypes,output_format=json,phenotype_feature=1 \
 
     runtime {
         docker: "quay.io/comp-bio-aging/vep" #based on ensemblorg/ensembl-vep:release_102.0

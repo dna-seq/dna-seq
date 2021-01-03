@@ -55,7 +55,7 @@ task haplo {
         ln -s ~{fasta} .
         mkdir .vep
         ln -s .vep /opt/vep/.vep
-        haplo --verbose --input_file ~{basename(vcf)} -o ~{name} --species ~{species} --fasta ~{basename(fasta)} \
+        haplo --verbose --input_file ~{basename(vcf)} -o ~{name} -cache --species ~{species} --fasta ~{basename(fasta)} \
         ~{if(database) then "--database" else  "--cache"} --dir_cache ~{ensembl_cache}
     }
     runtime {
