@@ -54,7 +54,7 @@ task bam2fastq{
     }
 
     command {
-        bedtools bamtofastq -i ~{bam} -fq ~{basename(bam, ".bam")}_1.fq -fq2 ~{basename(bam)}_2.fq
+        bedtools bamtofastq -i ~{bam} -fq ~{basename(bam, ".bam")}_1.fq -fq2 ~{basename(bam, ".bam")}_2.fq
     }
 
     runtime {

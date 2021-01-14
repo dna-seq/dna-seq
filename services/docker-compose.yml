@@ -3,9 +3,10 @@ services:
   cromwell:
     image: "quay.io/comp-bio-aging/cromwell:master"
     volumes:
+      - ./config/cromwell/application.conf:/etc/cromwell-client/my.application.conf
       - /data:/data
       - /var/run/docker.sock:/var/run/docker.sock
-    command: ["/wait-for-it/wait-for-it.sh mysql-db:3306 -t 120 -- java -Dconfig.file=/data/sources/cromwell-client/services/cromwell/app-config/application.conf -jar /app/cromwell.jar server"]
+    command: ["/wait-for-it/wait-for-it.sh mysql-db:3306 -t 120 -- java -Dconfig.file=/etc/cromwell-client/my.application.conf -jar /app/cromwell.jar server"]
     ports:
       - "8000:8000"
   mysql-db:
@@ -14,8 +15,8 @@ services:
       - MYSQL_ROOT_PASSWORD=cromwell
       - MYSQL_DATABASE=cromwell_db
     volumes:
-      - ./mysql/init:/docker-entrypoint-initdb.d
-      - ./mysql/my.cnf:/etc/mysql/my.cnf
+      - ./config/mysql/:/docker-entrypoint-initdb.d
+      - ./config/my.cnf:/etc/mysql/my.cnf
       - /data/databases/mysql:/var/lib/mysql
       - /data/databases/mysql:/var/lib/mysql-files
     ports:
