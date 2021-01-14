@@ -4,7 +4,7 @@ workflow bam_to_fastq {
 
     input {
         File bam #750018002018_WGZ.bam
-        Int threads = 28
+        Int threads
         String destination
     }
 
