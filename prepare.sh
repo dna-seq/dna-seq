@@ -22,11 +22,11 @@ if ! [ -f "${ens_dir}/${GRCh38_primary_asm}.fa" ]; then
 	| gunzip -c >  ${ens_dir}/${GRCh38_primary_asm}.fa
 fi
 	#Index of Reference genome
-if ! [ -f "${ens_dir}/${GRCh38_primary_asm}.fa.fai" ]; then
-	echo Building FAI Index of Reference genome from ${ens_dir}/${GRCh38_primary_asm}.fa
-	bwa index ${ens_dir}/${GRCh38_primary_asm}.fa; 
-	samtools faidx ${ens_dir}/${GRCh38_primary_asm}.fa 
-fi
+#if ! [ -f "${ens_dir}/${GRCh38_primary_asm}.fa.fai" ]; then
+#	echo Building FAI Index of Reference genome from ${ens_dir}/${GRCh38_primary_asm}.fa
+#	bwa index ${ens_dir}/${GRCh38_primary_asm}.fa; 
+#	samtools faidx ${ens_dir}/${GRCh38_primary_asm}.fa 
+#fi
 
 	#Dictionary of Reference genome
 #if ! [ -f "${ens_dir}/${GRCh38_primary_asm}.dict" ]; then
