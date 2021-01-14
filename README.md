@@ -62,8 +62,9 @@ There I had the following structure (feel free to modify it according to locatio
         VEP cache can be installed by:
         ```
         cd /data/ensembl/102/cache
-        curl -O ftp://ftp.ensembl.org/pub/release-102/variation/vep/homo_sapiens_vep_102_GRCh38.tar.gz
+        curl -O ftp://ftp.ensembl.org/pub/release-102/variation/indexed_vep_cache/homo_sapiens_vep_102_GRCh38.tar.gz
         tar xzf homo_sapiens_vep_102_GRCh38.tar.gz
+        cd $HOME/.vep       
         ```
 
 
