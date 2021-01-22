@@ -1,0 +1,12 @@
+prepare:
+  cmd: gunzip -k data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+  deps:
+  - path: data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    md5: f58a039f83d8944ceb79cdd16cbda583
+    size: 881211416
+  outs:
+  - path: data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+    md5: 9e6b9465dc708d92bf6d67e9c9fa9389
+    size: 3151425857
+start:
+  cmd: docker-compose up

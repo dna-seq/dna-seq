@@ -1,0 +1,11 @@
+stages:
+  prepare:
+    cmd: gunzip -k data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    deps:
+      - data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    outs:
+      - data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+  start:
+    cmd: docker-compose up
+  stop:
+    cmd: docker-compose down
