@@ -6,11 +6,11 @@ workflow alignment {
         File reference
         String name
         String destination
-        Int align_threads = 12
-        Int sort_threads = 12
-        Int max_memory_gb = 36
-        Int coverage_sampling = 1000
-        String? gencore_quality
+        Int align_threads# = 12
+        Int sort_threads# = 12
+        Int max_memory_gb# = 36
+        Int coverage_sampling# = 1000
+        String? gencore_quality 
     }
 
     call minimap2 {
@@ -33,7 +33,7 @@ workflow alignment {
             reference = reference,
             sorted_bam = sambamba_sort.out,
             name = name,
-            quality  = gencore_quality,
+            quality = gencore_quality,
             coverage_sampling = coverage_sampling,
             max_memory = max_memory_gb
     }
@@ -118,10 +118,10 @@ task gencore {
         Int supporting_reads = 1
         Float ratio_threshold = 0.8
         String? quality #"--high_qual"
-        Int coverage_sampling = 1000
+        Int coverage_sampling# = 1000
     }
     command {
-        gencore --coverage_sampling ~{1000} --ratio_threshold=~{ratio_threshold} -s ~{supporting_reads} ~{quality} -i ~{sorted_bam} -o ~{name}.bam -r ~{reference}
+        gencore --coverage_sampling ~{coverage_sampling} --ratio_threshold=~{ratio_threshold} -s ~{supporting_reads} ~{quality} -i ~{sorted_bam} -o ~{name}.bam -r ~{reference}
         samtools index ~{name}.bam  ~{name}.bam.bai
     }
 
