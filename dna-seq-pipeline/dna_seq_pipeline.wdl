@@ -12,17 +12,20 @@ workflow dna_seq_pipeline {
         Boolean is_paired = true
         File reference #i.e. Homo_sapiens.GRCh38.dna.primary_assembly.fa
         File reference_fai #i.e. Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
-        Int align_threads = 12
-        Int sort_threads = 12
-        Int variant_calling_threads = 16
-        Int coverage_sampling = 1000
-        Int max_memory_gb = 42
+        Int align_threads# = 12
+        Int sort_threads# = 12
+        Int variant_calling_threads# = 16
+        Int coverage_sampling# = 1000
+        Int max_memory_gb# = 42
         String name
+        String? quality 
     }
 
     call clean.cleanup as cleanup{
         input:
-            reads = reads, destination = destination + "/fastq/cleaned"
+            reads = reads,
+            threads = sort_threads, 
+            destination = destination + "/fastq/cleaned"
     }
 
 
@@ -35,6 +38,7 @@ workflow dna_seq_pipeline {
           align_threads = align_threads,
           sort_threads = sort_threads,
           coverage_sampling = coverage_sampling,
+          gencore_quality = quality,
           max_memory_gb = max_memory_gb
     }
 
@@ -47,6 +51,7 @@ workflow dna_seq_pipeline {
                 referenceFasta = reference,
                 referenceFai = reference_fai,
                 threads = variant_calling_threads,
+                max_memory = max_memory_gb,
                 name = name
     }
 
