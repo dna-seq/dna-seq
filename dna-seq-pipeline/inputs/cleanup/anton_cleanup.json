@@ -1,5 +1,6 @@
 {
   "cleanup.is_paired": true,
   "cleanup.destination": "/data/gwas/anton/",
-  "cleanup.reads":  ["/data/gwas/anton/fastq/750018002018_WGZ_1.fq",  "/data/gwas/anton/fastq/750018002018_WGZ_2.fq"]
+  "cleanup.reads":  ["/data/gwas/anton/fastq/750018002018_WGZ_1.fq",  "/data/gwas/anton/fastq/750018002018_WGZ_2.fq"],
+  "cleanup.threads": 12
 }
