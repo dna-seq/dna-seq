@@ -1,12 +1,23 @@
 prepare:
   cmd: gunzip -k data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    && unzip -o -d data/ensembl/102 data/ensembl/102/102.zip && mv data/ensembl/102/VEP_plugins-release-102
+    data/ensembl/102/plugins
   deps:
+  - path: data/ensembl/102/102.zip
+    md5: 4bab083b2ee9bcf35956dc60fdacde72
+    size: 491290
   - path: data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
     md5: f58a039f83d8944ceb79cdd16cbda583
     size: 881211416
   outs:
+  - path: data/ensembl/102/plugins
+    md5: 2d1a639b07bd0c6caa8831aabbb01457.dir
+    size: 1373726
+    nfiles: 71
   - path: data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa
     md5: 9e6b9465dc708d92bf6d67e9c9fa9389
     size: 3151425857
 start:
   cmd: docker-compose up
+stop:
+  cmd: docker-compose down

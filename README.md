@@ -103,13 +103,15 @@ VEP annotations
 The most important part of the pipeline is VEP annotations.
 To make it work you must download Ensembl cache and Ensembl plugins.
 Right now VEP annotations require additional files, for this reason they are provided as separate pipeline.
-Currently DVC resolves big part of them.
+Curently DVC resolves most of the files and does additional preprocessing with:
+```
+dvc repro prepare
+```
 
 TODOs
 -----
 
 This repository is a work in progress, so I list todos:
-* DVC-based resolution for files
 * mitochondrial variant calling
 * longevity annotations
 * docs on how to configure VEP

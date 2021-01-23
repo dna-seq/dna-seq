@@ -1,11 +1,28 @@
 stages:
   prepare:
-    cmd: gunzip -k data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    desc: "extracts references and does some other preparationally steps"
+    cmd: >-
+      gunzip -k data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz &&
+      unzip -o -d data/ensembl/102 data/ensembl/102/102.zip &&
+      mv data/ensembl/102/VEP_plugins-release-102 data/ensembl/102/plugins
     deps:
       - data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+      - data/ensembl/102/102.zip
     outs:
       - data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+      - data/ensembl/102/plugins
+  cache:
+    cmd: >-
+      tar -C  data/ensembl/102/cache/ -zxvf data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
+    deps:
+      - data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
+    outs:
+      - data/ensembl/2/cache/homo_sapiens
   start:
+    desc: "convenience stage to start services"
+    frozen: true
     cmd: docker-compose up
   stop:
+    desc: "convenience stage to stop services"
+    frozen: true
     cmd: docker-compose down
