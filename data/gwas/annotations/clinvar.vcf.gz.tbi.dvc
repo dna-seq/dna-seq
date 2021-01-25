@@ -1,7 +1,7 @@
-md5: 9aece4642b38759d876623a6d640df55
+md5: aa7e5389cb61f59621bccb584e5e1e46
 frozen: true
 deps:
-- etag: '"477ea-5b948f973ac70"'
+- etag: '"479ad-5b9a0f26c4f99"'
   path: http://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz.tbi
 outs:
 - md5: d201374d514f3901b8ee173591a7fda6

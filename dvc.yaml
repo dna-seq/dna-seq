@@ -17,7 +17,7 @@ stages:
     deps:
       - data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
     outs:
-      - data/ensembl/2/cache/homo_sapiens
+      - data/ensembl/102/cache/homo_sapiens
   start:
     desc: "convenience stage to start services"
     frozen: true
