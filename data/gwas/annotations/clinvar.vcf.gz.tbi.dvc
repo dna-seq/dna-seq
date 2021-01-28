@@ -1,4 +1,4 @@
-md5: aa7e5389cb61f59621bccb584e5e1e46
+md5: 359e65e6ce8d1d36306c6c455eff28ca
 frozen: true
 deps:
 - etag: '"479ad-5b9a0f26c4f99"'
@@ -7,3 +7,4 @@ outs:
 - md5: d201374d514f3901b8ee173591a7fda6
   size: 292842
   path: clinvar.vcf.gz.tbi
+  cache: false
