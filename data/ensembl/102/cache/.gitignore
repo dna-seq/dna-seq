@@ -1,4 +1,2 @@
-# Ignore everything in this directory
-*
-# Except this file
-!.gitignore
+/homo_sapiens
+/homo_sapiens_vep_102_GRCh38.tar.gz
