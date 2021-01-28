@@ -1,4 +1,4 @@
-md5: 52b411885580d2cdc4ef422b7b5a497b
+md5: 349559f6d157a8ee0112679afb07011e
 frozen: true
 deps:
 - etag: '"7ac1e176b57cb631"'
@@ -7,3 +7,4 @@ outs:
 - md5: fdce855c944ba7794fc2723d46376d79
   size: 492382
   path: all_variant_disease_pmid_associations_final.tsv.gz.tbi
+  cache: false

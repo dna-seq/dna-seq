@@ -21,3 +21,14 @@ start:
   cmd: docker-compose up
 stop:
   cmd: docker-compose down
+cache:
+  cmd: tar -C  data/ensembl/102/cache/ -zxvf data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
+  deps:
+  - path: data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
+    md5: 8b00761e4dc5077dec843a0af792fa36
+    size: 8628842938
+  outs:
+  - path: data/ensembl/102/cache/homo_sapiens
+    md5: 98ef9b0b4c0326730d449117667a07b9.dir
+    size: 8626253517
+    nfiles: 7907

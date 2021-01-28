@@ -17,9 +17,9 @@ Prepare data
 ------------
 
 [DVC](https://dvc.org/) is used for data management: it downloads annotations and can also be used to run some useful scripts.
-To download the data:
+To download the data and do basic preprocessing:
 ```
-dvc pull
+dvc repro
 ```
 
 Running services
