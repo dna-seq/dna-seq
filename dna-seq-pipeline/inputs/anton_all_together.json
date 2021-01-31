@@ -1,6 +1,6 @@
 {
-  "dna_seq_pipeline.reference": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
-  "dna_seq_pipeline.reference_fai": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai",
+  "dna_seq_pipeline.reference": "/data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
+  "dna_seq_pipeline.reference_fai": "/data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai",
   "dna_seq_pipeline.reads": ["/data/gwas/anton/fastq/750018002018_WGZ_1.fq",  "/data/gwas/anton/fastq/750018002018_WGZ_2.fq"],
   "dna_seq_pipeline.destination": "/data/gwas/anton",
   "dna_seq_pipeline.name": "antonkulaga",

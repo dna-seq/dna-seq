@@ -1,5 +1,4 @@
 md5: c988b39c9502bd5981d8b9e3ee559228
-frozen: true
 deps:
 - etag: '"1b9bd1772ccbfcc3"'
   path: http://agingkills.eu:8001/data/gwas/annotations/gene2phenotype/DDG2P.csv

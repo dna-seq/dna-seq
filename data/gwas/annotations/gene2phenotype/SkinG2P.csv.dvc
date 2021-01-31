@@ -1,5 +1,4 @@
 md5: 1e68d856d8cc690132474ebdda14e35f
-frozen: true
 deps:
 - etag: '"60a2c1772ccc670f"'
   path: http://agingkills.eu:8001/data/gwas/annotations/gene2phenotype/SkinG2P.csv

@@ -17,9 +17,15 @@ Prepare data
 ------------
 
 [DVC](https://dvc.org/) is used for data management: it downloads annotations and can also be used to run some useful scripts.
-To download the data and do basic preprocessing:
-```
+To download the all the data and do some preprocessing use:
+```bash
 dvc repro
+```
+However, it may take quite a while as ensembl_vep_cache (which is required for VEP annotations) is >14GB. 
+If you do not need it, you can also separately use dvc stages in dvc.yaml.
+For instance, just to download reference genome, type:
+```bash
+dvc repro prepare_genome
 ```
 
 Running services
@@ -57,13 +63,13 @@ It is also possible to run dependencies as separate workflows.
 Example JSONs
 ------------
 Example json inputs are provided with the parameters that I used to process my own genome.
-In the examples I had the following structure (feel free to modify it according to locations of your files):
+In the examples I had the following structure.
+This structure is the same as in ./data subfolder of this repo, feel free to modify it according to locations of your files:
 * /data/gwas/anton - person's folder with:
 * /data/gwas/anton/fastq - INPUT folder
 * REFERENCE genome (downloaded from latest Ensembl release):
-    * /data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-    * /data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
-    * /data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.dict
+    * /data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+    * /data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
 * OUTPUT folders created by the pipeline (no need to create them yourself)!: 
     * /data/gwas/anton/aligned - output of aligned data
     * /data/gwas/anton/variants - output for variants

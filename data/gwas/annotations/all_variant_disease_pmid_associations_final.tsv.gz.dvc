@@ -1,5 +1,4 @@
 md5: a3428046b58d6ffeb819f6bb969a3dda
-frozen: true
 deps:
 - etag: '"eef02876b324e403"'
   path: http://agingkills.eu:8001/data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
