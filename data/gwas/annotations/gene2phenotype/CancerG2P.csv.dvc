@@ -1,5 +1,4 @@
 md5: 4980570f976ab92fe157bf651b907fe0
-frozen: true
 deps:
 - etag: '"53b201772ccbcce6"'
   path: http://agingkills.eu:8001/data/gwas/annotations/gene2phenotype/CancerG2P.csv

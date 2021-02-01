@@ -1,5 +1,4 @@
 md5: a23741c434a16aa9f62b94d77e65d8f4
-frozen: true
 deps:
 - etag: '"8c06c1772ccc4743"'
   path: http://agingkills.eu:8001/data/gwas/annotations/gene2phenotype/EyeG2P.csv
