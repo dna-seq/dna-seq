@@ -16,7 +16,7 @@ stages:
   prepare_vep_cache:
     deps:
       - data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
-    cmd: gunzip -k data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
+    cmd: tar -zxf data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz -C data/ensembl/102/cache/
     outs:
       - data/ensembl/102/cache/homo_sapiens
   prepare_vep_plugins:
