@@ -1,0 +1,8 @@
+*
+!data/cromwell-client-logs
+!data/cromwell-executions
+!data/cromwell-workflow-logs
+!data/databases/mysql
+!data/ensembl/
+!data/gwas/
+!.gitignore
