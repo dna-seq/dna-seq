@@ -27,3 +27,4 @@ services/data/cromwell-client-logs/*
 services/data/cromwell-executions/*
 services/data/cromwell-workflow-logs/*
 dna-seq-pipeline/inputs/OC_plus.json
+/homo_sapiens_vep_102_GRCh38.tar.gz

@@ -1,8 +1,8 @@
 {
-  "simple_variant_calling.referenceFasta": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
+  "simple_variant_calling.referenceFasta": "/data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
   "simple_variant_calling.bam": "/data/gwas/anton/aligned/antonkulaga.bam",
   "simple_variant_calling.bai": "/data/gwas/anton/aligned/antonkulaga.bam.bai",
-  "simple_variant_calling.referenceFai": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai",
+  "simple_variant_calling.referenceFai": "/data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai",
   "simple_variant_calling.name": "antonkulaga",
   "simple_variant_calling.destination": "/data/gwas/anton/variants",
   "simple_variant_calling.threads": 16,

@@ -1,0 +1,10 @@
+md5: f2fd73233a63504b27db99face68e5c4
+deps:
+- etag: W/"14910e692dfae43d7e9e90fc49071492db0940e147873e679431e05afd9500f1"
+  path: https://github.com/Ensembl/VEP_plugins/archive/release/102.zip
+outs:
+- md5: 4bab083b2ee9bcf35956dc60fdacde72
+  size: 491290
+  path: 102.zip
+  cache: false
+

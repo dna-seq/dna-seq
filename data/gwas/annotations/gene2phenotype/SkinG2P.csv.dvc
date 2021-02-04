@@ -1,0 +1,9 @@
+md5: 1e68d856d8cc690132474ebdda14e35f
+deps:
+- etag: '"60a2c1772ccc670f"'
+  path: http://agingkills.eu:8001/data/gwas/annotations/gene2phenotype/SkinG2P.csv
+outs:
+- md5: 15e1b25db13f3929357ba3dba60e7e1b
+  size: 214278
+  path: SkinG2P.csv
+  cache: false

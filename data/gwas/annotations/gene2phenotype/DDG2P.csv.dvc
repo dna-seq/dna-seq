@@ -1,0 +1,9 @@
+md5: c988b39c9502bd5981d8b9e3ee559228
+deps:
+- etag: '"1b9bd1772ccbfcc3"'
+  path: http://agingkills.eu:8001/data/gwas/annotations/gene2phenotype/DDG2P.csv
+outs:
+- md5: d21a0e446a3cc3b3adbae486cd6d11c6
+  size: 776664
+  path: DDG2P.csv
+  cache: false

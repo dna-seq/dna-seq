@@ -1,0 +1,9 @@
+md5: a3428046b58d6ffeb819f6bb969a3dda
+deps:
+- etag: '"eef02876b324e403"'
+  path: http://agingkills.eu:8001/data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
+outs:
+- md5: 05ff81dc87278116b0330df99fced244
+  size: 101101733
+  path: all_variant_disease_pmid_associations_final.tsv.gz
+  cache: false

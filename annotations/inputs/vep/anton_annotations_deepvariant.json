@@ -7,7 +7,7 @@
   "vep_annotations.ensembl_plugins": "/data/ensembl/102/plugins",
   "vep_annotations.species": "homo_sapiens",
   "vep_annotations.reference": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
-  "vep_annotations.G2P": "/data/gwas/annotations/DDG2P_29_12_2020.csv",
+  "vep_annotations.G2P": "/data/gwas/annotations/gene2phenotype/DDG2P.csv",
   "vep_annotations.disease_associations": "/data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz",
   "vep_annotations.disease_associations_tbi": "/data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz.tbi",
   "vep_annotations.clinvar": "/data/gwas/annotations/clinvar.vcf.gz",

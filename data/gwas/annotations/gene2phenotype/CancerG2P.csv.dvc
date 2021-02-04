@@ -1,0 +1,9 @@
+md5: 4980570f976ab92fe157bf651b907fe0
+deps:
+- etag: '"53b201772ccbcce6"'
+  path: http://agingkills.eu:8001/data/gwas/annotations/gene2phenotype/CancerG2P.csv
+outs:
+- md5: 6504732dc971b2578c21a8cbd6c2d3ad
+  size: 19914
+  path: CancerG2P.csv
+  cache: false

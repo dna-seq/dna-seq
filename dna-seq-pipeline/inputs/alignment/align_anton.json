@@ -1,5 +1,5 @@
 {
-  "alignment.reference":  "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
+  "alignment.reference":  "/data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
   "alignment.reads": ["/data/gwas/anton/fastq/750018002018_WGZ_1.fq",  "/data/gwas/anton/fastq/750018002018_WGZ_2.fq"],
   "alignment.destination": "/data/gwas/anton",
   "alignment.name": "antonkulaga",

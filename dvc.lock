@@ -1,0 +1,103 @@
+prepare:
+  cmd: gunzip -k data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    && unzip -o -d data/ensembl/102 data/ensembl/102/102.zip && mv data/ensembl/102/VEP_plugins-release-102
+    data/ensembl/102/plugins
+  deps:
+  - path: data/ensembl/102/102.zip
+    md5: 4bab083b2ee9bcf35956dc60fdacde72
+    size: 491290
+  - path: data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    md5: f58a039f83d8944ceb79cdd16cbda583
+    size: 881211416
+  outs:
+  - path: data/ensembl/102/plugins
+    md5: 2d1a639b07bd0c6caa8831aabbb01457.dir
+    size: 1373726
+    nfiles: 71
+  - path: data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+    md5: 9e6b9465dc708d92bf6d67e9c9fa9389
+    size: 3151425857
+start:
+  cmd: docker-compose up
+stop:
+  cmd: docker-compose down
+cache:
+  cmd: tar -C  data/ensembl/102/cache/ -zxvf data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
+  deps:
+  - path: data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
+    md5: 8b00761e4dc5077dec843a0af792fa36
+    size: 8628842938
+  outs:
+  - path: data/ensembl/102/cache/homo_sapiens
+    md5: 98ef9b0b4c0326730d449117667a07b9.dir
+    size: 8626253517
+    nfiles: 7907
+prepare_genome:
+  cmd: gunzip -k data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+  deps:
+  - path: data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    md5: f58a039f83d8944ceb79cdd16cbda583
+    size: 881211416
+  outs:
+  - path: data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+    md5: 9e6b9465dc708d92bf6d67e9c9fa9389
+    size: 3151425857
+prepare_vep:
+  cmd: unzip -u data/ensembl/102/102.zip -d data/ensembl/102/ && mv data/ensembl/102/VEP_plugins-release-102
+    data/ensembl/102/plugins
+  deps:
+  - path: data/ensembl/102/102.zip
+    md5: 4bab083b2ee9bcf35956dc60fdacde72
+    size: 491290
+  - path: data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
+    md5: 8b00761e4dc5077dec843a0af792fa36
+    size: 8628842938
+  outs:
+  - path: data/ensembl/102/plugins/
+    md5: 2d1a639b07bd0c6caa8831aabbb01457.dir
+    size: 1373726
+    nfiles: 71
+prepare_annotations:
+  cmd: echo "prepare annotations"
+  deps:
+  - path: data/gwas/annotations/clinvar.vcf.gz
+    md5: 9fab121ac6a9952ab03314f2cf3f5c3f
+    size: 34706610
+  - path: data/gwas/annotations/clinvar.vcf.gz.tbi
+    md5: 4c9982e21d729ca921297796d1adabf6
+    size: 293444
+  - path: data/gwas/annotations/gene2phenotype/CancerG2P.csv
+    md5: 6504732dc971b2578c21a8cbd6c2d3ad
+    size: 19914
+  - path: data/gwas/annotations/gene2phenotype/DDG2P.csv
+    md5: d21a0e446a3cc3b3adbae486cd6d11c6
+    size: 776664
+  - path: data/gwas/annotations/gene2phenotype/EyeG2P.csv
+    md5: 9bf5d96096c52df97792b165fbfeda45
+    size: 221233
+  - path: data/gwas/annotations/gene2phenotype/SkinG2P.csv
+    md5: 15e1b25db13f3929357ba3dba60e7e1b
+    size: 214278
+prepare_vep_plugins:
+  cmd: unzip -u data/ensembl/102/102.zip -d data/ensembl/102/ && mv data/ensembl/102/VEP_plugins-release-102
+    data/ensembl/102/plugins
+  deps:
+  - path: data/ensembl/102/102.zip
+    md5: 4bab083b2ee9bcf35956dc60fdacde72
+    size: 491290
+  outs:
+  - path: data/ensembl/102/plugins/
+    md5: 2d1a639b07bd0c6caa8831aabbb01457.dir
+    size: 1373726
+    nfiles: 71
+prepare_vep_cache:
+  cmd: tar -zxf data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz -C data/ensembl/102/cache/
+  deps:
+  - path: data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
+    md5: 8af30a60aac54b5dc31162a63aef8b86
+    size: 14522644230
+  outs:
+  - path: data/ensembl/102/cache/homo_sapiens
+    md5: 25c0055ed80db44da92d515f2f15fcdb.dir
+    size: 14518341479
+    nfiles: 13883
