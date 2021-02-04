@@ -58,7 +58,8 @@ prepare_vep:
     size: 1373726
     nfiles: 71
 prepare_annotations:
-  cmd: echo "prepare annotations"
+  cmd: echo "prepare annotations" && cat data/gwas/annotations/gene2phenotype/DDG2P.csv  data/gwas/annotations/gene2phenotype/CancerG2P.csv  data/gwas/annotations/gene2phenotype/EyeG2P.csv  data/gwas/annotations/gene2phenotype/SkinG2P.csv  >
+    data/gwas/annotations/gene2phenotype/AllG2P.csv
   deps:
   - path: data/gwas/annotations/clinvar.vcf.gz
     md5: 9fab121ac6a9952ab03314f2cf3f5c3f
@@ -78,6 +79,10 @@ prepare_annotations:
   - path: data/gwas/annotations/gene2phenotype/SkinG2P.csv
     md5: 15e1b25db13f3929357ba3dba60e7e1b
     size: 214278
+  outs:
+  - path: data/gwas/annotations/gene2phenotype/AllG2P.csv
+    md5: 4625ef5e8af2b12c6ebff6b95598d503
+    size: 1232089
 prepare_vep_plugins:
   cmd: unzip -u data/ensembl/102/102.zip -d data/ensembl/102/ && mv data/ensembl/102/VEP_plugins-release-102
     data/ensembl/102/plugins

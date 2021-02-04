@@ -35,4 +35,13 @@ stages:
       - data/gwas/annotations/gene2phenotype/CancerG2P.csv
       - data/gwas/annotations/gene2phenotype/EyeG2P.csv
       - data/gwas/annotations/gene2phenotype/SkinG2P.csv
-    cmd: echo "prepare annotations"
+    cmd: >- 
+      echo "prepare annotations" && cat
+      data/gwas/annotations/gene2phenotype/DDG2P.csv 
+      data/gwas/annotations/gene2phenotype/CancerG2P.csv 
+      data/gwas/annotations/gene2phenotype/EyeG2P.csv 
+      data/gwas/annotations/gene2phenotype/SkinG2P.csv 
+      > data/gwas/annotations/gene2phenotype/AllG2P.csv
+    outs:
+      - data/gwas/annotations/gene2phenotype/AllG2P.csv
+
