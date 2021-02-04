@@ -13,5 +13,6 @@
   "vep_annotations.clinvar": "/data/gwas/annotations/clinvar.vcf.gz",
   "vep_annotations.clinvar_tbi": "/data/gwas/annotations/clinvar.vcf.gz.tbi",
   "vep_annotations.condel": false,
-  "vep_annotations.conservation": false
+  "vep_annotations.database": false,
+  "vep_annotations.threads": 12
 }

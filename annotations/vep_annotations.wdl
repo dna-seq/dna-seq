@@ -6,7 +6,7 @@ workflow vep_annotations{
         File? vcf_tbi
         String name
         String species = "homo_sapiens"
-        Int threads = 16
+        Int threads
         File reference
         #Boolean offline = true
         Boolean database = false
@@ -29,6 +29,9 @@ workflow vep_annotations{
                 ensembl_cache = ensembl_cache,
                 name = name+"_variant_annotations.tsv",
                 ensembl_plugins = ensembl_plugins,
+                species = species,
+                threads = threads,
+                database = database,
                 fasta = reference,
                 species = species,
                 disease_associations = disease_associations,
@@ -58,9 +61,9 @@ task vep {
         File vcf
         File? vcf_tbi
         String name = "variant_effect_output.tsv"
-        String species = "homo_sapiens"
-        Int threads = 8
-        Boolean database = false
+        String species 
+        Int threads
+        Boolean database
         File fasta
         #Boolean offline = true
         File ensembl_cache
