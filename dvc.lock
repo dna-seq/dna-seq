@@ -61,6 +61,12 @@ prepare_annotations:
   cmd: echo "prepare annotations" && cat data/gwas/annotations/gene2phenotype/DDG2P.csv  data/gwas/annotations/gene2phenotype/CancerG2P.csv  data/gwas/annotations/gene2phenotype/EyeG2P.csv  data/gwas/annotations/gene2phenotype/SkinG2P.csv  >
     data/gwas/annotations/gene2phenotype/AllG2P.csv
   deps:
+  - path: data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
+    md5: 05ff81dc87278116b0330df99fced244
+    size: 101101733
+  - path: data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz.tbi
+    md5: fdce855c944ba7794fc2723d46376d79
+    size: 492382
   - path: data/gwas/annotations/clinvar.vcf.gz
     md5: 9fab121ac6a9952ab03314f2cf3f5c3f
     size: 34706610

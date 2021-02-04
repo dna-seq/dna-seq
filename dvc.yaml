@@ -29,6 +29,8 @@ stages:
       - data/ensembl/102/plugins/
   prepare_annotations:
     deps:
+      - data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
+      - data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz.tbi
       - data/gwas/annotations/clinvar.vcf.gz
       - data/gwas/annotations/clinvar.vcf.gz.tbi
       - data/gwas/annotations/gene2phenotype/DDG2P.csv
