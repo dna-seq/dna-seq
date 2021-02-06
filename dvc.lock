@@ -58,14 +58,21 @@ prepare_vep:
     size: 1373726
     nfiles: 71
 prepare_annotations:
-  cmd: echo "prepare annotations"
+  cmd: echo "prepare annotations" && cat data/gwas/annotations/gene2phenotype/DDG2P.csv  data/gwas/annotations/gene2phenotype/CancerG2P.csv  data/gwas/annotations/gene2phenotype/EyeG2P.csv  data/gwas/annotations/gene2phenotype/SkinG2P.csv  >
+    data/gwas/annotations/gene2phenotype/AllG2P.csv
   deps:
+  - path: data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
+    md5: 05ff81dc87278116b0330df99fced244
+    size: 101101733
+  - path: data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz.tbi
+    md5: fdce855c944ba7794fc2723d46376d79
+    size: 492382
   - path: data/gwas/annotations/clinvar.vcf.gz
-    md5: 24c92fbf4c6fa351ed00dfe2e9067a0e
-    size: 34406752
+    md5: 9fab121ac6a9952ab03314f2cf3f5c3f
+    size: 34706610
   - path: data/gwas/annotations/clinvar.vcf.gz.tbi
-    md5: ee671fd67f8055c6ebb1b03409cf9f19
-    size: 293421
+    md5: 4c9982e21d729ca921297796d1adabf6
+    size: 293444
   - path: data/gwas/annotations/gene2phenotype/CancerG2P.csv
     md5: 6504732dc971b2578c21a8cbd6c2d3ad
     size: 19914
@@ -78,6 +85,10 @@ prepare_annotations:
   - path: data/gwas/annotations/gene2phenotype/SkinG2P.csv
     md5: 15e1b25db13f3929357ba3dba60e7e1b
     size: 214278
+  outs:
+  - path: data/gwas/annotations/gene2phenotype/AllG2P.csv
+    md5: 4625ef5e8af2b12c6ebff6b95598d503
+    size: 1232089
 prepare_vep_plugins:
   cmd: unzip -u data/ensembl/102/102.zip -d data/ensembl/102/ && mv data/ensembl/102/VEP_plugins-release-102
     data/ensembl/102/plugins
@@ -90,3 +101,14 @@ prepare_vep_plugins:
     md5: 2d1a639b07bd0c6caa8831aabbb01457.dir
     size: 1373726
     nfiles: 71
+prepare_vep_cache:
+  cmd: tar -zxf data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz -C data/ensembl/102/cache/
+  deps:
+  - path: data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
+    md5: 8af30a60aac54b5dc31162a63aef8b86
+    size: 14522644230
+  outs:
+  - path: data/ensembl/102/cache/homo_sapiens
+    md5: 25c0055ed80db44da92d515f2f15fcdb.dir
+    size: 14518341479
+    nfiles: 13883
