@@ -1,0 +1,9 @@
+md5: 8f94d4825f7c85ebbc52ce3631ea3de1
+deps:
+- etag: '"aa751c-5a5aded5debeb"'
+  path: https://www.disgenet.org/static/disgenet_ap1/files/downloads/all_variant_disease_pmid_associations.tsv.gz
+outs:
+- md5: a393c9e8e104297aadcb7188f6460eaf
+  size: 11171100
+  path: all_variant_disease_pmid_associations.tsv.gz
+  cache: false

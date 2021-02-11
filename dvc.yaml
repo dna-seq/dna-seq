@@ -27,23 +27,34 @@ stages:
       mv data/ensembl/102/VEP_plugins-release-102 data/ensembl/102/plugins
     outs:
       - data/ensembl/102/plugins/
-  prepare_annotations:
+  prepare_annotations_digenet:
     deps:
+      - data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz
+    cmd: >-
+      gunzip -c data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz |
+         awk '($1 ~ /^snpId/ || $2 ~ /NA/) {next} {print $0}' |
+         sort -t $'\t' -k2,2 -k3,3n |
+         awk '{ gsub (/\t +/, "\t", $0); print}' |
+         bgzip -c > data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
+    outs:
       - data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
-      - data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz.tbi
+  prepare_annotations_clinvar:
+    deps:
       - data/gwas/annotations/clinvar.vcf.gz
       - data/gwas/annotations/clinvar.vcf.gz.tbi
+    cmd: echo "Clinvars annotations prepared"       
+# https://www.ebi.ac.uk/gene2phenotype/downloads/ has no E-Tag!
+  prepare_annotations_gene2phenotype: 
+    deps:
       - data/gwas/annotations/gene2phenotype/DDG2P.csv
       - data/gwas/annotations/gene2phenotype/CancerG2P.csv
       - data/gwas/annotations/gene2phenotype/EyeG2P.csv
       - data/gwas/annotations/gene2phenotype/SkinG2P.csv
     cmd: >- 
-      echo "prepare annotations" && cat
-      data/gwas/annotations/gene2phenotype/DDG2P.csv 
-      data/gwas/annotations/gene2phenotype/CancerG2P.csv 
-      data/gwas/annotations/gene2phenotype/EyeG2P.csv 
-      data/gwas/annotations/gene2phenotype/SkinG2P.csv 
+      rm -f data/gwas/annotations/gene2phenotype/AllG2P.csv &&
+      awk '(NR == 1) || (FNR > 1)' data/gwas/annotations/gene2phenotype/*.csv 
       > data/gwas/annotations/gene2phenotype/AllG2P.csv
+#     && for f in data/gwas/annotations/gene2phenotype/*.gz ; do gunzip -c "$f" > data/gwas/annotations/gene2phenotype/"${f%.*}" ; done 
     outs:
       - data/gwas/annotations/gene2phenotype/AllG2P.csv
 
