@@ -4,10 +4,11 @@ workflow cleanup {
     input {
         Array[File]+ reads
         String destination
+        Int threads# = 16
         Boolean is_paired = true #now it supports only paired, TODO: fix for single
     }
 
-    call fastp { input: reads = reads, is_paired = is_paired }
+    call fastp { input: reads = reads, threads = threads, is_paired = is_paired }
     call copy as copy_cleaned { input: destination = destination, files = fastp.out }
 
 
@@ -23,12 +24,13 @@ workflow cleanup {
 task fastp {
     input {
         Array[File]+ reads
+        Int threads
         Boolean is_paired
     }
 
     command {
         fastp --cut_front --cut_tail --cut_right --overrepresentation_analysis \
-        -i ~{reads[0]} -o ~{basename(reads[0], ".fastq.gz")}_cleaned.fastq.gz \
+        -i ~{reads[0]} -w ~{threads} -o ~{basename(reads[0], ".fastq.gz")}_cleaned.fastq.gz \
         ~{if( is_paired ) then "--detect_adapter_for_pe " + "--correction -I "+reads[1]+" -O " + basename(reads[1], ".fastq.gz") +"_cleaned.fastq.gz" else ""}
     }
 

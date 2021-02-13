@@ -58,21 +58,22 @@ prepare_vep:
     size: 1373726
     nfiles: 71
 prepare_annotations:
-  cmd: echo "prepare annotations" && cat data/gwas/annotations/gene2phenotype/DDG2P.csv  data/gwas/annotations/gene2phenotype/CancerG2P.csv  data/gwas/annotations/gene2phenotype/EyeG2P.csv  data/gwas/annotations/gene2phenotype/SkinG2P.csv  >
-    data/gwas/annotations/gene2phenotype/AllG2P.csv
+  cmd: "gunzip -c data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz\
+    \ |\n   awk '($1 ~ /^snpId/ || $2 ~ /NA/) {next} {print $0}' |\n   sort -t $'\\\
+    t' -k2,2 -k3,3n |\n   awk '{ gsub (/\\t +/, \"\\t\", $0); print}' |\n   bgzip\
+    \ -c > data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz\
+    \ &&\nrm -f data/gwas/annotations/gene2phenotype/AllG2P.csv && awk '(NR == 1)\
+    \ || (FNR > 1)' data/gwas/annotations/gene2phenotype/*.csv  > data/gwas/annotations/gene2phenotype/AllG2P.csv"
   deps:
-  - path: data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
-    md5: 05ff81dc87278116b0330df99fced244
-    size: 101101733
-  - path: data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz.tbi
-    md5: fdce855c944ba7794fc2723d46376d79
-    size: 492382
+  - path: data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz
+    md5: a393c9e8e104297aadcb7188f6460eaf
+    size: 11171100
   - path: data/gwas/annotations/clinvar.vcf.gz
-    md5: 9fab121ac6a9952ab03314f2cf3f5c3f
-    size: 34706610
+    md5: 487e6796ae4be8696d51ef450d5793de
+    size: 34713404
   - path: data/gwas/annotations/clinvar.vcf.gz.tbi
-    md5: 4c9982e21d729ca921297796d1adabf6
-    size: 293444
+    md5: b85b29f474a7f6899ddf1ad8b8c21140
+    size: 293552
   - path: data/gwas/annotations/gene2phenotype/CancerG2P.csv
     md5: 6504732dc971b2578c21a8cbd6c2d3ad
     size: 19914
@@ -86,9 +87,12 @@ prepare_annotations:
     md5: 15e1b25db13f3929357ba3dba60e7e1b
     size: 214278
   outs:
+  - path: data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
+    md5: 3d5dea024369a02f300ca3346eedc967
+    size: 9918420
   - path: data/gwas/annotations/gene2phenotype/AllG2P.csv
-    md5: 4625ef5e8af2b12c6ebff6b95598d503
-    size: 1232089
+    md5: ccf679127863b2832ccb1ceb2561502a
+    size: 1231432
 prepare_vep_plugins:
   cmd: unzip -u data/ensembl/102/102.zip -d data/ensembl/102/ && mv data/ensembl/102/VEP_plugins-release-102
     data/ensembl/102/plugins
@@ -112,3 +116,45 @@ prepare_vep_cache:
     md5: 25c0055ed80db44da92d515f2f15fcdb.dir
     size: 14518341479
     nfiles: 13883
+prepare_annotations_clinvar:
+  cmd: echo "Clinvars annotations prepared"
+  deps:
+  - path: data/gwas/annotations/clinvar.vcf.gz
+    md5: 487e6796ae4be8696d51ef450d5793de
+    size: 34713404
+  - path: data/gwas/annotations/clinvar.vcf.gz.tbi
+    md5: b85b29f474a7f6899ddf1ad8b8c21140
+    size: 293552
+prepare_annotations_gene2phenotype:
+  cmd: rm -f data/gwas/annotations/gene2phenotype/AllG2P.csv && awk '(NR == 1) ||
+    (FNR > 1)' data/gwas/annotations/gene2phenotype/*.csv  > data/gwas/annotations/gene2phenotype/AllG2P.csv
+  deps:
+  - path: data/gwas/annotations/gene2phenotype/CancerG2P.csv
+    md5: 6504732dc971b2578c21a8cbd6c2d3ad
+    size: 19914
+  - path: data/gwas/annotations/gene2phenotype/DDG2P.csv
+    md5: d21a0e446a3cc3b3adbae486cd6d11c6
+    size: 776664
+  - path: data/gwas/annotations/gene2phenotype/EyeG2P.csv
+    md5: 9bf5d96096c52df97792b165fbfeda45
+    size: 221233
+  - path: data/gwas/annotations/gene2phenotype/SkinG2P.csv
+    md5: 15e1b25db13f3929357ba3dba60e7e1b
+    size: 214278
+  outs:
+  - path: data/gwas/annotations/gene2phenotype/AllG2P.csv
+    md5: ccf679127863b2832ccb1ceb2561502a
+    size: 1231432
+prepare_annotations_digenet:
+  cmd: "gunzip -c data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz\
+    \ |\n   awk '($1 ~ /^snpId/ || $2 ~ /NA/) {next} {print $0}' |\n   sort -t $'\\\
+    t' -k2,2 -k3,3n |\n   awk '{ gsub (/\\t +/, \"\\t\", $0); print}' |\n   bgzip\
+    \ -c > data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz"
+  deps:
+  - path: data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz
+    md5: a393c9e8e104297aadcb7188f6460eaf
+    size: 11171100
+  outs:
+  - path: data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
+    md5: 3d5dea024369a02f300ca3346eedc967
+    size: 9918420

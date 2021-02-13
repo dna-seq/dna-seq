@@ -1,7 +1,6 @@
 {
   "vep_annotations.destination": "/data/gwas/anton/vep/deepvariant",
   "vep_annotations.vcf": "/data/gwas/anton/variants/strelka_run/results/variants/variants.vcf",
-  "vep_annotations.vcf_tbi": "/data/gwas/anton/variants/strelka_run/results/variants/variants.vcf.tbi",
   "vep_annotations.name": "antonkulaga",
   "vep_annotations.ensembl_cache": "/data/ensembl/102/cache",
   "vep_annotations.ensembl_plugins": "/data/ensembl/102/plugins",
@@ -9,9 +8,11 @@
   "vep_annotations.reference": "/data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
   "vep_annotations.G2P": "/data/gwas/annotations/gene2phenotype/DDG2P.csv",
   "vep_annotations.disease_associations": "/data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz",
-  "vep_annotations.disease_associations_tbi": "/data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz.tbi",
   "vep_annotations.clinvar": "/data/gwas/annotations/clinvar.vcf.gz",
   "vep_annotations.clinvar_tbi": "/data/gwas/annotations/clinvar.vcf.gz.tbi",
   "vep_annotations.condel": false,
-  "vep_annotations.conservation": false
+  "vep_annotations.conservation": false,
+  "vep_annotations.database": false,
+  "vep_annotations.db_host": "useastdb.ensembl.org",
+  "vep_annotations.threads": 7
 }
