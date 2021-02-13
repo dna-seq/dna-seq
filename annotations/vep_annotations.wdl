@@ -3,9 +3,9 @@ version development
 workflow vep_annotations{
     input{
         File vcf
-        File? vcf_tbi
         String name
         String species = "homo_sapiens"
+        String db_host
         Int threads
         File reference
         #Boolean offline = true
@@ -17,7 +17,6 @@ workflow vep_annotations{
         Int buffer_size = 5000
         File G2P
         File disease_associations
-        File? disease_associations_tbi
         File clinvar
         File? clinvar_tbi
         Boolean condel = false
@@ -29,13 +28,13 @@ workflow vep_annotations{
                 ensembl_cache = ensembl_cache,
                 name = name+"_variant_annotations.tsv",
                 ensembl_plugins = ensembl_plugins,
+                db_host = db_host,
                 species = species,
                 threads = threads,
                 database = database,
                 fasta = reference,
                 species = species,
                 disease_associations = disease_associations,
-                disease_associations_tbi = disease_associations_tbi,
                 G2P = G2P,
                 check_sorted = check_sorted,
                 buffer_size = buffer_size,
@@ -56,12 +55,13 @@ workflow vep_annotations{
         }
 }
 
+
 task vep {
     input {
         File vcf
-        File? vcf_tbi
-        String name = "variant_effect_output.tsv"
-        String species 
+        String name #= "variant_effect_output.tsv"
+        String species
+        String db_host 
         Int threads
         Boolean database
         File fasta
@@ -72,7 +72,6 @@ task vep {
         Int buffer_size = 5000
         File G2P
         File disease_associations
-        File? disease_associations_tbi
         File clinvar
         File? clinvar_tbi
         Boolean conservation
@@ -83,13 +82,24 @@ task vep {
 
     command {
         set -e
-        ln -s ~{vcf} .
-        ~{"ln -s "+ vcf_tbi  +" ."}
+        if (file ~{vcf} | grep -q "gzip" ) ; then #https://github.com/Ensembl/ensembl-vep/issues/739
+          gunzip -c ~{vcf} > ./input.vcf 
+        else
+          ln -s ~{vcf} ./input.vcf         
+        fi
+        bgzip -c ./input.vcf > ~{"./"+basename(vcf, ".gz")+".gz"}
         ~{"ln -s "+ clinvar  +" ."}
         ~{"ln -s "+ clinvar_tbi  +" ."}
-        ~{"ln -s "+ disease_associations  +" ."}
-        ~{"ln -s "+ disease_associations_tbi  +" ."}
-        vep --verbose --input_file ~{basename(vcf)} -o ~{name} --tab --species ~{species} --fork ~{threads} --everything --fasta ~{fasta} \
+        ~{"ln -s "+ disease_associations  +" ."} 
+        # https://github.com/Ensembl/VEP_plugins/blob/release/102/DisGeNET.pm
+        tabix -p vcf ~{"./"+basename(vcf, ".gz")+".gz"}
+        tabix -s 2 -b 3 -e 3 ~{basename(disease_associations)}
+        stat ~{"./"+basename(vcf, ".gz")+".gz"}
+        stat ~{"./"+basename(vcf, ".gz")+".gz.tbi"}
+        stat ~{basename(disease_associations)+".tbi"}
+               
+        vep --verbose --host ~{db_host} --input_file ~{"./"+basename(vcf, ".gz")+".gz"} -o ~{name} --tab --species ~{species} --fork ~{threads} \
+        --everything --fasta ~{fasta} \
         ~{if(database) then "--database" else  "--cache"} --dir_cache ~{ensembl_cache} --dir_plugins ~{ensembl_plugins} \
         --symbol --check_existing ~{if(check_sorted) then "" else "--no_check_variants_order"} \
         --max_sv_size 1000000000 --buffer_size ~{buffer_size}   \
