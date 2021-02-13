@@ -29,10 +29,21 @@ stages:
       - data/ensembl/102/plugins/
   prepare_annotations:
     deps:
+      - data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
+      - data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz.tbi
       - data/gwas/annotations/clinvar.vcf.gz
       - data/gwas/annotations/clinvar.vcf.gz.tbi
       - data/gwas/annotations/gene2phenotype/DDG2P.csv
       - data/gwas/annotations/gene2phenotype/CancerG2P.csv
       - data/gwas/annotations/gene2phenotype/EyeG2P.csv
       - data/gwas/annotations/gene2phenotype/SkinG2P.csv
-    cmd: echo "prepare annotations"
+    cmd: >- 
+      echo "prepare annotations" && cat
+      data/gwas/annotations/gene2phenotype/DDG2P.csv 
+      data/gwas/annotations/gene2phenotype/CancerG2P.csv 
+      data/gwas/annotations/gene2phenotype/EyeG2P.csv 
+      data/gwas/annotations/gene2phenotype/SkinG2P.csv 
+      > data/gwas/annotations/gene2phenotype/AllG2P.csv
+    outs:
+      - data/gwas/annotations/gene2phenotype/AllG2P.csv
+
