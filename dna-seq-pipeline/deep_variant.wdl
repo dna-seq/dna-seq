@@ -20,8 +20,10 @@ workflow DeepVariant {
         input:  bam = bam, bai = bai,
             regions = regions,
             name = name,
-            reference=reference, reference_fai = reference_fai,
-            threads = threads, mode = mode
+            reference=reference, 
+            reference_fai = reference_fai,
+            threads = threads, 
+            mode = mode
     }
     call copy as copy_deepvariant {
         input: files = [go_deep.vcf, go_deep.gvcf, go_deep.report, go_deep.interim], destination = destination

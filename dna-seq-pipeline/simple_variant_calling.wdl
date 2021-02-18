@@ -8,19 +8,30 @@ workflow simple_variant_calling {
         String destination
         File referenceFasta
         File referenceFai
-        Int threads = 16
-        Int max_memory = 28
+        Int threads# = 16
+        Int max_memory# = 28
         String name
     }
 
-      call smoove{
-            input:
-                bam = bam, bai = bai, reference = referenceFasta, reference_index = referenceFai, sample = name
+    call smoove{
+        input:
+            bam = bam, 
+            bai = bai, 
+            reference = referenceFasta, 
+            reference_index = referenceFai, 
+            sample = name,
+            max_memory = max_memory,
+            max_cores = threads,
         }
 
     call strelka2_germline{
         input:
-            bam = bam, bai = bai, reference_fasta = referenceFasta, reference_fai= referenceFai, cores = threads
+            bam = bam, 
+            bai = bai, 
+            reference_fasta = referenceFasta, 
+            reference_fai= referenceFai, 
+            cores = threads,
+            max_memory = max_memory,
             #,indel_candidates = manta_germline_sv.manta_indel_candidates
     }
 
@@ -57,8 +68,8 @@ task strelka2_germline{
         Boolean exome = false
         Boolean rna = false
 
-        Int cores = 8
-        Int max_memory = 28
+        Int cores# = 8
+        Int max_memory# = 28
     }
 
     command {
@@ -96,8 +107,8 @@ task smoove {
         File reference_index
         String sample
         String outputDir = "./smoove"
-        Int max_memory = 16
-        Int max_cores = 8
+        Int max_memory# = 16
+        Int max_cores# = 8
     }
 
     command {
