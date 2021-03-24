@@ -65,13 +65,13 @@ task minimap2 {
     }
 
     command {
-        minimap2 -ax sr  -t ~{threads} -2 ~{reference} ~{sep=' ' reads} | samtools view -bS - > ~{name}.bam
+        minimap2 -R '@RG\tID:~{name}' -ax sr  -t ~{threads} -2 ~{reference} ~{sep=' ' reads} | samtools view -bS - > ~{name}.bam
     }
 
     runtime {
         docker_memory: "~{max_memory}G"
         docker_cpu: "~{threads+1}"
-        docker: "quay.io/comp-bio-aging/minimap2@sha256:69e9515a0cb5b5e9f47c3d0f95700d5064f0db04f86d49b6626b66a012daf0a5" #latest
+        docker: "quay.io/comp-bio-aging/minimap2:latest"
         maxRetries: 2
       }
 

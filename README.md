@@ -68,19 +68,19 @@ This structure is the same as in ./data subfolder of this repo, feel free to mod
 * /data/gwas/anton - person's folder with:
 * /data/gwas/anton/fastq - INPUT folder
 * REFERENCE genome (downloaded from latest Ensembl release):
-    * /data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-    * /data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
+    * /data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+    * /data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
 * OUTPUT folders created by the pipeline (no need to create them yourself)!: 
     * /data/gwas/anton/aligned - output of aligned data
     * /data/gwas/anton/variants - output for variants
     * /data/gwas/anton/vep - vep annotations
 * ANNOTATION reference files (used only by vep_annotations.wdl):
     * /data/gwas/references/annotations - reference files for genetic variant annotations
-    * /data/ensembl/102/plugins - git cloned+renamed https://github.com/Ensembl/VEP_plugins (note 102 - is Ensembl release number)
-    * /data/ensembl/102/cache - folder to download Ensembl cache ( https://m.ensembl.org/info/docs/tools/vep/script/vep_cache.html ):
+    * /data/ensembl/103/plugins - git cloned+renamed https://github.com/Ensembl/VEP_plugins (note 102 - is Ensembl release number)
+    * /data/ensembl/103/cache - folder to download Ensembl cache ( https://m.ensembl.org/info/docs/tools/vep/script/vep_cache.html ):
         VEP cache can be installed by:
         ```
-        cd /data/ensembl/102/cache
+        cd /data/ensembl/103/cache
         curl -O ftp://ftp.ensembl.org/pub/release-102/variation/indexed_vep_cache/homo_sapiens_vep_102_GRCh38.tar.gz
         tar xzf homo_sapiens_vep_102_GRCh38.tar.gz
         cd $HOME/.vep       

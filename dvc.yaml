@@ -9,24 +9,24 @@ stages:
     cmd: docker-compose down
   prepare_genome:
     deps:
-      - data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
-    cmd: gunzip -k data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+      - data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    cmd: gunzip -k data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
     outs:
-      - data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+      - data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
   prepare_vep_cache:
     deps:
-      - data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
-    cmd: tar -zxf data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz -C data/ensembl/102/cache/
+      - data/ensembl/103/cache/homo_sapiens_vep_103_GRCh38.tar.gz
+    cmd: tar -zxf data/ensembl/103/cache/homo_sapiens_vep_103_GRCh38.tar.gz -C data/ensembl/103/cache/
     outs:
-      - data/ensembl/102/cache/homo_sapiens
+      - data/ensembl/103/cache/homo_sapiens
   prepare_vep_plugins:
     deps:
-      - data/ensembl/102/102.zip
+      - data/ensembl/103/103.zip
     cmd: >-
-      unzip -u data/ensembl/102/102.zip -d data/ensembl/102/ &&
-      mv data/ensembl/102/VEP_plugins-release-102 data/ensembl/102/plugins
+      unzip -u data/ensembl/103/103.zip -d data/ensembl/103/ &&
+      mv data/ensembl/103/VEP_plugins-release-103 data/ensembl/103/plugins
     outs:
-      - data/ensembl/102/plugins/
+      - data/ensembl/103/plugins/
   prepare_annotations_digenet:
     deps:
       - data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz

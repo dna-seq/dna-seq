@@ -1,62 +1,37 @@
 prepare:
-  cmd: gunzip -k data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
-    && unzip -o -d data/ensembl/102 data/ensembl/102/102.zip && mv data/ensembl/102/VEP_plugins-release-102
-    data/ensembl/102/plugins
+  cmd: gunzip -k data/gwas/homo_sapiens_ensembl_103/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    && unzip -o -d data/ensembl/103 data/ensembl/103/103.zip && mv data/ensembl/103/VEP_plugins-release-103
+    data/ensembl/103/plugins
   deps:
-  - path: data/ensembl/102/102.zip
-    md5: 4bab083b2ee9bcf35956dc60fdacde72
-    size: 491290
-  - path: data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
-    md5: f58a039f83d8944ceb79cdd16cbda583
-    size: 881211416
+  - path: data/ensembl/103/103.zip    
+  - path: data/gwas/homo_sapiens_ensembl_103/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
   outs:
-  - path: data/ensembl/102/plugins
-    md5: 2d1a639b07bd0c6caa8831aabbb01457.dir
-    size: 1373726
-    nfiles: 71
-  - path: data/gwas/homo_sapiens_ensembl_102/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-    md5: 9e6b9465dc708d92bf6d67e9c9fa9389
-    size: 3151425857
+  - path: data/ensembl/103/plugins
+  - path: data/gwas/homo_sapiens_ensembl_103/Homo_sapiens.GRCh38.dna.primary_assembly.fa
 start:
   cmd: docker-compose up
 stop:
   cmd: docker-compose down
 cache:
-  cmd: tar -C  data/ensembl/102/cache/ -zxvf data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
+  cmd: tar -C  data/ensembl/103/cache/ -zxvf data/ensembl/103/cache/homo_sapiens_vep_103_GRCh38.tar.gz
   deps:
-  - path: data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
-    md5: 8b00761e4dc5077dec843a0af792fa36
-    size: 8628842938
+  - path: data/ensembl/103/cache/homo_sapiens_vep_103_GRCh38.tar.gz
   outs:
-  - path: data/ensembl/102/cache/homo_sapiens
-    md5: 98ef9b0b4c0326730d449117667a07b9.dir
-    size: 8626253517
-    nfiles: 7907
+  - path: data/ensembl/103/cache/homo_sapiens
 prepare_genome:
-  cmd: gunzip -k data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+  cmd: gunzip -k data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
   deps:
-  - path: data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
-    md5: f58a039f83d8944ceb79cdd16cbda583
-    size: 881211416
+  - path: data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
   outs:
-  - path: data/ensembl/102/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-    md5: 9e6b9465dc708d92bf6d67e9c9fa9389
-    size: 3151425857
+  - path: data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
 prepare_vep:
-  cmd: unzip -u data/ensembl/102/102.zip -d data/ensembl/102/ && mv data/ensembl/102/VEP_plugins-release-102
-    data/ensembl/102/plugins
+  cmd: unzip -u data/ensembl/103/103.zip -d data/ensembl/103/ && mv data/ensembl/103/VEP_plugins-release-103
+    data/ensembl/103/plugins
   deps:
-  - path: data/ensembl/102/102.zip
-    md5: 4bab083b2ee9bcf35956dc60fdacde72
-    size: 491290
-  - path: data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
-    md5: 8b00761e4dc5077dec843a0af792fa36
-    size: 8628842938
+  - path: data/ensembl/103/103.zip
+  - path: data/ensembl/103/cache/homo_sapiens_vep_103_GRCh38.tar.gz
   outs:
-  - path: data/ensembl/102/plugins/
-    md5: 2d1a639b07bd0c6caa8831aabbb01457.dir
-    size: 1373726
-    nfiles: 71
+  - path: data/ensembl/103/plugins/
 prepare_annotations:
   cmd: "gunzip -c data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz\
     \ |\n   awk '($1 ~ /^snpId/ || $2 ~ /NA/) {next} {print $0}' |\n   sort -t $'\\\
@@ -66,85 +41,43 @@ prepare_annotations:
     \ || (FNR > 1)' data/gwas/annotations/gene2phenotype/*.csv  > data/gwas/annotations/gene2phenotype/AllG2P.csv"
   deps:
   - path: data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz
-    md5: a393c9e8e104297aadcb7188f6460eaf
-    size: 11171100
   - path: data/gwas/annotations/clinvar.vcf.gz
-    md5: 487e6796ae4be8696d51ef450d5793de
-    size: 34713404
   - path: data/gwas/annotations/clinvar.vcf.gz.tbi
-    md5: b85b29f474a7f6899ddf1ad8b8c21140
-    size: 293552
   - path: data/gwas/annotations/gene2phenotype/CancerG2P.csv
-    md5: 6504732dc971b2578c21a8cbd6c2d3ad
-    size: 19914
   - path: data/gwas/annotations/gene2phenotype/DDG2P.csv
-    md5: d21a0e446a3cc3b3adbae486cd6d11c6
-    size: 776664
   - path: data/gwas/annotations/gene2phenotype/EyeG2P.csv
-    md5: 9bf5d96096c52df97792b165fbfeda45
-    size: 221233
   - path: data/gwas/annotations/gene2phenotype/SkinG2P.csv
-    md5: 15e1b25db13f3929357ba3dba60e7e1b
-    size: 214278
   outs:
   - path: data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
-    md5: 3d5dea024369a02f300ca3346eedc967
-    size: 9918420
   - path: data/gwas/annotations/gene2phenotype/AllG2P.csv
-    md5: ccf679127863b2832ccb1ceb2561502a
-    size: 1231432
 prepare_vep_plugins:
-  cmd: unzip -u data/ensembl/102/102.zip -d data/ensembl/102/ && mv data/ensembl/102/VEP_plugins-release-102
-    data/ensembl/102/plugins
+  cmd: unzip -u data/ensembl/103/103.zip -d data/ensembl/103/ && mv data/ensembl/103/VEP_plugins-release-103
+    data/ensembl/103/plugins
   deps:
-  - path: data/ensembl/102/102.zip
-    md5: 4bab083b2ee9bcf35956dc60fdacde72
-    size: 491290
+  - path: data/ensembl/103/103.zip
   outs:
-  - path: data/ensembl/102/plugins/
-    md5: 2d1a639b07bd0c6caa8831aabbb01457.dir
-    size: 1373726
-    nfiles: 71
+  - path: data/ensembl/103/plugins/
 prepare_vep_cache:
-  cmd: tar -zxf data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz -C data/ensembl/102/cache/
+  cmd: tar -zxf data/ensembl/103/cache/homo_sapiens_vep_103_GRCh38.tar.gz -C data/ensembl/103/cache/
   deps:
-  - path: data/ensembl/102/cache/homo_sapiens_vep_102_GRCh38.tar.gz
-    md5: 8af30a60aac54b5dc31162a63aef8b86
-    size: 14522644230
+  - path: data/ensembl/103/cache/homo_sapiens_vep_103_GRCh38.tar.gz
   outs:
-  - path: data/ensembl/102/cache/homo_sapiens
-    md5: 25c0055ed80db44da92d515f2f15fcdb.dir
-    size: 14518341479
-    nfiles: 13883
+  - path: data/ensembl/103/cache/homo_sapiens
 prepare_annotations_clinvar:
   cmd: echo "Clinvars annotations prepared"
   deps:
   - path: data/gwas/annotations/clinvar.vcf.gz
-    md5: 487e6796ae4be8696d51ef450d5793de
-    size: 34713404
   - path: data/gwas/annotations/clinvar.vcf.gz.tbi
-    md5: b85b29f474a7f6899ddf1ad8b8c21140
-    size: 293552
 prepare_annotations_gene2phenotype:
   cmd: rm -f data/gwas/annotations/gene2phenotype/AllG2P.csv && awk '(NR == 1) ||
     (FNR > 1)' data/gwas/annotations/gene2phenotype/*.csv  > data/gwas/annotations/gene2phenotype/AllG2P.csv
   deps:
   - path: data/gwas/annotations/gene2phenotype/CancerG2P.csv
-    md5: 6504732dc971b2578c21a8cbd6c2d3ad
-    size: 19914
   - path: data/gwas/annotations/gene2phenotype/DDG2P.csv
-    md5: d21a0e446a3cc3b3adbae486cd6d11c6
-    size: 776664
   - path: data/gwas/annotations/gene2phenotype/EyeG2P.csv
-    md5: 9bf5d96096c52df97792b165fbfeda45
-    size: 221233
   - path: data/gwas/annotations/gene2phenotype/SkinG2P.csv
-    md5: 15e1b25db13f3929357ba3dba60e7e1b
-    size: 214278
   outs:
   - path: data/gwas/annotations/gene2phenotype/AllG2P.csv
-    md5: ccf679127863b2832ccb1ceb2561502a
-    size: 1231432
 prepare_annotations_digenet:
   cmd: "gunzip -c data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz\
     \ |\n   awk '($1 ~ /^snpId/ || $2 ~ /NA/) {next} {print $0}' |\n   sort -t $'\\\
@@ -152,9 +85,5 @@ prepare_annotations_digenet:
     \ -c > data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz"
   deps:
   - path: data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz
-    md5: a393c9e8e104297aadcb7188f6460eaf
-    size: 11171100
   outs:
   - path: data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
-    md5: 3d5dea024369a02f300ca3346eedc967
-    size: 9918420
