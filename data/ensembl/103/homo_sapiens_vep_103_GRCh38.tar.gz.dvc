@@ -1,0 +1,9 @@
+md5: 44017e8003cf725c6051298e75c2cb3c
+frozen: true
+deps:
+- etag: W/"5ffda1b6-3742350cc"
+  path: http://ftp.ensembl.org/pub/release-103/variation/vep/homo_sapiens_vep_103_GRCh38.tar.gz
+outs:
+- md5: 3e62399386af5f4b9227f024c2fe4e3f
+  size: 14833373388
+  path: homo_sapiens_vep_103_GRCh38.tar.gz

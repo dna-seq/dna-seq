@@ -104,3 +104,5 @@ stages:
     - path: data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
   prepare_opencravat:
     cmd: oc module install-base
+  test_opencravat:
+    cmd: oc new example-input . && oc run ./example_input -l hg38 && oc gui example_input/example_input.sqlite
