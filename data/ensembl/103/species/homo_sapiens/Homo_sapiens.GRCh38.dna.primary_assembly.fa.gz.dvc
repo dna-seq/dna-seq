@@ -1,0 +1,10 @@
+md5: ee4e0b5c1d1f3485f2005465dc01017b
+frozen: true
+deps:
+- etag: W/"5fe18ca9-34863818"
+  path: http://ftp.ensembl.org/pub/release-103/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+outs:
+- md5: f58a039f83d8944ceb79cdd16cbda583
+  size: 881211416
+  path: Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+  cache: false

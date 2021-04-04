@@ -14,3 +14,4 @@ dependencies:
   - dvc=2.0.17
   - pydrive2
   - open-cravat=2.2.3
+  - samtools

@@ -1,4 +1,4 @@
-*
+#*
 !data/cromwell-client-logs
 !data/cromwell-executions
 !data/cromwell-workflow-logs

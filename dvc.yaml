@@ -10,9 +10,14 @@ stages:
   prepare_genome:
     deps:
       - data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
-    cmd: gunzip -k data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    cmd: >-
+      gunzip -k data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz &&
+      samtools faidx data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa &&
+      samtools dict data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa -o data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
     outs:
       - data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+      - data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
+      - data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
   prepare_vep_cache:
     deps:
       - data/ensembl/103/cache/homo_sapiens_vep_103_GRCh38.tar.gz
@@ -57,6 +62,9 @@ stages:
 #     && for f in data/gwas/annotations/gene2phenotype/*.gz ; do gunzip -c "$f" > data/gwas/annotations/gene2phenotype/"${f%.*}" ; done 
     outs:
       - data/gwas/annotations/gene2phenotype/AllG2P.csv
-    prepare_opencravat:
-      - oc module install-base &&
-
+  install_opencravat:
+    cmd: >-
+      oc module install-base && oc module install -y clinvar clinvar_acmg biogrid uk10k_cohort uniprot pubmed provean polyphen2 cardioboost civic civic_gene cosmic cosmic_gene go sift ensembl_regulatory_build dgi cvdkp
+  install_cancer:
+    cmd: >-
+      oc module install chasmplus cgc cgl cancer_genome_interpreter cancer_hotspots civic
