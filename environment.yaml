@@ -1,0 +1,16 @@
+name: gwas
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python=3.8
+  - jupyterlab
+  - nbresuse # extension to monitor resource usage
+  - jupyterlab-lsp
+  - jupyterlab_code_formatter
+  - python-language-server
+  - seaborn
+  - dvc=2.0.17
+  - pydrive2
+  - open-cravat=2.2.3

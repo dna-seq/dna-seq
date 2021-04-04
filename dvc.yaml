@@ -57,4 +57,6 @@ stages:
 #     && for f in data/gwas/annotations/gene2phenotype/*.gz ; do gunzip -c "$f" > data/gwas/annotations/gene2phenotype/"${f%.*}" ; done 
     outs:
       - data/gwas/annotations/gene2phenotype/AllG2P.csv
+    prepare_opencravat:
+      - oc module install-base &&
 

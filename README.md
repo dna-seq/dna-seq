@@ -11,12 +11,32 @@ For users with only high-school knowledge of biology I would also recommend taki
 
 We do not use Broad-s GATK pipeline (because we use DeepVariant as a variant caller) but common tools are similar. 
 All tools are dockerized, for this reason make sure that docker is installed. 
-Before running the pipeline with a large genome (human or mouse) make sure you have 1-1.5 TB of free space. 
+Before running the pipeline with large genomes (human or mouse) make sure you 1 TB or more of free space.
+
+Install conda environment
+-------------------------
+Annotation modules and dvc are included in the conda environment that goes with the project.
+The environment can be setup either with anaconda or micromamba (superior version of conda).
+Here is installation instruction for micromamba:
+```
+wget -qO- https://micromamba.snakepit.net/api/micromamba/linux-64/latest | tar -xvj bin/micromamba
+```
+We can use ./micromamba shell init ... to initialize a shell (.bashrc) and a new root environment in ~/micromamba:
+```
+./bin/micromamba shell init -s bash -p ~/micromamba
+source ~/.bashrc
+```
+To create a micromamba environment use:
+
+micromamba create -f environment.yaml
+micromamba activate gwas
+
 
 Prepare data
 ------------
 
 [DVC](https://dvc.org/) is used for data management: it downloads annotations and can also be used to run some useful scripts.
+DVC is included to the gwas conda environment described in environment.yaml file
 To download the all the data and do some preprocessing use:
 ```bash
 dvc repro
