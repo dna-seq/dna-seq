@@ -8,5 +8,6 @@
   "dna_seq_pipeline.align_threads": 12,
   "dna_seq_pipeline.variant_calling_threads": 12,
   "dna_seq_pipeline.coverage_sampling": 100,
-  "dna_seq_pipeline.max_memory_gb": 48
+  "dna_seq_pipeline.max_memory_gb": 48,
+  "dna_seq_pipeline.markdup": true
 }

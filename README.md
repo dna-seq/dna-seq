@@ -11,7 +11,7 @@ For users with only high-school knowledge of biology I would also recommend taki
 
 We do not use Broad-s GATK pipeline (because we use DeepVariant as a variant caller) but common tools are similar. 
 All tools are dockerized, for this reason make sure that docker is installed. 
-Before running the pipeline with large genomes (human or mouse) make sure you 1 TB or more of free space.
+Before running the pipeline with large genomes (human or mouse) make sure you have around 1 TB or more of free space.
 
 Install conda environment
 -------------------------
@@ -27,37 +27,36 @@ We can use ./micromamba shell init ... to initialize a shell (.bashrc) and a new
 source ~/.bashrc
 ```
 To create a micromamba environment use:
-
+```
 micromamba create -f environment.yaml
 micromamba activate gwas
-
+```
 
 Prepare data
 ------------
 
 [DVC](https://dvc.org/) is used for data management: it downloads annotations and can also be used to run some useful scripts.
 DVC is included to the gwas conda environment described in environment.yaml file
-To download the all the data and do some preprocessing use:
-```bash
-dvc repro
-```
-However, it may take quite a while as ensembl_vep_cache (which is required for VEP annotations) is >14GB. 
-If you do not need it, you can also separately use dvc stages in dvc.yaml.
-For instance, just to download reference genome, type:
+
+In dvc.yaml there are tasks required to setup the project. For instance, to download reference genome, type:
 ```bash
 dvc repro prepare_genome
 ```
+Of course, you can try to download all the data with:
+```bash
+dvc repro
+```
+However, it may take quite a while as ensembl_vep_cache (which is required for VEP annotations) is >14GB. And it may happen that OpenCravat will be enough for you needs.
+
 
 Running services
 ----------------
 
 To run [Cromwell server](https://cromwell.readthedocs.io/en/stable/), together with [cromwell-client](https://github.com/antonkulaga/cromwell-client) and mysql - run services with [Docker-Compose](https://docs.docker.com/compose/install/) 
-If you do not have Docker installed, you can either install it yourself or use ubuntu_Script to in
-For the convenience start.sh and stop bash scripts is put to the folder.
-Cromwell services should already be working (I successfully tested with tests/hello-world.wdl on my Linux Mint machine)
-\ To run the pipelines I recommend trying cromwell-client (deployed at port 8001 by default)
+If you do not have Docker installed, you can either install it yourself or use ubuntu_Script in the bin folder.
+To run the pipelines I recommend trying cromwell-client (deployed at port 8001 by default)
 It can be run by:
-```
+```bash
 docker compose up
 ```
 
@@ -75,7 +74,7 @@ If you have another folder layout you have to change docker-compose.yml and conf
 Structure of the pipeline
 -------------------------
 
-The pipeline is in dna-seq-pipeline folder. 
+The pipeline is in dna-seq-pipeline folder. It also actively uses wdl tasks and subpipelines from https://github.com/antonkulaga/bioworkflows
 There dna_seq_pipeline.wdl is the main workflow, all others should be provided as dependencies.
 The pipeline uses Deepvariant, Strelka2 and Smoove for variant calling and VEP for variant annotations.
 It is also possible to run dependencies as separate workflows.
@@ -90,7 +89,7 @@ This structure is the same as in ./data subfolder of this repo, feel free to mod
 * REFERENCE genome (downloaded from latest Ensembl release):
     * /data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
     * /data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
-* OUTPUT folders created by the pipeline (no need to create them yourself)!: 
+* OUTPUT folders created by the pipeline (no need to create them yourself, when you run the pipeline it will create folders for the output)!: 
     * /data/gwas/anton/aligned - output of aligned data
     * /data/gwas/anton/variants - output for variants
     * /data/gwas/anton/vep - vep annotations
@@ -123,6 +122,21 @@ There are three major ways of running any of the pipelines in the repository:
 * directly from Swagger API with Cromwell in a server mode: similar to running with CromwellClient but instead of the Client swagger server API is used.
 * with Cromwell or any other WDL-compartible tool in the console. Documented at [Official cromwell documentation](https://cromwell.readthedocs.io/en/stable/tutorials/FiveMinuteIntro/#step-3-running-the-workflow)
 
+Genome annotations
+==================
+
+There are two alternative annotation tools: VEP and [OpenCravat](https://opencravat.org/). VEP is more established and oldfasioned, opencravat is newer and more user-friendly I recommend to start from opencravat.
+
+Opencravat annotations
+======================
+
+Opencravat is included to the environment.
+Before starting, it is recommended to install annotation modules of your interested.
+There is a dvc stage for the default modules:
+```bash
+dvc repro install_opencravat
+```
+
 VEP annotations
 ---------------
 
@@ -141,6 +155,5 @@ This repository is a work in progress, so I list todos:
 * mitochondrial variant calling
 * longevity annotations
 * docs on how to configure VEP
-* making haplausauras work and comparing with VEP
-* eye and skin color annotations (stuff like http://mathgene.usc.es/snipper/eyeclassifier.html)
-* FIX DUPLICATION OF COPY TASK
+* docs on opencravat  
+* eye and skin color annotations (stuff like http://mathgene.usc.es/snipper/eyeclassifier.html )

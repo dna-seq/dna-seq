@@ -1,113 +1,49 @@
 version development
 
+import "https://raw.githubusercontent.com/antonkulaga/bioworkflows/main/quality/clean_reads.wdl" as cleaner
+import "https://raw.githubusercontent.com/antonkulaga/bioworkflows/main/align/align_reads.wdl" as aligner
+
+
 workflow alignment {
     input {
         Array[File]+ reads
         File reference
         String name
         String destination
+        String sequence_aligner = "minimap2"
+        Boolean copy_cleaned = true
         Int align_threads# = 12
         Int sort_threads# = 12
         Int max_memory_gb# = 36
         Int coverage_sampling# = 1000
-        String? gencore_quality 
+        String? gencore_quality
+        Boolean markdup = false
+        Int compression = 9
     }
 
-    call minimap2 {
+    call cleaner.clean_reads as clean_reads { input: run = name, folder = destination + "/" + "cleaned", reads = reads, copy_cleaned = copy_cleaned, is_paired = true}
+
+    call aligner.align_reads as align_reads{
         input:
-            reads = reads,
+            reads = clean_reads.out.cleaned_reads,
             reference = reference,
-            name = name,
-            threads = align_threads,
-            max_memory = max_memory_gb
-    }
-
-    call sambamba_sort {
-        input:
-            bam = minimap2.bam,
-            threads = sort_threads
-    }
-
-    call gencore{
-        input:
-            reference = reference,
-            sorted_bam = sambamba_sort.out,
-            name = name,
-            quality = gencore_quality,
-            coverage_sampling = coverage_sampling,
-            max_memory = max_memory_gb
-    }
-
-
-    call copy as copy_alignment {
-        input:
-            destination = destination,
-            files = [gencore.bam, gencore.bai, gencore.html, gencore.json]
+            run = name,
+            max_memory_gb = max_memory_gb,
+            align_threads = align_threads,
+            sort_threads = sort_threads,
+            destination = destination + "/" + "aligned",
+            aligner = sequence_aligner,
+            markdup = markdup,
+            compression = compression
     }
 
 
     output {
-       File bam =  copy_alignment.out[0]
-       File bai = copy_alignment.out[1]
-       File html = copy_alignment.out[2]
-       File json = copy_alignment.out[3]
+       CleanedRun cleaned_run =  clean_reads.out
+       AlignedRun out =  align_reads.out
     }
 }
-
-
-task minimap2 {
-    input {
-        Array[File] reads
-        File reference
-        String name
-        Int threads
-        Int max_memory
-    }
-
-    command {
-        minimap2 -R '@RG\tID:~{name}' -ax sr  -t ~{threads} -2 ~{reference} ~{sep=' ' reads} | samtools view -bS - > ~{name}.bam
-    }
-
-    runtime {
-        docker_memory: "~{max_memory}G"
-        docker_cpu: "~{threads+1}"
-        docker: "quay.io/comp-bio-aging/minimap2:latest"
-        maxRetries: 2
-      }
-
-    output {
-      File bam = name + ".bam"
-    }
-}
-
-task sambamba_sort{
-    input {
-        File bam
-        Int threads
-        Int gb_per_thread = 3
-    }
-
-    String name = basename(bam, ".bam")
-
-    command {
-       ln -s ~{bam} ~{basename(bam)}
-       sambamba sort -m ~{gb_per_thread}G -t ~{threads} -p ~{basename(bam)}
-    }
-
-    runtime {
-        docker: "quay.io/biocontainers/sambamba@sha256:ae92faef4c53a632b2120dfffa7b6dcfe5366a0647e61bbbd6188aedc89da4e8" #:0.8.0--h984e79f_0
-        maxRetries: 1
-        docker_memory: "~{gb_per_thread * (threads+1)}G"
-        docker_cpu: "~{threads+1}"
-        docker_swap: "~{gb_per_thread * (threads+1) * 2}G"
-      }
-
-    output {
-      File out = name + ".sorted.bam"
-      File bai = name + ".sorted.bam.bai"
-    }
-}
-
+#TODO: integrate tasks below somehow
 
 task gencore {
     input {
@@ -160,26 +96,34 @@ task coverage {
     }
 }
 
-task copy {
+
+task get_rg {
     input {
-        Array[File] files
-        String destination
+        Boolean rg_use_source
+        File? rg_source
+        String ID
+        String LB
+        String PL
+        String PU
+        String SM
     }
 
-    String where = sub(destination, ";", "_")
-
     command {
-        mkdir -p ~{where}
-        cp -L -R -u ~{sep=' ' files} ~{where}
-        declare -a files=(~{sep=' ' files})
-        for i in ~{"$"+"{files[@]}"};
-        do
-        value=$(basename ~{"$"}i)
-        echo ~{where}/~{"$"}value
-        done
+        touch error.txt
+        if [ "${rg_use_source}" != 'true' ]; then
+        echo ~{"@RG\\\\\\\\tID:" + ID + "\\\\\\\\tLB:" + LB + "\\\\\\\\tPL:" + PL + "\\\\\\\\tPU:" + PU + "\\\\\\\\tSM:" + SM}
+        else
+        samtools view -H ~{rg_source} | grep '^@RG' | sed 's/'$'\t''/\\\\t/g'
+        fi
+    }
+
+    runtime {
+        docker_cpu: "1"
+        docker: "quay.io/biocontainers/samtools@sha256:141120f19f849b79e05ae2fac981383988445c373b8b5db7f3dd221179af382b" #1.11--h6270b1f_0
     }
 
     output {
-        Array[File] out = read_lines(stdout())
+        File e = "error.txt" #terrible hack
+        String rg = read_string(stdout())
     }
 }

@@ -3,6 +3,9 @@ version development
 #alternative deep-variant-based pipeline, work in progress
 #using https://github.com/google/deepvariant/blob/r1.1/docs/deepvariant-quick-start.md as reference
 
+import "https://raw.githubusercontent.com/antonkulaga/bioworkflows/main/common/files.wdl" as files
+
+
 workflow DeepVariant {
     input {
         File bam
@@ -25,7 +28,7 @@ workflow DeepVariant {
             threads = threads, 
             mode = mode
     }
-    call copy as copy_deepvariant {
+    call files.copy as copy_deepvariant {
         input: files = [go_deep.vcf, go_deep.gvcf, go_deep.report, go_deep.interim], destination = destination
     }
 
@@ -76,30 +79,5 @@ task go_deep{
         File gvcf = output_gvcf
         File report = name + ".visual_report.html"
         File interim = "interim"
-    }
-}
-
-
-task copy {
-    input {
-        Array[File] files
-        String destination
-    }
-
-    String where = sub(destination, ";", "_")
-
-    command {
-        mkdir -p ~{where}
-        cp -L -R -u ~{sep=' ' files} ~{where}
-        declare -a files=(~{sep=' ' files})
-        for i in ~{"$"+"{files[@]}"};
-        do
-        value=$(basename ~{"$"}i)
-        echo ~{where}/~{"$"}value
-        done
-    }
-
-    output {
-        Array[File] out = read_lines(stdout())
     }
 }

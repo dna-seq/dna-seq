@@ -1,5 +1,7 @@
 version development
 
+import "https://raw.githubusercontent.com/antonkulaga/bioworkflows/main/common/files.wdl" as files
+
 workflow simple_variant_calling {
 
     input {
@@ -35,7 +37,7 @@ workflow simple_variant_calling {
             #,indel_candidates = manta_germline_sv.manta_indel_candidates
     }
 
-    call copy as copy_variants{
+    call files.copy as copy_variants{
         input:
             destination = destination + "/variants",
             files =[
@@ -132,30 +134,5 @@ task smoove {
         docker: "brentp/smoove@sha256:d0d6977dcd636e8ed048ae21199674f625108be26d0d0acd39db4446a0bbdced"
         docker_memory: "~{max_memory}G"
         docker_cpu: "~{max_cores}"
-    }
-}
-
-
-task copy {
-    input {
-        Array[File] files
-        String destination
-    }
-
-    String where = sub(destination, ";", "_")
-
-    command {
-        mkdir -p ~{where}
-        cp -L -R -u ~{sep=' ' files} ~{where}
-        declare -a files=(~{sep=' ' files})
-        for i in ~{"$"+"{files[@]}"};
-        do
-        value=$(basename ~{"$"}i)
-        echo ~{where}/~{"$"}value
-        done
-    }
-
-    output {
-        Array[File] out = read_lines(stdout())
     }
 }
