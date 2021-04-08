@@ -1,14 +1,14 @@
 version development
 
 # production configuration
-#import "https://raw.githubusercontent.com/antonkulaga/dna-seq/master/dna-seq-pipeline/alignment.wdl" as alignment
-#import "https://raw.githubusercontent.com/antonkulaga/dna-seq/master/dna-seq-pipeline/simple_variant_calling.wdl" as vc
-#import "https://raw.githubusercontent.com/antonkulaga/dna-seq/master/dna-seq-pipeline/deep_variant.wdl" as deep
+import "https://raw.githubusercontent.com/antonkulaga/dna-seq/master/dna-seq-pipeline/alignment.wdl" as alignment
+import "https://raw.githubusercontent.com/antonkulaga/dna-seq/master/dna-seq-pipeline/simple_variant_calling.wdl" as vc
+import "https://raw.githubusercontent.com/antonkulaga/dna-seq/master/dna-seq-pipeline/deep_variant.wdl" as deep
 
 # debug local configuration (uncomment for debugging)
-import "alignment.wdl" as alignment
-import "simple_variant_calling.wdl" as vc
-import "deep_variant.wdl" as deep
+#import "alignment.wdl" as alignment
+#import "simple_variant_calling.wdl" as vc
+#import "deep_variant.wdl" as deep
 
 
 workflow dna_seq_pipeline {
@@ -20,7 +20,7 @@ workflow dna_seq_pipeline {
         File reference_fai #i.e. Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
         Int align_threads# = 12
         Int sort_threads# = 12
-        Int variant_calling_threads# = 16
+        Int variant_calling_threads = 16
         Int coverage_sampling# = 1000
         Int max_memory_gb# = 42
         String name

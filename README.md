@@ -9,7 +9,7 @@ The pipeline is based on a WDL (Workflow Description Language) standard.
 Broad Institute provides a nice [video introduction](https://www.youtube.com/watch?v=aTAQ2eA_iOc&feature=youtu.be&fbclid=IwAR0r2YeeJMEh2XFmat6OIEmbmGWXEvye3UYplvSheYFl7mJ1ijR65G0awLc) which explains WDL, Cromwell and DNA-Seq pipelines. 
 For users with only high-school knowledge of biology I would also recommend taking any free biology 101 or genetics 101 course ( https://www.edx.org/course/introduction-to-biology-the-secret-of-life-3 is a good example)
 
-We do not use Broad-s GATK pipeline (because we use DeepVariant as a variant caller) but common tools are similar. 
+We do not use Broad-s GATK pipeline (because we use [DeepVariant](https://academic.oup.com/bioinformatics/article/36/24/5582/6064144) as a variant caller) but common tools are similar. 
 All tools are dockerized, for this reason make sure that docker is installed. 
 Before running the pipeline with large genomes (human or mouse) make sure you have around 1 TB or more of free space.
 
@@ -96,15 +96,8 @@ This structure is the same as in ./data subfolder of this repo, feel free to mod
 * ANNOTATION reference files (used only by vep_annotations.wdl):
     * /data/gwas/references/annotations - reference files for genetic variant annotations
     * /data/ensembl/103/plugins - git cloned+renamed https://github.com/Ensembl/VEP_plugins (note 102 - is Ensembl release number)
-    * /data/ensembl/103/cache - folder to download Ensembl cache ( https://m.ensembl.org/info/docs/tools/vep/script/vep_cache.html ):
-        VEP cache can be installed by:
-        ```
-        cd /data/ensembl/103/cache
-        curl -O ftp://ftp.ensembl.org/pub/release-102/variation/indexed_vep_cache/homo_sapiens_vep_102_GRCh38.tar.gz
-        tar xzf homo_sapiens_vep_102_GRCh38.tar.gz
-        cd $HOME/.vep       
-        ```
-
+    * /data/ensembl/103/cache - folder to download Ensembl cache ( https://m.ensembl.org/info/docs/tools/vep/script/vep_cache.html )
+        
 Genomes to play with
 ------------------
 

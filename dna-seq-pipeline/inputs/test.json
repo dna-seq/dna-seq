@@ -1,6 +1,6 @@
 {
-  "dna_seq_pipeline.reference": "/data/gwas/Homo_sapiens_ensembl_103/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
-  "dna_seq_pipeline.reference_fai": "/data/gwas/Homo_sapiens_ensembl_103/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai",
+  "dna_seq_pipeline.reference": "/data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
+  "dna_seq_pipeline.reference_fai": "/data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai",
   "dna_seq_pipeline.reads": ["/data/gwas/test/test-noerror-r1.fq",  "/data/gwas/test/test-noerror-r2.fq"],
   "dna_seq_pipeline.destination": "/data/gwas/test",
   "dna_seq_pipeline.name": "test",

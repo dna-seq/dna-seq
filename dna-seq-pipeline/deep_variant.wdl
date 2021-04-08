@@ -14,7 +14,7 @@ workflow DeepVariant {
         String name = "output"
         File reference
         File reference_fai
-        Int threads
+        Int threads = 8
         String destination
         String mode = "WGS" #[WGS,WES,PACBIO,HYBRID_PACBIO_ILLUMINA]
     }

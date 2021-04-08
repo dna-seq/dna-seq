@@ -1,13 +1,15 @@
 {
   "dna_seq_pipeline.reference": "/data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
   "dna_seq_pipeline.reference_fai": "/data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai",
-  "dna_seq_pipeline.reads": ["/data/gwas/anton/fastq/750018002018_WGZ_1.fq",  "/data/gwas/anton/fastq/750018002018_WGZ_2.fq"],
+  "dna_seq_pipeline.reads": ["/data/gwas/anton/fastq/750018002018_SA_L001_R1_001.fastq.gz",  "/data/gwas/anton/fastq/750018002018_SA_L001_R2_001.fastq.gz"],
   "dna_seq_pipeline.destination": "/data/gwas/anton",
   "dna_seq_pipeline.name": "antonkulaga",
-  "dna_seq_pipeline.sort_threads": 12,
-  "dna_seq_pipeline.align_threads": 12,
-  "dna_seq_pipeline.variant_calling_threads": 12,
+  "dna_seq_pipeline.sort_threads": 28,
+  "dna_seq_pipeline.align_threads": 28,
+  "dna_seq_pipeline.variant_calling_threads": 28,
   "dna_seq_pipeline.coverage_sampling": 100,
-  "dna_seq_pipeline.max_memory_gb": 48,
-  "dna_seq_pipeline.markdup": true
+  "dna_seq_pipeline.max_memory_gb": 78,
+  "dna_seq_pipeline.markdup": true,
+  "dna_seq_pipeline.simple_variant_calling": false,
+  "dna_seq_pipeline.sequence_aligner": "minimap2"
 }

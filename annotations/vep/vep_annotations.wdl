@@ -98,7 +98,7 @@ task vep {
         stat ~{"./"+basename(vcf, ".gz")+".gz.tbi"}
         stat ~{basename(disease_associations)+".tbi"}
                
-        vep --verbose --host ~{db_host} --input_file ~{"./"+basename(vcf, ".gz")+".gz"} -o ~{name} --tab --species ~{species} --fork ~{threads} \
+        vep --var_synonyms --verbose --host ~{db_host} --input_file ~{"./"+basename(vcf, ".gz")+".gz"} -o ~{name} --tab --species ~{species} --fork ~{threads} \
         --everything --fasta ~{fasta} \
         ~{if(database) then "--database" else  "--cache"} --dir_cache ~{ensembl_cache} --dir_plugins ~{ensembl_plugins} \
         --symbol --check_existing ~{if(check_sorted) then "" else "--no_check_variants_order"} \
