@@ -1,0 +1,12 @@
+version: '3'
+services:
+  oc-gui:
+    image: karchinlab/opencravat:latest
+    volumes:
+      - '/data/micromamba/envs/gwas/lib/python3.8/site-packages/cravat/conf:/mnt/conf' #change first path to path to  your config
+      - '/data/micromamba/envs/gwas/lib/python3.8/site-packages/cravat/modules:/mnt/modules' #change first path to path to  your modules
+      - './jobs:/mnt/jobs' #change first path to path to  your jobs
+      - './logs:/mnt/logs' #change first path to path to  your logs
+    ports:
+      - '8080:8080'
+    command: ['oc', 'gui']
