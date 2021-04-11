@@ -1,0 +1,262 @@
+Name                               Title                                                 Type             Installed  Store ver   Store data ver     Local ver   Local data ver     Size      
+23andme-converter                  23andMe Converter                                     converter                   1.5.0                                                         17.4 kB   
+abraom                             ABRaOM                                                annotator                   1.0.0                                                         113.6 MB  
+aggregator                         Aggregator                                            aggregator                  1.0.2                                                         32.5 kB   
+alfa                               ALFA: Allele Frequency Aggregator                     annotator                   1.0.0       2020.02.29                                        19.8 GB   
+alfa_african                       ALFA: Allele Frequency Aggregator African             annotator                   1.0.0       2020.02.29                                        23.2 GB   
+alfa_asian                         ALFA: Allele Frequency Aggregator Asian               annotator                   1.0.0       2020.02.29                                        24.1 GB   
+alfa_european                      ALFA: Allele Frequency Aggregator European            annotator                   1.0.0       2020.02.29                                        19.8 GB   
+alfa_group                         ALFA: Allele Frequency Aggregator                     group                       1.0.0       2020.02.29                                        107.9 kB  
+alfa_latin_american                ALFA: Allele Frequency Aggregator Latin American      annotator                   1.0.0       2020.02.29                                        20.3 GB   
+alfa_other                         ALFA: Allele Frequency Aggregator Others              annotator                   1.0.0       2020.02.29                                        18.9 GB   
+aloft                              ALoFT                                                 annotator                   1.0.0       v4.1a                                             259.9 MB  
+ancestrydna-converter              AncestryDNA Converter                                 converter                   1.4.0                                                         29.3 kB   
+arrvars                            Arrhythmia Channelopathy Variants                     annotator                   1.2.0       January 2020                                      2.1 MB    
+biogrid                            BioGRID                                               annotator        yes        3.6.0       v3.5.167           3.6.0       v3.5.167           18.0 MB   
+brca1_func_assay                   BRCA1 Saturation Genome Editing Scores                annotator                   2019.05.13  2018.04.05                                        145.7 kB  
+cadd_exome                         CADD Exome                                            annotator                   1.6.1       1.6                                               6.8 GB    
+cancer_genome_interpreter          Cancer Genome Interpreter                             annotator        yes        1.1.0       2018.01.17         1.1.0       2018.01.17         536.0 kB  
+cancer_hotspots                    Cancer Hotspots                                       annotator        yes        1.2.1       December 2017      1.2.1       December 2017      267.3 kB  
+cardioboost                        CardioBoost                                           annotator        yes        1.0.0       v2.1               1.0.0       v2.1               18.2 MB   
+casecontrol                        Case-Control                                          postaggregator              1.0.0                                                         29.6 kB   
+ccre_screen                        Candidate cis-Regulatory Elements by ENCODE (SCREEN)  annotator                   1.0.1       2019.1                                            77.8 MB   
+cgc                                Cancer Gene Census                                    annotator        yes        85.0.12     2019-03-23         85.0.12     2019-03-23         227.5 kB  
+cgl                                Cancer Gene Landscape                                 annotator        yes        1.1.0       v2013.03.29        1.1.0       v2013.03.29        478.5 kB  
+chasmplus                          CHASMplus                                             annotator        yes        1.3.0       v1.0.0             1.3.0       v1.0.0             8.0 GB    
+chasmplus_ACC                      CHASMplus ACC                                         annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_ACC_mski                 CHASMplus ACC MSK-IMPACT                              annotator                   1.3.0       v1.0.0                                            124.5 kB  
+chasmplus_BLCA                     CHASMplus BLCA                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_BLCA_mski                CHASMplus BLCA MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            173.3 kB  
+chasmplus_BRCA                     CHASMplus BRCA                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_BRCA_mski                CHASMplus BRCA MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            153.9 kB  
+chasmplus_CESC                     CHASMplus CESC                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_CESC_mski                CHASMplus CESC MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            187.4 kB  
+chasmplus_CHOL                     CHASMplus CHOL                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_CHOL_mski                CHASMplus CHOL MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            106.0 kB  
+chasmplus_COAD                     CHASMplus COAD                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_COAD_mski                CHASMplus COAD MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            182.6 kB  
+chasmplus_DLBC                     CHASMplus DLBC                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_DLBC_mski                CHASMplus DLBC MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            133.8 kB  
+chasmplus_ESCA                     CHASMplus ESCA                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_ESCA_mski                CHASMplus ESCA MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            173.7 kB  
+chasmplus_GBM                      CHASMplus GBM                                         annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_GBM_mski                 CHASMplus GBM MSK-IMPACT                              annotator                   1.3.0       v1.0.0                                            180.7 kB  
+chasmplus_HNSC                     CHASMplus HNSC                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_HNSC_mski                CHASMplus HNSC MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            191.6 kB  
+chasmplus_KICH                     CHASMplus KICH                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_KICH_mski                CHASMplus KICH MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            132.6 kB  
+chasmplus_KIRC                     CHASMplus KIRC                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_KIRC_mski                CHASMplus KIRC MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            150.2 kB  
+chasmplus_KIRP                     CHASMplus KIRP                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_KIRP_mski                CHASMplus KIRP MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            166.1 kB  
+chasmplus_LAML                     CHASMplus LAML                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_LAML_mski                CHASMplus LAML MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            127.6 kB  
+chasmplus_LGG                      CHASMplus LGG                                         annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_LGG_mski                 CHASMplus LGG MSK-IMPACT                              annotator                   1.3.0       v1.0.0                                            163.3 kB  
+chasmplus_LIHC                     CHASMplus LIHC                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_LIHC_mski                CHASMplus LIHC MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            170.7 kB  
+chasmplus_LUAD                     CHASMplus LUAD                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_LUAD_mski                CHASMplus LUAD MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            270.6 kB  
+chasmplus_LUSC                     CHASMplus LUSC                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_LUSC_mski                CHASMplus LUSC MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            195.1 kB  
+chasmplus_MESO                     CHASMplus MESO                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_MESO_mski                CHASMplus MESO MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            182.3 kB  
+chasmplus_OV                       CHASMplus OV                                          annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_OV_mski                  CHASMplus OV MSK-IMPACT                               annotator                   1.3.0       v1.0.0                                            142.7 kB  
+chasmplus_PAAD                     CHASMplus PAAD                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_PAAD_mski                CHASMplus PAAD MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            181.9 kB  
+chasmplus_PCPG                     CHASMplus PCPG                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_PCPG_mski                CHASMplus PCPG MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            153.5 kB  
+chasmplus_PRAD                     CHASMplus PRAD                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_PRAD_mski                CHASMplus PRAD MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            169.6 kB  
+chasmplus_READ                     CHASMplus READ                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_READ_mski                CHASMplus READ MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            167.5 kB  
+chasmplus_SARC                     CHASMplus SARC                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_SARC_mski                CHASMplus SARC MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            144.7 kB  
+chasmplus_SKCM                     CHASMplus SKCM                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_SKCM_mski                CHASMplus SKCM MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            174.1 kB  
+chasmplus_STAD                     CHASMplus STAD                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_STAD_mski                CHASMplus STAD MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            162.2 kB  
+chasmplus_TGCT                     CHASMplus TGCT                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_TGCT_mski                CHASMplus TGCT MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            103.8 kB  
+chasmplus_THCA                     CHASMplus THCA                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_THCA_mski                CHASMplus THCA MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            31.5 kB   
+chasmplus_THYM                     CHASMplus THYM                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_THYM_mski                CHASMplus THYM MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            95.5 kB   
+chasmplus_UCEC                     CHASMplus UCEC                                        annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_UCEC_mski                CHASMplus UCEC MSK-IMPACT                             annotator                   1.3.0       v1.0.0                                            242.8 kB  
+chasmplus_UCS                      CHASMplus UCS                                         annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_UCS_mski                 CHASMplus UCS MSK-IMPACT                              annotator                   1.3.0       v1.0.0                                            192.7 kB  
+chasmplus_UVM                      CHASMplus UVM                                         annotator                   1.3.0       v1.0.0                                            8.0 GB    
+chasmplus_UVM_mski                 CHASMplus UVM MSK-IMPACT                              annotator                   1.3.0       v1.0.0                                            131.9 kB  
+chasmplus_group                    CHASMplus                                             group            yes        1.2.0       v1.0.0             1.2.0       v1.0.0             77.0 kB   
+chasmplus_mski                     CHASMplus MSK-IMPACT                                  annotator                   1.3.0       v1.0.0                                            278.1 kB  
+chasmplus_mski_group               CHASMplus MSK-IMPACT                                  group                       1.2.0       v1.0.0                                            77.1 kB   
+civic                              CIViC                                                 annotator        yes        1.0.15      Jan 2019           1.0.15      Jan 2019           51.8 kB   
+civic_gene                         CIViC Gene                                            annotator        yes        1.0.10      Jan 2019           1.0.10      Jan 2019           54.2 kB   
+clingen                            ClinGen Gene                                          annotator                   1.0.1                                                         188.8 kB  
+clinpred                           ClinPred                                              annotator                   1.0.0       October 2018                                      3.8 GB    
+clinvar                            ClinVar                                               annotator        yes        2021.03.03  2021.03.03         2021.03.03  2021.03.03         190.8 MB  
+clinvar_acmg                       ClinVar ACMG                                          annotator        yes        2021.03.03  2021.03.03         2021.03.03  2021.03.03         58.4 MB   
+cosmic                             COSMIC                                                annotator        yes        92.1.0      v92                92.1.0      v92                1.6 GB    
+cosmic_gene                        COSMIC Gene                                           annotator        yes        92.0.0      v92                92.0.0      v92                131.1 MB  
+cravat-converter                   Cravat Converter                                      converter        yes        1.1.2                          1.1.2                          11.9 kB   
+csvreporter                        CSV Reporter                                          reporter                    2.1.0                                                         241.7 kB  
+cvdkp                              Cardiovascular Disease Knowledge Portal               annotator        yes        1.0.0       27 March 2019      1.0.0       27 March 2019      2.5 GB    
+dann_coding                        DANN Coding                                           annotator                   1.0.0       v4.1                                              4.3 GB    
+dbscsnv                            dbscSNV                                               annotator                   1.0.0       v1.1                                              754.4 MB  
+dbsnp                              dbSNP                                                 annotator                   154.0.2     v154                                              31.9 GB   
+dbsnp-converter                    dbSNP Converter                                       converter                   1.2.0       154                                               30.4 GB   
+dbsnp_common                       dbSNP Common                                          annotator                   1.0.1       v154                                              1.4 GB    
+denovo                             Denovo-DB                                             annotator                   1.6.11      v161                                              38.8 MB   
+dgi                                DGIdb: The Drug Interaction Database                  annotator        yes        1.0.0       Jan 2021           1.0.0       Jan 2021           7.5 MB    
+dida                               DIDA: Digenic Diseases Database                       annotator                   1.0.0       July 2017                                         258.3 kB  
+encode_tfbs                        ENCODE TFBS                                           annotator                   1.0.2       2012-03                                           578.6 MB  
+ensembl_regulatory_build           Ensembl Regulatory Build                              annotator        yes        1.0.2       2020.06.09         1.0.2       2020.06.09         49.6 MB   
+esp6500                            ESP6500                                               annotator                   6500.2.6    v0.0.30                                           116.0 MB  
+ess_gene                           Essential Genes                                       annotator                   3.5.8       dbNSFP v4.0b1                                     347.4 kB  
+exac_gene                          ExAC Gene and CNV                                     annotator                   0.4.0       v0.3.1                                            2.5 MB    
+excelreporter                      Excel Reporter                                        reporter         yes        2.1.0                          2.1.0                          116.1 kB  
+fathmm                             FATHMM                                                annotator                   2.3.6       v2.3                                              10.4 GB   
+fathmm_mkl                         FATHMM MKL                                            annotator                   1.0.0       v4.1                                              5.1 GB    
+fathmm_xf_coding                   FATHMM XF Coding                                      annotator                   1.0.0       v4.1                                              4.1 GB    
+fitcons                            fitCons                                               annotator                   1.0.0       v4.1                                              4.2 GB    
+flank_seq                          Flanking Sequence                                     annotator                   0.0.3                                                         6.0 GB    
+ftdna-converter                    FamilyTreeDNA Converter                               converter                   1.4.0                                                         30.7 kB   
+funseq2                            FunSeq2                                               annotator                   1.0.0       v2.1.6                                            33.4 GB   
+genehancer                         GeneHancer                                            annotator                   1.1.0       v4.7                                              42.4 MB   
+gerp                               GERP++                                                annotator                   3.6.1       dbNSFP v4.0b1                                     4.7 GB    
+geuvadis                           Geuvadis eQTLs                                        annotator                   0.0.1                                                         294.8 kB  
+ghis                               GHIS                                                  annotator                   3.6.0       dbNSFP v4.0b1                                     718.8 kB  
+gnomad                             gnomAD                                                annotator                   2.2.0       v2.1                                              17.4 GB   
+gnomad3                            gnomAD3                                               annotator                   1.1.0       v3                                                44.0 GB   
+gnomad_gene                        gnomAD Gene                                           annotator                   2.2.1       v2.1                                              10.6 MB   
+go                                 Gene Ontology                                         annotator        yes        2021.02.04  2020.12.03         2021.02.04  2020.12.03         40.3 MB   
+grasp                              GRASP                                                 annotator                   2.0.8       v2.0.0.0                                          714.9 MB  
+gtex                               GTEx eQTLs                                            annotator                   7.0.4       v7                                                14.7 MB   
+gwas_catalog                       GWAS Catalog                                          annotator                   1.0.0                                                         38.9 MB   
+haploreg_afr                       HaploReg African                                      annotator                   1.1.0       v4.1                                              10.4 GB   
+haploreg_amr                       HaploReg American                                     annotator                   1.1.0       v4.1                                              15.9 GB   
+haploreg_asn                       HaploReg Asian                                        annotator                   1.1.0       v4.1                                              12.9 GB   
+haploreg_eur                       HaploReg European                                     annotator                   1.1.0       v4.1                                              15.2 GB   
+haploreg_group                     HaploReg                                              group                       1.0.0       v4.1                                              4.3 kB    
+hg19                               hg19 coordinates                                      annotator                   1.0.6                                                         3.9 MB    
+hg38                               UCSC hg38 Gene Mapper                                 mapper           yes        1.10.2                         1.10.2                         353.2 MB  
+hgdp                               HGDP                                                  annotator                   1.0.0                                                         63.4 MB   
+intact                             IntAct                                                annotator                   2019.08.23  2018.11.30                                        8.8 MB    
+interpro                           InterPro                                              annotator                   71.3.0      v71                                               7.3 GB    
+javierre_promoters                 Promoter IR                                           annotator                   2019.05.20  November 17, 2016                                 551.9 kB  
+linsight                           LINSIGHT                                              annotator                   2021.01.08  2018.10.19                                        9.2 GB    
+litvar                             LitVar                                                annotator                   1.1.0       Live                                              377.5 kB  
+loftool                            LoFtool                                               annotator                   3.6.1       dbNSFP v4.0b1                                     586.5 kB  
+lrt                                Likelihood Ratio Test                                 annotator                   1.0.0       v4.1                                              3.9 GB    
+mavedb                             MaveDB                                                annotator                   1.0.1       v1.7.1                                            2.1 MB    
+metalr                             MetaLR                                                annotator                   1.0.3       v4.1                                              4.0 GB    
+metasvm                            MetaSVM                                               annotator                   1.0.1       v4.1                                              4.0 GB    
+mirbase                            miRBase                                               annotator                   1.0.1       v3.0                                              644.9 kB  
+mtb                                Molecular Tumor Board Report                          annotator                   1.0.0                                                         362.8 kB  
+mupit                              MuPIT                                                 annotator                   4.3.3       v5.2.4                                            5.6 MB    
+mutation_assessor                  Mutation Assessor                                     annotator                   3.0.6       Release 3                                         3.9 GB    
+mutationtaster                     MutationTaster                                        annotator                   1.0.0       v4.1a                                             12.1 GB   
+mutpanning                         Mutpanning                                            annotator                   1.0.0       v2.0                                              402.1 kB  
+mutpred1                           MutPred                                               annotator                   1.4.0       v4.1                                              15.6 GB   
+mutpred_indel                      MutPred-Indel                                         annotator                   1.0.0       v1.0                                              953.0 MB  
+ncbigene                           NCBI Gene                                             annotator                   2019.08.02  2019.03.23                                        13.7 MB   
+ncrna                              ncRNA                                                 annotator                   2019.08.19  hg38                                              5.8 MB    
+ndex                               NDEx NCI Cancer Pathways                              annotator                   4.0.11      v2                                                796.0 kB  
+ndex_chd                           NDEx Congenital Heart Disease                         annotator                   1.0.2       v2                                                396.2 kB  
+ndex_group                         NDEx                                                  group                       1.0.0       2020.08                                           74.8 kB   
+ndex_signor                        NDEx SIGNOR                                           annotator                   1.0.2       v2                                                317.1 kB  
+oldcravat-converter                OldCravat Converter                                   converter        yes        1.1.2                          1.1.2                          9.3 kB    
+omim                               OMIM                                                  annotator                   1.0.0       v4.1                                              10.4 MB   
+pandasreporter                     pandas Reporter                                       reporter                    1.2.0                                                         3.6 kB    
+pangalodb                          PangaloDB                                             annotator                   1.0.0       2020.03.27                                        1.3 MB    
+pharmgkb                           PharmGKB                                              annotator                   2.2.0       2021-03-03                                        3.7 MB    
+phastcons                          Phast Cons                                            annotator                   3.5.8       dbNSFP v4.0b1                                     6.3 GB    
+phdsnpg                            PhD-SNPg                                              annotator                   0.0.8       dbNSFP v4.0b1                                     5.3 GB    
+phi                                p(HI)                                                 annotator                   3.6.1       dbNSFP v4.0b1                                     728.3 kB  
+phylop                             PhyloP                                                annotator                   3.5.9       dbNSFP v4.0b1                                     14.2 GB   
+polyphen2                          PolyPhen-2                                            annotator        yes        1.1.0       v4.1               1.1.0       v4.1               10.3 GB   
+prec                               P(rec)                                                annotator                   3.6.0       dbNSFP v4.0b1                                     609.8 kB  
+provean                            PROVEAN: Protein Variant Effect Analyzer              annotator        yes        1.0.0       v4.1a              1.0.0       v4.1a              12.5 GB   
+pseudogene                         Pseudogene                                            annotator                   28.0.1      hg38                                              2.2 MB    
+pubmed                             PubMed                                                annotator        yes        1.1.5                          1.1.5                          981.6 kB  
+rdatareporter                      RData Reporter                                        reporter                    1.1.0                                                         17.4 kB   
+regulomedb                         RegulomeDB                                            annotator                   1.0.0       v2.0                                              1.1 GB    
+repeat                             Repeat Sequences                                      annotator                   2020.10.16  hg38                                              366.4 MB  
+revel                              REVEL                                                 annotator                   2020.12.02  v4.1a                                             7.4 GB    
+rvis                               RVIS                                                  annotator                   3.1.0       v3                                                1.4 MB    
+segway                             Segway                                                annotator                   1.2.0                                                         8.3 MB    
+segway_adrenal                     Segway Adrenal                                        annotator                   1.2.0       2019.09.01                                        318.9 MB  
+segway_blood                       Segway Blood                                          annotator                   1.2.0       2019.09.01                                        10.2 GB   
+segway_brain                       Segway Brain                                          annotator                   1.2.0       2019.09.01                                        4.5 GB    
+segway_breast                      Segway Breast                                         annotator                   1.2.0       2019.09.01                                        691.5 MB  
+segway_esc                         Segway Esc                                            annotator                   1.2.0       2019.09.01                                        1.9 GB    
+segway_esc_derived                 Segway Esc Derived                                    annotator                   1.2.0       2019.09.01                                        5.7 GB    
+segway_fat                         Segway Fat                                            annotator                   1.2.0       2019.09.01                                        1.0 GB    
+segway_gi_colon                    Segway GI Colon                                       annotator                   1.2.0       2019.09.01                                        1.1 GB    
+segway_gi_duodenum                 Segway GI Duodenum                                    annotator                   1.2.0       2019.09.01                                        908.9 MB  
+segway_gi_intestine                Segway GI Intestine                                   annotator                   1.2.0       2019.09.01                                        777.0 MB  
+segway_gi_rectum                   Segway GI Rectum                                      annotator                   1.2.0       2019.09.01                                        1.5 GB    
+segway_gi_stomach                  Segway GI Stomach                                     annotator                   1.2.0       2019.09.01                                        1.5 GB    
+segway_group                       Segway                                                group                       1.0.0       2019.09                                           6.9 kB    
+segway_heart                       Segway Heart                                          annotator                   1.2.0       2019.09.01                                        1.5 GB    
+segway_ipsc                        Segway Ipsc                                           annotator                   1.2.0       2019.09.01                                        2.1 GB    
+segway_kidney                      Segway Kidney                                         annotator                   1.2.0       2019.09.01                                        494.0 MB  
+segway_liver                       Segway Liver                                          annotator                   1.2.0       2019.09.01                                        367.9 MB  
+segway_lung                        Segway Lung                                           annotator                   1.2.0       2019.09.01                                        368.2 MB  
+segway_muscle                      Segway Muscle                                         annotator                   1.2.0       2019.09.01                                        1.1 GB    
+segway_muscle_leg                  Segway Muscle Leg                                     annotator                   1.2.0       2019.09.01                                        297.5 MB  
+segway_ovary                       Segway Ovary                                          annotator                   1.2.0       2019.09.01                                        342.3 MB  
+segway_placenta                    Segway Placenta                                       annotator                   1.2.0       2019.09.01                                        822.7 MB  
+segway_skin                        Segway Skin                                           annotator                   1.2.0       2019.09.01                                        3.0 GB    
+segway_stromal_connective          Segway Stromal Connective                             annotator                   1.2.0       2019.09.01                                        1.3 GB    
+segway_thymus                      Segway Thymus                                         annotator                   1.2.0       2019.09.01                                        714.8 MB  
+segway_vascular                    Segway Vascular                                       annotator                   1.2.0       2019.09.01                                        296.8 MB  
+sift                               SIFT                                                  annotator        yes        1.1.0       SIFT4G 2016-02-22  1.1.0       SIFT4G 2016-02-22  21.9 GB   
+siphy                              SiPhy                                                 annotator        yes        3.5.5       dbNSFP v4.0b1      3.5.5       dbNSFP v4.0b1      5.6 GB    
+spliceai                           SpliceAI                                              annotator                   1.0.0       v4.0                                              1.8 GB    
+swissprot_binding                  Swiss-Prot Binding                                    annotator                   1.0.0       12.02.2020                                        3.0 MB    
+swissprot_domains                  Swiss-Prot Domains                                    annotator                   1.0.0       12.02.2020                                        12.4 MB   
+swissprot_ptm                      Swiss-Prot PTM                                        annotator                   1.1.0       2018.04.10                                        12.6 MB   
+tagsampler                         Tag Sampler                                           postaggregator   yes        1.1.4                          1.1.4                          3.2 kB    
+target                             TARGET                                                annotator                   3.1.0       v3.0.1                                            62.1 kB   
+textreporter                       Text Reporter                                         reporter         yes        1.0.7                          1.0.7                          257.3 kB  
+thousandgenomes                    1000 Genomes                                          annotator                   4.1.0       Phase 3                                           5.3 GB    
+thousandgenomes_ad_mixed_american  1000 Genomes-Ad Mixed American                        annotator                   4.1.1       Phase 3                                           4.1 GB    
+thousandgenomes_african            1000 Genomes-African                                  annotator                   4.1.1       Phase 3                                           5.3 GB    
+thousandgenomes_east_asian         1000 Genomes-East Asian                               annotator                   4.1.1       Phase 3                                           4.1 GB    
+thousandgenomes_european           1000 Genomes-European                                 annotator                   4.1.1       Phase 3                                           4.2 GB    
+thousandgenomes_group              1000 Genomes                                          group                       3.1.0       Phase 3                                           17.6 kB   
+thousandgenomes_south_asian        1000 Genomes-South Asian                              annotator                   4.1.1       Phase 3                                           4.2 GB    
+trinity                            Trinity CTAT                                          annotator                   1.0.0       26 February 2020                                  174.4 kB  
+tsvreporter                        TSV Reporter                                          reporter                    2.1.0                                                         239.8 kB  
+uk10k_cohort                       UK10k Cohorts                                         annotator        yes        3.5.9       dbNSFP v4.0b1      3.5.9       dbNSFP v4.0b1      16.4 MB   
+uniprot                            UniProt                                               annotator        yes        2020.08.10  201809             2020.08.10  201809             791.9 kB  
+vcf-converter                      VCF Converter                                         converter        yes        2.0.2                          2.0.2                          36.4 kB   
+vcfinfo                            VCF Info                                              postaggregator   yes        1.1.5                          1.1.5                          4.7 kB    
+vcfreporter                        VCF Reporter                                          reporter         yes        3.0.0                          3.0.0                          274.2 kB  
+vest                               VEST4                                                 annotator        yes        4.3.1       v4                 4.3.1       v4                 9.7 GB    
+vista_enhancer                     VISTA Enhancer Browser                                annotator                   2019.08.02  hg19                                              127.9 kB  
+wgallelefrequency                  Allele Frequency Spectrum                             webviewerwidget  yes        1.0.0                          1.0.0                          23.0 kB   
+wgaloft                            ALoFT                                                 webviewerwidget  yes        1.0.0                          1.0.0                          1.6 kB    
+wgbasechanges                      Base Changes                                          webviewerwidget             1.0.0                                                         6.4 kB    
+wgcircossummary                    Circos Summary                                        webviewerwidget  yes        2.0.3                          2.0.3                          626.5 kB  
+wgcodingvsnoncodingsummary         Coding vs Noncoding Summary                           webviewerwidget  yes        1.1.3                          1.1.3                          2.5 kB    
+wgdgi                              DGIdb                                                 webviewerwidget  yes        1.0.0                          1.0.0                          1.7 kB    
+wgdida                             DIDA                                                  webviewerwidget             1.0.0                                                         4.2 kB    
+wgenhancer                         Frequently Mutated Enhancers                          webviewerwidget  yes        1.0.0                          1.0.0                          10.7 kB   
+wgfunseq2                          FunSeq2                                               webviewerwidget  yes        1.0.0                          1.0.0                          1.5 kB    
+wggosummary                        Gene Ontology Summary                                 webviewerwidget  yes        2.1.0                          2.1.0                          10.6 MB   
+wgigv                              IGV                                                   webviewerwidget             1.1.0                                                         2.7 MB    
+wgindel                            Insertions and Deletions                              webviewerwidget             1.0.0                                                         9.0 kB    
+wgmutationtaster                   MutationTaster                                        webviewerwidget  yes        1.0.0                          1.0.0                          1.4 kB    
+wgprovean                          PROVEAN                                               webviewerwidget  yes        1.0.0                          1.0.0                          1.3 kB    
+wgrankscore                        Rank Score                                            webviewerwidget             1.0.0                                                         6.2 kB    
+wgsosamplesummary                  Sequence Ontology Sample Summary                      webviewerwidget  yes        2.0.2                          2.0.2                          11.9 kB   
+wgsosummary                        Sequence Ontology Summary                             webviewerwidget  yes        1.4.0                          1.4.0                          4.5 kB    
+wgthousandgenomes_african          1000 Genomes-African                                  webviewerwidget             1.0.0                                                         1.5 kB    
+wgthousandgenomes_east_asian       1000 Genomes-East Asian                               webviewerwidget             1.0.0                                                         1.3 kB    
+wgthousandgenomes_european         1000 Genomes-European                                 webviewerwidget             1.0.0                                                         1.3 kB    
+wgthousandgenomes_south_asian      1000 Genomes-South Asian                              webviewerwidget             1.0.0                                                         1.3 kB    
+wgtopgenessummary                  Recurrently Mutated Genes                             webviewerwidget             2.1.0                                                         638.6 kB  

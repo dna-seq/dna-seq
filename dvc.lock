@@ -21,22 +21,22 @@ stages:
     outs:
     - path: data/ensembl/103/cache/homo_sapiens
   prepare_genome:
-    cmd: gunzip -k data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
-      && samtools faidx data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-      && samtools dict data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-      -o data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+    cmd: gunzip -k data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+      && samtools faidx data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+      && samtools dict data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+      -o data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
     deps:
-    - path: data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    - path: data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
       md5: f58a039f83d8944ceb79cdd16cbda583
       size: 881211416
     outs:
-    - path: data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+    - path: data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
       md5: 9e6b9465dc708d92bf6d67e9c9fa9389
       size: 3151425857
-    - path: data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
-      md5: 74f301cbacef639028b77320918bc8ab
+    - path: data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+      md5: 845530fd24d8175b9fe10e2395e041cd
       size: 34186
-    - path: data/ensembl/103/species/homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
+    - path: data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
       md5: d527f3eb6b664020cf4d882b5820056f
       size: 6406
   prepare_vep:
