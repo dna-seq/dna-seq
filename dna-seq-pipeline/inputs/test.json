@@ -9,6 +9,6 @@
   "dna_seq_pipeline.coverage_sampling": 100,
   "dna_seq_pipeline.max_memory_gb": 48,
   "dna_seq_pipeline.simple_variant_calling": false,
-  "dna_seq_pipeline.markdup": true,
+  "dna_seq_pipeline.markdup": false,
   "dna_seq_pipeline.sequence_aligner": "minimap2"
 }

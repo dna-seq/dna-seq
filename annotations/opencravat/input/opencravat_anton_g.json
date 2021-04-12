@@ -1,0 +1,6 @@
+{
+  "opencravat.jobs": "/data/opencravat/jobs",
+  "opencravat.modules": "/data/opencravat/modules",
+  "opencravat.logs": "/data/opencravat/logs",
+  "opencravat.vcf": "/data/gwas/anton/variants/deepvariant/antonkulaga.g.vcf"
+}
