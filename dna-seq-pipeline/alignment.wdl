@@ -8,6 +8,7 @@ workflow alignment {
     input {
         Array[File]+ reads
         File reference
+        File? reference_index #used only if bwa-mem2 is an aligner
         String name
         String destination
         String sequence_aligner = "minimap2"
@@ -34,7 +35,8 @@ workflow alignment {
             destination = destination + "/" + "aligned",
             aligner = sequence_aligner,
             markdup = markdup,
-            compression = compression
+            compression = compression,
+            reference_index = reference_index
     }
 
 

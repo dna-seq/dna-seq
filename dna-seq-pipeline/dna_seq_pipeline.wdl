@@ -18,6 +18,7 @@ workflow dna_seq_pipeline {
         Boolean is_paired = true
         File reference #i.e. Homo_sapiens.GRCh38.dna.primary_assembly.fa
         File reference_fai #i.e. Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
+        File? reference_index #used only if bwa-mem2 is an aligner
         Int align_threads# = 12
         Int sort_threads# = 12
         Int variant_calling_threads = 16
@@ -45,7 +46,8 @@ workflow dna_seq_pipeline {
           max_memory_gb = max_memory_gb,
           compression = compression,
           markdup = markdup,
-          sequence_aligner = sequence_aligner
+          sequence_aligner = sequence_aligner,
+          reference_index = reference_index
     }
 
 
