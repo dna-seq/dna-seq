@@ -29,7 +29,7 @@ workflow dna_seq_pipeline {
         Boolean simple_variant_calling = false
         Boolean markdup = false
         Int compression = 9
-        String sequence_aligner = "minimap2"
+        String sequence_aligner = "bwa-mem2"
     }
 
 
