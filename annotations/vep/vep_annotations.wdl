@@ -33,7 +33,6 @@ workflow vep_annotations{
                 threads = threads,
                 database = database,
                 fasta = reference,
-                species = species,
                 disease_associations = disease_associations,
                 G2P = G2P,
                 check_sorted = check_sorted,

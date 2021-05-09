@@ -2,5 +2,7 @@
   "opencravat.jobs": "/data/opencravat/jobs",
   "opencravat.modules": "/data/opencravat/modules",
   "opencravat.logs": "/data/opencravat/logs",
-  "opencravat.vcf": "/data/gwas/anton/variants/deepvariant/antonkulaga.vcf"
+  "opencravat.vcf": "/data/gwas/anton/variants/deepvariant/antonkulaga.vcf",
+  "opencravat.report_formats": ["text", "tsv",  "csv", "rdata", "excel", "pandas"],
+  "opencravat.destination": "/data/gwas/anton/annotations/opencravat"
 }
