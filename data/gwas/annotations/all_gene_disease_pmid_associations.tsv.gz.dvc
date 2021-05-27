@@ -1,0 +1,9 @@
+md5: 22443fd1576e8f10b6d937f4b6f9224e
+frozen: true
+deps:
+- etag: '"27c9fa6-5a50f05166700"'
+  path: https://www.disgenet.org/static/disgenet_ap1/files/downloads/all_gene_disease_pmid_associations.tsv.gz
+outs:
+- md5: 113579e5872b8aafaf60859a3a72d70b
+  size: 41721766
+  path: all_gene_disease_pmid_associations.tsv.gz

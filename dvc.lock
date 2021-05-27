@@ -70,29 +70,53 @@ stages:
       data/ensembl/103/plugins
     deps:
     - path: data/ensembl/103/103.zip
+      md5: 13167f0a7f8c267a9df159c0c1c7e8ae
+      size: 492623
     outs:
     - path: data/ensembl/103/plugins/
+      md5: 5c18af410c66aa0b8287107ca6292587.dir
+      size: 1378694
+      nfiles: 71
   prepare_vep_cache:
-    cmd: tar -zxf data/ensembl/103/cache/homo_sapiens_vep_103_GRCh38.tar.gz -C data/ensembl/103/cache/
+    cmd: tar -zxf data/ensembl/103/homo_sapiens_vep_103_GRCh38.tar.gz -C data/ensembl/103/cache/
     deps:
-    - path: data/ensembl/103/cache/homo_sapiens_vep_103_GRCh38.tar.gz
+    - path: data/ensembl/103/homo_sapiens_vep_103_GRCh38.tar.gz
+      md5: 3e62399386af5f4b9227f024c2fe4e3f
+      size: 14833373388
     outs:
     - path: data/ensembl/103/cache/homo_sapiens
+      md5: 72832122df5cb3c98dd45c4da75ca7ba.dir
+      size: 14829045542
+      nfiles: 13880
   prepare_annotations_clinvar:
     cmd: echo "Clinvars annotations prepared"
     deps:
     - path: data/gwas/annotations/clinvar.vcf.gz
+      md5: 9403ec94164ba0ea2029f83b17c1716d
+      size: 39018953
     - path: data/gwas/annotations/clinvar.vcf.gz.tbi
+      md5: 5afcfda6504b75b1026adb119a44278a
+      size: 299512
   prepare_annotations_gene2phenotype:
     cmd: rm -f data/gwas/annotations/gene2phenotype/AllG2P.csv && awk '(NR == 1) ||
       (FNR > 1)' data/gwas/annotations/gene2phenotype/*.csv  > data/gwas/annotations/gene2phenotype/AllG2P.csv
     deps:
     - path: data/gwas/annotations/gene2phenotype/CancerG2P.csv
+      md5: 6504732dc971b2578c21a8cbd6c2d3ad
+      size: 19914
     - path: data/gwas/annotations/gene2phenotype/DDG2P.csv
+      md5: d21a0e446a3cc3b3adbae486cd6d11c6
+      size: 776664
     - path: data/gwas/annotations/gene2phenotype/EyeG2P.csv
+      md5: 9bf5d96096c52df97792b165fbfeda45
+      size: 221233
     - path: data/gwas/annotations/gene2phenotype/SkinG2P.csv
+      md5: 15e1b25db13f3929357ba3dba60e7e1b
+      size: 214278
     outs:
     - path: data/gwas/annotations/gene2phenotype/AllG2P.csv
+      md5: ccf679127863b2832ccb1ceb2561502a
+      size: 1231432
   prepare_annotations_digenet:
     cmd: "gunzip -c data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz\
       \ |\n   awk '($1 ~ /^snpId/ || $2 ~ /NA/) {next} {print $0}' |\n   sort -t $'\\\
@@ -100,9 +124,27 @@ stages:
       \ -c > data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz"
     deps:
     - path: data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz
+      md5: a393c9e8e104297aadcb7188f6460eaf
+      size: 11171100
     outs:
     - path: data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
+      md5: 3d5dea024369a02f300ca3346eedc967
+      size: 9918420
   prepare_opencravat:
     cmd: oc module install-base
   test_opencravat:
     cmd: oc new example-input . && oc run ./example_input -l hg38 && oc gui example_input/example_input.sqlite
+  install_opencravat:
+    cmd: oc module install-base && oc module install -y clinvar clinvar_acmg biogrid
+      uk10k_cohort uniprot pubmed provean polyphen2 cardioboost civic civic_gene cosmic
+      cosmic_gene go sift ensembl_regulatory_build dgi cvdkp
+  install_cancer:
+    cmd: oc module install chasmplus cgc cgl cancer_genome_interpreter cancer_hotspots
+      civic
+  prepare_annotations_longevity:
+    cmd: wget -qO- --timestamping https://genomics.senescence.info/longevity/longevity_genes.zip
+      | bsdtar -xvf- -C data/gwas/annotations/ longevity.csv
+    outs:
+    - path: data/gwas/annotations/longevity.csv
+      md5: 54e53fe8c1a97282458249e1625beec8
+      size: 66288

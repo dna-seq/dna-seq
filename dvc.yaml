@@ -20,8 +20,8 @@ stages:
       - data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
   prepare_vep_cache:
     deps:
-      - data/ensembl/103/cache/homo_sapiens_vep_103_GRCh38.tar.gz
-    cmd: tar -zxf data/ensembl/103/cache/homo_sapiens_vep_103_GRCh38.tar.gz -C data/ensembl/103/cache/
+      - data/ensembl/103/homo_sapiens_vep_103_GRCh38.tar.gz
+    cmd: tar -zxf data/ensembl/103/homo_sapiens_vep_103_GRCh38.tar.gz -C data/ensembl/103/cache/
     outs:
       - data/ensembl/103/cache/homo_sapiens
   prepare_vep_plugins:
@@ -62,6 +62,12 @@ stages:
 #     && for f in data/gwas/annotations/gene2phenotype/*.gz ; do gunzip -c "$f" > data/gwas/annotations/gene2phenotype/"${f%.*}" ; done 
     outs:
       - data/gwas/annotations/gene2phenotype/AllG2P.csv
+# https://genomics.senescence.info/longevity/longevity_genes.zip has no E-Tag!
+  prepare_annotations_longevity: 
+    cmd: >- 
+      wget -qO- --timestamping https://genomics.senescence.info/longevity/longevity_genes.zip | bsdtar -xvf- -C data/gwas/annotations/ longevity.csv
+    outs:
+      - data/gwas/annotations/longevity.csv
   install_opencravat:
     cmd: >-
       oc module install-base && oc module install -y clinvar clinvar_acmg biogrid uk10k_cohort uniprot pubmed provean polyphen2 cardioboost civic civic_gene cosmic cosmic_gene go sift ensembl_regulatory_build dgi cvdkp
