@@ -1,0 +1,9 @@
+md5: 0dc2d5898fe494957e8139a889534af1
+deps:
+- etag: '"3f6201790c6b07a0"'
+  size: 18172
+  path: http://agingkills.eu:8001/data/indexes/bwa-mem2/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.amb
+outs:
+- md5: 4a46c297bfc0b29cb2f7eefedc360556
+  size: 18172
+  path: Homo_sapiens.GRCh38.dna.primary_assembly.fa.amb
