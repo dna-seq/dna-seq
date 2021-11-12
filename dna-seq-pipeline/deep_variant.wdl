@@ -71,7 +71,7 @@ task go_deep{
     }
 
     runtime {
-        docker: "google/deepvariant:1.1.0"
+        docker: "google/deepvariant:1.2.0"
     }
 
     output {

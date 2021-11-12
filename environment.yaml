@@ -11,8 +11,8 @@ dependencies:
   - jupyterlab_code_formatter
   - python-language-server
   - seaborn
-  - dvc=2.1.0
+  - dvc=2.8.3
   - pydrive2
-  - open-cravat=2.2.3
+  - open-cravat=2.2.7
   - samtools
   - pyreadr

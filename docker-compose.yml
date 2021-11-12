@@ -22,7 +22,7 @@ services:
     ports:
       - "3307:3306"
     cap_add:
-      - SYS_NICE
+      - ALL
   cromwell-client:
     image: quay.io/comp-bio-aging/cromwell-web:latest
     environment:

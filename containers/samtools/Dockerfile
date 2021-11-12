@@ -1,6 +1,6 @@
 FROM quay.io/comp-bio-aging/base:latest
 
-ENV SAMTOOLS_VERSION 1.12
+ENV SAMTOOLS_VERSION 1.14
 
 # update package manager & build essentials
 RUN apt-get update \
