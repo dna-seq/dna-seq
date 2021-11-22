@@ -1,0 +1,25 @@
+test
+*.class
+*.log
+logs
+
+#VIM specific
+tags
+.*.swp
+.*.swo
+
+#MAC OS specific
+.DS_Store
+
+# sbt specific
+.cache/
+.history/
+.lib/
+dist/*
+target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+.idea
+.idea/*
