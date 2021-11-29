@@ -106,3 +106,7 @@ stages:
     cmd: oc module install-base
   test_opencravat:
     cmd: oc new example-input . && oc run ./example_input -l hg38 && oc gui example_input/example_input.sqlite
+  install_opencravat:
+    cmd: oc module install-base && oc module install -y clinvar clinvar_acmg biogrid
+      uk10k_cohort uniprot pubmed provean polyphen2 cardioboost civic civic_gene cosmic
+      cosmic_gene go sift ensembl_regulatory_build dgi cvdkp

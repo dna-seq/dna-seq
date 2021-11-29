@@ -1,17 +1,31 @@
-Simple DNA-Seq
+Just DNA-Seq
 ==============
-A simple pipeline to assemble personal and public genomes
 
-Description
------------
+Just a DNA-Seq analysis pipeline for personal and public genomes with some plugins and scripts on top of it.
 
-The pipeline is based on a WDL (Workflow Description Language) standard.
-Broad Institute provides a nice [video introduction](https://www.youtube.com/watch?v=aTAQ2eA_iOc&feature=youtu.be&fbclid=IwAR0r2YeeJMEh2XFmat6OIEmbmGWXEvye3UYplvSheYFl7mJ1ijR65G0awLc) which explains WDL, Cromwell and DNA-Seq pipelines. 
-For users with only high-school knowledge of biology I would also recommend taking any free biology 101 or genetics 101 course ( https://www.edx.org/course/introduction-to-biology-the-secret-of-life-3 is a good example)
+Despite being expensive in the beginning, today genome sequencing is something accessible to all of us and costs roughly 400-800 dollars.
+There are multiple sequencing and analysis proprietary services, however their results are often based on proprietary databases and algorithms, and their predictions are often non-transparent.
 
-We do not use Broad-s GATK pipeline (because we use [DeepVariant](https://academic.oup.com/bioinformatics/article/36/24/5582/6064144) as a variant caller) but common tools are similar. 
-All tools are dockerized, for this reason make sure that docker is installed. 
-Before running the pipeline with large genomes (human or mouse) make sure you have around 1 TB or more of free space.
+Just DNA-Seq project was created primarily for transparency reasons: we wanted to understand what is happening. 
+We also wanted to use the latest version of the tools as we discovered that, for example, DANTE-labs were using outdated version of the genomes and GATK.
+
+The project consists of multiple pipelines and scripts and can be either used separately or all-together
+Recently we started working on longevity applications as there are no good tools or plugins for longevity genetic variant annotations.
+
+Getting started
+---------------
+
+In the project we are using WDL (Workflow Description Language) pipelines as well as OpenCravat variant annotation system.
+If you want to run the whole pipeline make sure you have at least 500GB or more of free space and >=16GB of RAM. 
+All tools are dockerized, for this reason make sure that docker is installed.
+
+If genetic pipelines is something new for you, it can be useful to watch the Broad Institute [video introduction](https://www.youtube.com/watch?v=aTAQ2eA_iOc&feature=youtu.be&fbclid=IwAR0r2YeeJMEh2XFmat6OIEmbmGWXEvye3UYplvSheYFl7mJ1ijR65G0awLc) which explains WDL, Cromwell and DNA-Seq pipelines.
+Even though we do not use Broad-s GATK pipeline and mix our tools a bit differently (for example we use [DeepVariant](https://academic.oup.com/bioinformatics/article/36/24/5582/6064144) for variant calling), the video explains some useful concepts in genomic analysis.
+For the users with only high-school knowledge of biology I would also recommend taking any free biology 101 or genetics 101 course ( https://www.edx.org/course/introduction-to-biology-the-secret-of-life-3 is a good example)
+
+For gene annotations we use [OpenCravat](https://opencravat.org/) as well as VEP (as an alternative solution).
+Opencravat is included in the conda environment. 
+
 
 Install conda environment
 -------------------------
@@ -32,6 +46,9 @@ micromamba create -f environment.yaml
 micromamba activate gwas
 ```
 
+The instructions above are provided for Linux and MacOS (note: in MacOS you have to install wget). 
+For Windows you can either install Linux Subsystem or use Windows version of anaconda.
+
 Prepare data
 ------------
 
@@ -46,7 +63,9 @@ Of course, you can try to download all the data with:
 ```bash
 dvc repro
 ```
-However, it may take quite a while as ensembl_vep_cache (which is required for VEP annotations) is >14GB. And it may happen that OpenCravat will be enough for you needs.
+However, it may take quite a while as ensembl_vep_cache (which is required for VEP annotations) is >14GB. 
+And it may happen that OpenCravat will be enough for you needs.
+In the Future we plan to focus on OpenCravat leaving VEP as a legacy annotation system.
 
 
 Running services
@@ -141,12 +160,14 @@ Curently DVC resolves most of the files and does additional preprocessing with:
 dvc repro prepare
 ```
 
-TODOs
------
+Development plan
+----------------
 
-This repository is a work in progress, so I list todos:
+The pipeline still requires some technical skills to run, we plan to improve ease of use and stream-line it a bit.
+One of the most important part is variant filtering and annotations. 
+OpenCravat does a great job of installing huge number of annotation sources. 
+However, its output requires some biological skills to read, we are working now on:
+* reporting plugins to make reports for pre-selected genes
+* longevity plugin for analysis of gene variants associated with longevity.
 * mitochondrial variant calling
 * longevity annotations
-* docs on how to configure VEP
-* docs on opencravat  
-* eye and skin color annotations (stuff like http://mathgene.usc.es/snipper/eyeclassifier.html )
