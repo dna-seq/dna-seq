@@ -19,9 +19,9 @@ In the project we are using [WDL](https://openwdl.org/) (Workflow Description La
 If you want to run the whole pipeline make sure you have at least 500GB or more of free space and >=16GB of RAM. 
 All tools are dockerized, for this reason make sure that Docker is installed.
 
-If genetic pipelines is something new for you, it can be useful to watch the Broad Institute [video introduction](https://www.youtube.com/watch?v=aTAQ2eA_iOc&feature=youtu.be&fbclid=IwAR0r2YeeJMEh2XFmat6OIEmbmGWXEvye3UYplvSheYFl7mJ1ijR65G0awLc) which explains WDL, Cromwell and DNA-Seq pipelines.
+If genetic pipelines is something new for you, it can be useful to watch the Broad Institute [video introduction](https://www.youtube.com/watch?v=aTAQ2eA_iOc&feature=youtu.be&fbclid=IwAR0r2YeeJMEh2XFmat6OIEmbmGWXEvye3UYplvSheYFl7mJ1ijR65G0awLc) which explains WDL, Cromwell, and DNA-Seq pipelines.
 Even though we do not use Broad-s GATK pipeline and mix our tools a bit differently (for example we use [DeepVariant](https://academic.oup.com/bioinformatics/article/36/24/5582/6064144) for variant calling), the video explains some useful concepts in genomic analysis.
-For the users with only high-school knowledge of biology I would also recommend taking any free biology 101 or genetics 101 course ( https://www.edx.org/course/introduction-to-biology-the-secret-of-life-3 is a good example)
+For the users with only high-school knowledge of biology, I would also recommend taking any free biology 101 or genetics 101 course ( https://www.edx.org/course/introduction-to-biology-the-secret-of-life-3 is a good example)
 
 For gene annotations we use [OpenCravat](https://opencravat.org/) as well as VEP (as an alternative solution).
 Opencravat is included in the conda environment. 
@@ -64,8 +64,8 @@ Of course, you can try to download all the data with:
 dvc repro
 ```
 However, it may take quite a while as ensembl_vep_cache (which is required for VEP annotations) is >14GB. 
-And it may happen that OpenCravat will be enough for you needs.
-In the Future we plan to focus on OpenCravat leaving VEP as a legacy annotation system.
+And it may happen that OpenCravat will be enough for your needs.
+In the Future, we plan to focus on OpenCravat leaving VEP as a legacy annotation system.
 
 
 Running services
@@ -121,8 +121,8 @@ Genomes to play with
 ------------------
 
 I tested the pipeline on my personal genome sequenced by Dante. 
-If you do not have your own genome in disposal, you can try any of the public ones, for example you can download WGS fastq files from https://www.personalgenomes.org.uk/data/.
-For quick test of all tools consider having small test fastq-s (example of such test is in test.json).
+If you do not have your own genome at disposal, you can try any of the public ones, for example, you can download WGS fastq files from https://www.personalgenomes.org.uk/data/.
+For a quick test of all tools consider having small test fastq-s (example of such test is in test.json).
 If you have a bam file with input we provide bam_to_fastq pipeline to extract fastq-s from it.
 
 
@@ -137,13 +137,13 @@ There are three major ways of running any of the pipelines in the repository:
 Genome annotations
 ==================
 
-There are two alternative annotation tools: VEP and [OpenCravat](https://opencravat.org/). VEP is more established and oldfasioned. OpenCravat is newer and more user-friendly. I recommend to start from OpenCravat.
+There are two alternative annotation tools: VEP and [OpenCravat](https://opencravat.org/). VEP is more established and oldfashioned. OpenCravat is newer and more user-friendly. I recommend starting from OpenCravat.
 
 Opencravat annotations
 ======================
 
 Opencravat is included to the environment.
-Before starting, it is recommended to install annotation modules of your interested.
+Before starting, it is recommended to install annotation modules of your interest.
 There is a dvc stage for the default modules:
 ```bash
 dvc repro install_opencravat
@@ -154,8 +154,8 @@ VEP annotations
 
 The most important part of the pipeline is VEP annotations.
 To make it work you must download Ensembl cache and Ensembl plugins.
-Right now VEP annotations require additional files, for this reason they are provided as separate pipeline.
-Curently DVC resolves most of the files and does additional preprocessing with:
+Right now VEP annotations require additional files, for this reason, they are provided as a separate pipeline.
+Currently DVC resolves most of the files and does additional preprocessing with:
 ```
 dvc repro prepare
 ```
@@ -164,8 +164,8 @@ Development plan
 ----------------
 
 The pipeline still requires some technical skills to run, we plan to improve ease of use and stream-line it a bit.
-One of the most important part is variant filtering and annotations. 
-OpenCravat does a great job of installing huge number of annotation sources. 
+One of the most important parts is variant filtering and annotations. 
+OpenCravat does a great job of installing a huge number of annotation sources. 
 However, its output requires some biological skills to read, we are working now on:
 * reporting plugins to make reports for pre-selected genes
 * longevity plugin for analysis of gene variants associated with longevity.
