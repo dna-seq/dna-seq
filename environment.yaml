@@ -1,18 +1,22 @@
-name: gwas
+name: dna-seq
 channels:
   - conda-forge
   - bioconda
   - defaults
 dependencies:
-  - python=3.8
+  - python=3.9
   - jupyterlab
   - nbresuse # extension to monitor resource usage
   - jupyterlab-lsp
   - jupyterlab_code_formatter
   - python-language-server
   - seaborn
-  - dvc=2.8.3
+  - dvc=2.9.2
   - pydrive2
   - open-cravat=2.2.7
   - samtools
   - pyreadr
+  - pip:
+      - pyfunctional
+      - pycomfort
+
