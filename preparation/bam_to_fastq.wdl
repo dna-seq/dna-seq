@@ -1,5 +1,7 @@
 version development
 
+import "https://raw.githubusercontent.com/antonkulaga/bioworkflows/main/common/files.wdl" as files
+
 workflow bam_to_fastq {
 
     input {
@@ -16,7 +18,7 @@ workflow bam_to_fastq {
         input: bam = samtools_sort_by_name.out
     }
 
-    call copy {
+    call files.copy as copy {
         input: files = bam2fastq.out,
         destination = destination
     }
@@ -63,29 +65,5 @@ task bam2fastq{
 
     output {
         Array[File] out = [basename(bam, ".bam")+"_1.fq", basename(bam, ".bam")+"_2.fq"]
-    }
-}
-
-task copy {
-    input {
-        Array[File] files
-        String destination
-    }
-
-    String where = sub(destination, ";", "_")
-
-    command {
-        mkdir -p ~{where}
-        cp -L -R -u ~{sep=' ' files} ~{where}
-        declare -a files=(~{sep=' ' files})
-        for i in ~{"$"+"{files[@]}"};
-          do
-              value=$(basename ~{"$"}i)
-              echo ~{where}/~{"$"}value
-          done
-    }
-
-    output {
-        Array[File] out = read_lines(stdout())
     }
 }

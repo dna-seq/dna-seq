@@ -112,7 +112,7 @@ task get_rg {
 
     command {
         touch error.txt
-        if [ "${rg_use_source}" != 'true' ]; then
+        if [ "~{rg_use_source}" != 'true' ]; then
         echo ~{"@RG\\\\\\\\tID:" + ID + "\\\\\\\\tLB:" + LB + "\\\\\\\\tPL:" + PL + "\\\\\\\\tPU:" + PU + "\\\\\\\\tSM:" + SM}
         else
         samtools view -H ~{rg_source} | grep '^@RG' | sed 's/'$'\t''/\\\\t/g'
