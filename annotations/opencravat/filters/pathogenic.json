@@ -1,0 +1,78 @@
+{
+  "sample": {
+    "require": [],
+    "reject": []
+  },
+  "genes": [],
+  "variant": {
+    "operator": "and",
+    "rules": [
+      {
+        "operator": "or",
+        "rules": [
+          {
+            "column": "cadd_exome__phred",
+            "test": "greaterThan",
+            "value": 10,
+            "negate": false
+          },
+          {
+            "column": "sift__prediction",
+            "test": "select",
+            "value": [
+              "Damaging"
+            ],
+            "negate": false
+          },
+          {
+            "column": "revel__score",
+            "test": "greaterThan",
+            "value": 0.5,
+            "negate": false
+          },
+          {
+            "column": "clinvar__sig",
+            "test": "select",
+            "value": [
+              "Pathogenic"
+            ],
+            "negate": false
+          },
+          {
+            "column": "clinpred__score",
+            "test": "greaterThan",
+            "value": 0.5,
+            "negate": false
+          }
+        ],
+        "negate": false
+      },
+      {
+        "operator": "or",
+        "rules": [
+          {
+            "column": "omim__omim_id",
+            "test": "hasData",
+            "value": null,
+            "negate": false
+          },
+          {
+            "column": "clinvar__id",
+            "test": "hasData",
+            "value": null,
+            "negate": false
+          },
+          {
+            "column": "ncbigene__ncbi_desc",
+            "test": "hasData",
+            "value": null,
+            "negate": false
+          }
+        ],
+        "negate": false
+      }
+    ],
+    "negate": false
+  },
+  "smartfilter": {}
+}
