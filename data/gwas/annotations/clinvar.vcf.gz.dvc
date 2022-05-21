@@ -1,8 +1,8 @@
-md5: 112d4073f350d9d6e75cfde9114762f3
+md5: 531ba86b382cbb71a7ed0fad1be2ccd1
 deps:
 - path: http://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz
   size: 57813301
-  checksum: '"3722935-5df53b38168c8"'
+  etag: '"3722935-5df53b38168c8"'
 outs:
 - md5: 1a0bd5729abb411a388e590431c62f99
   size: 57813301

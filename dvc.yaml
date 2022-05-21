@@ -58,19 +58,19 @@ stages:
       - data/gwas/annotations/clinvar.vcf.gz.tbi
     cmd: echo "Clinvars annotations prepared"       
 # https://www.ebi.ac.uk/gene2phenotype/downloads/ has no E-Tag!
-  prepare_annotations_gene2phenotype: 
-    deps:
-      - data/gwas/annotations/gene2phenotype/DDG2P.csv
-      - data/gwas/annotations/gene2phenotype/CancerG2P.csv
-      - data/gwas/annotations/gene2phenotype/EyeG2P.csv
-      - data/gwas/annotations/gene2phenotype/SkinG2P.csv
-    cmd: >- 
-      rm -f data/gwas/annotations/gene2phenotype/AllG2P.csv &&
-      awk '(NR == 1) || (FNR > 1)' data/gwas/annotations/gene2phenotype/*.csv 
-      > data/gwas/annotations/gene2phenotype/AllG2P.csv
+#  prepare_annotations_gene2phenotype: 
+#    deps:
+#      - data/gwas/annotations/gene2phenotype/DDG2P.csv
+#      - data/gwas/annotations/gene2phenotype/CancerG2P.csv
+#      - data/gwas/annotations/gene2phenotype/EyeG2P.csv
+#      - data/gwas/annotations/gene2phenotype/SkinG2P.csv
+#    cmd: >- 
+#      rm -f data/gwas/annotations/gene2phenotype/AllG2P.csv &&
+#      awk '(NR == 1) || (FNR > 1)' data/gwas/annotations/gene2phenotype/*.csv 
+#      > data/gwas/annotations/gene2phenotype/AllG2P.csv
 #     && for f in data/gwas/annotations/gene2phenotype/*.gz ; do gunzip -c "$f" > data/gwas/annotations/gene2phenotype/"${f%.*}" ; done 
-    outs:
-      - data/gwas/annotations/gene2phenotype/AllG2P.csv
+#    outs:
+#      - data/gwas/annotations/gene2phenotype/AllG2P.csv
 # https://genomics.senescence.info/longevity/longevity_genes.zip has no E-Tag!
   prepare_annotations_longevity: 
     cmd: >- 
