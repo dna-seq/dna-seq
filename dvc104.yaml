@@ -9,38 +9,36 @@ stages:
     cmd: docker-compose down
   prepare_genome:
     deps:
-#      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.amb
-#      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.ann
-#      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.0123
-#      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.bwt.2bit.64
-#      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.pac
-      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+#      - data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.amb
+#      - data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.ann
+#      - data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.0123
+#      - data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.bwt.2bit.64
+#      - data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.pac
+      - data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
     cmd: >-
-      gunzip -k data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz &&
-      samtools faidx data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa &&
-      samtools dict data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa -o data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
-      md5sum data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.* > data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
+      gunzip -k data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz &&
+      samtools faidx data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa &&
+      samtools dict data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa -o data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+      md5sum data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.* > data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
     outs:
-      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
-      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
-      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
+      - data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+      - data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
+      - data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+      - data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
   prepare_vep_cache:
     deps:
-      - data/ensembl/106/homo_sapiens_vep_106_GRCh38.tar.gz
-    cmd: >-
-      tar -zxf data/ensembl/106/homo_sapiens_vep_106_GRCh38.tar.gz -C data/ensembl/106/cache/ &&
-      md5sum data/ensembl/106/homo_sapiens_vep_106_GRCh38.tar.gz > data/ensembl/106/homo_sapiens_vep_106_GRCh38.tar.gz.md5
+      - data/ensembl/104/homo_sapiens_vep_104_GRCh38.tar.gz
+    cmd: tar -zxf data/ensembl/104/homo_sapiens_vep_104_GRCh38.tar.gz -C data/ensembl/104/cache/
     outs:
-      - data/ensembl/106/cache/homo_sapiens
+      - data/ensembl/104/cache/homo_sapiens
   prepare_vep_plugins:
     deps:
-      - data/ensembl/106/106.zip
+      - data/ensembl/104/104.zip
     cmd: >-
-      unzip -u data/ensembl/106/106.zip -d data/ensembl/106/ &&
-      mv data/ensembl/106/VEP_plugins-release-106 data/ensembl/106/plugins
+      unzip -u data/ensembl/104/104.zip -d data/ensembl/104/ &&
+      mv data/ensembl/104/VEP_plugins-release-104 data/ensembl/104/plugins
     outs:
-      - data/ensembl/106/plugins/
+      - data/ensembl/104/plugins/
   prepare_annotations_digenet:
     deps:
       - data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz

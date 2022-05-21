@@ -21,27 +21,27 @@ stages:
     outs:
     - path: data/ensembl/103/cache/homo_sapiens
   prepare_genome:
-    cmd: gunzip -k data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
-      && samtools faidx data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-      && samtools dict data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-      -o data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
-      md5sum data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.*
-      > data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
+    cmd: gunzip -k data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+      && samtools faidx data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+      && samtools dict data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+      -o data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+      md5sum data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.*
+      > data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
     deps:
-    - path: data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    - path: data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
       md5: f58a039f83d8944ceb79cdd16cbda583
       size: 881211416
     outs:
-    - path: data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+    - path: data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
       md5: 9e6b9465dc708d92bf6d67e9c9fa9389
       size: 3151425857
-    - path: data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
-      md5: 4d773b3154e459483c5963cb464f6b3a
+    - path: data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+      md5: dc1b3dc9c008222222c89dfd9eca0087
       size: 34186
-    - path: data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
+    - path: data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
       md5: d527f3eb6b664020cf4d882b5820056f
       size: 6406
-    - path: data/ensembl/104/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
+    - path: data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
       md5: d41d8cd98f00b204e9800998ecf8427e
       size: 0
   prepare_vep:
@@ -71,37 +71,38 @@ stages:
     - path: data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
     - path: data/gwas/annotations/gene2phenotype/AllG2P.csv
   prepare_vep_plugins:
-    cmd: unzip -u data/ensembl/104/104.zip -d data/ensembl/104/ && mv data/ensembl/104/VEP_plugins-release-104
-      data/ensembl/104/plugins
+    cmd: unzip -u data/ensembl/106/106.zip -d data/ensembl/106/ && mv data/ensembl/106/VEP_plugins-release-106
+      data/ensembl/106/plugins
     deps:
-    - path: data/ensembl/104/104.zip
-      md5: 772bc404b00bf6a2b61caa174290d4eb
-      size: 497692
+    - path: data/ensembl/106/106.zip
+      md5: 24158d25f82878edcacf444da702ed23
+      size: 519178
     outs:
-    - path: data/ensembl/104/plugins/
-      md5: 450fadc8bdca9e4e2ba36aa73b3a7e63.dir
-      size: 1402456
-      nfiles: 71
+    - path: data/ensembl/106/plugins/
+      md5: 46e9f69002e39c1fb41138fe8ac01710.dir
+      size: 1470134
+      nfiles: 77
   prepare_vep_cache:
-    cmd: tar -zxf data/ensembl/104/homo_sapiens_vep_104_GRCh38.tar.gz -C data/ensembl/104/cache/
+    cmd: tar -zxf data/ensembl/106/homo_sapiens_vep_106_GRCh38.tar.gz -C data/ensembl/106/cache/
+      && md5sum data/ensembl/106/homo_sapiens_vep_106_GRCh38.tar.gz > data/ensembl/106/homo_sapiens_vep_106_GRCh38.tar.gz.md5
     deps:
-    - path: data/ensembl/104/homo_sapiens_vep_104_GRCh38.tar.gz
-      md5: cae9eb37cf55cf19144f220e40eca928
-      size: 15787286822
+    - path: data/ensembl/106/homo_sapiens_vep_106_GRCh38.tar.gz
+      md5: f2d4487002a86fe4c39a9ca0fbfab9da
+      size: 19350569358
     outs:
-    - path: data/ensembl/104/cache/homo_sapiens
-      md5: beff7a57f9e70f63a17b5ad481a829bf.dir
-      size: 15789560395
-      nfiles: 12042
+    - path: data/ensembl/106/cache/homo_sapiens
+      md5: f921763987635b40b85cfaf8a3f68048.dir
+      size: 19621031672
+      nfiles: 13892
   prepare_annotations_clinvar:
     cmd: echo "Clinvars annotations prepared"
     deps:
     - path: data/gwas/annotations/clinvar.vcf.gz
-      md5: 9403ec94164ba0ea2029f83b17c1716d
-      size: 39018953
+      md5: 1a0bd5729abb411a388e590431c62f99
+      size: 57813301
     - path: data/gwas/annotations/clinvar.vcf.gz.tbi
-      md5: 5afcfda6504b75b1026adb119a44278a
-      size: 299512
+      md5: 32876337b3454813376f2599b38fd96a
+      size: 327433
   prepare_annotations_gene2phenotype:
     cmd: rm -f data/gwas/annotations/gene2phenotype/AllG2P.csv && awk '(NR == 1) ||
       (FNR > 1)' data/gwas/annotations/gene2phenotype/*.csv  > data/gwas/annotations/gene2phenotype/AllG2P.csv
