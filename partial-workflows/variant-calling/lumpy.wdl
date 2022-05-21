@@ -1,5 +1,7 @@
 version development
 
+import "https://raw.githubusercontent.com/antonkulaga/bioworkflows/main/common/files.wdl" as files
+
 workflow Lumpy {
     input {
         File ref
@@ -16,7 +18,7 @@ workflow Lumpy {
             bam = bam, bai = bai, reference = ref, reference_index = ref_fai, sample = name
     }
 
-    call copy {
+    call files.copy as copy {
         input: destination = destination + "/lumpy", files = [Smoove.out]
     }
 
@@ -57,29 +59,5 @@ task Smoove {
         docker: "brentp/smoove@sha256:d0d6977dcd636e8ed048ae21199674f625108be26d0d0acd39db4446a0bbdced"
         docker_memory: "~{max_memory}G"
         docker_cpu: "~{max_cores}"
-    }
-}
-
-task copy {
-    input {
-        Array[File] files
-        String destination
-    }
-
-    String where = sub(destination, ";", "_")
-
-    command {
-        mkdir -p ~{where}
-        cp -L -R -u ~{sep=' ' files} ~{where}
-        declare -a files=(~{sep=' ' files})
-        for i in ~{"$"+"{files[@]}"};
-          do
-              value=$(basename ~{"$"}i)
-              echo ~{where}/~{"$"}value
-          done
-    }
-
-    output {
-        Array[File] out = read_lines(stdout())
     }
 }

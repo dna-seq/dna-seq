@@ -1,0 +1,22 @@
+{
+  "sample": {
+    "require": [],
+    "reject": []
+  },
+  "genes": [],
+  "variant": {
+    "operator": "and",
+    "rules": [
+      {
+        "column": "clinvar__sig",
+        "test": "select",
+        "value": [
+          "Pathogenic"
+        ],
+        "negate": false
+      }
+    ],
+    "negate": false
+  },
+  "smartfilter": {}
+}

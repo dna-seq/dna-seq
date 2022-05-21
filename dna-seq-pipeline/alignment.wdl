@@ -112,7 +112,7 @@ task get_rg {
 
     command {
         touch error.txt
-        if [ "${rg_use_source}" != 'true' ]; then
+        if [ "~{rg_use_source}" != 'true' ]; then
         echo ~{"@RG\\\\\\\\tID:" + ID + "\\\\\\\\tLB:" + LB + "\\\\\\\\tPL:" + PL + "\\\\\\\\tPU:" + PU + "\\\\\\\\tSM:" + SM}
         else
         samtools view -H ~{rg_source} | grep '^@RG' | sed 's/'$'\t''/\\\\t/g'
@@ -121,7 +121,7 @@ task get_rg {
 
     runtime {
         docker_cpu: "1"
-        docker: "quay.io/biocontainers/samtools@sha256:141120f19f849b79e05ae2fac981383988445c373b8b5db7f3dd221179af382b" #1.11--h6270b1f_0
+        docker: "quay.io/biocontainers/samtools:1.14--hb421002_0"
     }
 
     output {
