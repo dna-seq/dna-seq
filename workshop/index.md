@@ -41,7 +41,7 @@ Olga Borysova (https://github.com/OlgaBorysova)  - biologist, geneticist, mitoch
 Alina  - bioinformatician, PRS score 
 
 ### [Our twitter](https://twitter.com/just_dna_seq) ###
-### [Our github](https://github.com/dna-seq/dna-seq/tree/gh-pages) ###
+### [Our github](https://github.com/dna-seq/) ###
 ### [Our gitcoin](https://gitcoin.co/grants/4048/just-dna-seq) ###
 
 ### [Register link](https://docs.google.com/forms/d/1cb0pSPUlYWK8st-7aKY3dSjqytyPweKJZX2kMgkX7hM/edit) ###
