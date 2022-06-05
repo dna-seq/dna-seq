@@ -11,7 +11,7 @@ Event address: https://meet.jit.si/just-dna-seq-workshop
 Event Timing: 9th of June, 18:00-22:00 GMT+3, 2022
 
 
-Register now link
+[Register now link](https://docs.google.com/forms/d/1cb0pSPUlYWK8st-7aKY3dSjqytyPweKJZX2kMgkX7hM/edit)
 
 Organizer: Just-DNA-Seq Team and Societatea Română de Bioinformatică (RSBI)
 
