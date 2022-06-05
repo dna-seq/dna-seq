@@ -1,6 +1,6 @@
 ![Logo](./just_dna_seq.png)
 
-#Just-DNA workshop#
+# Just-DNA workshop #
 
 A free virtual event dedicated to providing guidance in personal genomic data analyzing, and discovering longevity genetics.
 
@@ -15,7 +15,7 @@ Register now link
 
 Organizer: Just-DNA-Seq Team and Societatea Română de Bioinformatică (RSBI)
 
-##Who is the workshop addressed to:##
+## Who is the workshop addressed to: ##
 * Bioinformatician
 * Biologists 
 * People having their DNA sequenced and interested in analysis
@@ -23,14 +23,14 @@ Organizer: Just-DNA-Seq Team and Societatea Română de Bioinformatică (RSBI)
 * Doctors interested in DNA analyzing tools
 * Biohakers
 
-##Agenda:##
+## Agenda: ##
 * About personalized genomics: methods of sequencing, analysis and interpretation of the genome.
 * Genetic investigation. You will be faced with  3 real Clinical cases trying to find answers with  genome analysis tools.
 * Polygenic risk scores - ML models for genetic risk predictions.
 * Genetics of Longevity. Existing databases.
 * Optional "BioWeapons" module (if time allows):  how to CRISPR-away the gene you do not like, pack it in adenovirus and get quotation in USD?
 
-##Who we are:##
+## Who we are: ##
 Just-DNA-Seq is an international open-source project. 
 We are aging researchers and longevity enthusiasts who are curious about their own personal genomics. Our team:
 
