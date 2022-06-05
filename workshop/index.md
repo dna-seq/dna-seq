@@ -40,8 +40,8 @@ Alex Karmazin -  Senior Computer vision engineer, web-developer
 Olga Borysova (https://github.com/OlgaBorysova)  - biologist, geneticist, mitochondria expert, and founder of MitoSpace
 Alina  - bioinformatician, PRS score 
 
-[Our twitter](https://twitter.com/just_dna_seq)
-[Our github](https://github.com/dna-seq/dna-seq/tree/gh-pages)
-[Our gitcoin](https://gitcoin.co/grants/4048/just-dna-seq) 
+###### [Our twitter](https://twitter.com/just_dna_seq) ######
+###### [Our github](https://github.com/dna-seq/dna-seq/tree/gh-pages) ######
+###### [Our gitcoin](https://gitcoin.co/grants/4048/just-dna-seq) ######
 
 [Register link](https://docs.google.com/forms/d/1cb0pSPUlYWK8st-7aKY3dSjqytyPweKJZX2kMgkX7hM/edit) 
