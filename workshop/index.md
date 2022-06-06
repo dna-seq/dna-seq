@@ -14,6 +14,8 @@ Event Timing: 9th of June, 18:00-22:00 GMT+3, 2022
 [Register now link](https://docs.google.com/forms/d/1cb0pSPUlYWK8st-7aKY3dSjqytyPweKJZX2kMgkX7hM/edit)
 
 Organizer: Just-DNA-Seq Team and Societatea Română de Bioinformatică (RSBI)
+![Image](just_dna_seq.png)
+![Image](RSBI.png)
 
 ## Who is the workshop addressed to: ##
 * Bioinformatician
@@ -32,16 +34,22 @@ Organizer: Just-DNA-Seq Team and Societatea Română de Bioinformatică (RSBI)
 
 ## Who we are: ##
 Just-DNA-Seq is an international open-source project. 
-We are aging researchers and longevity enthusiasts who are curious about their own personal genomics. Our team:
+We are aging researchers and longevity enthusiasts who are curious about their own personal genomics. 
 
-Anton Kulaga (https://github.com/antonkulaga) bioinformatician at Systems Biology of Aging Group
-Newton Winter (https://github.com/winternewt) - programmer with a chemical background
-Alex Karmazin -  Senior Computer vision engineer, web-developer
-Olga Borysova (https://github.com/OlgaBorysova)  - biologist, geneticist, mitochondria expert, and founder of MitoSpace
-Alina  - bioinformatician, PRS score 
+### Our team: ###
+
+@antonkulaga - bioinformatician at Systems Biology of Aging Group
+
+@winternewt - programmer with a chemical background
+
+@Alex-Karmazin -  web-developer, Senior Computer Vision Engineer
+
+@OlgaBorysova  - biologist, geneticist, mitochondria expert, and founder of MitoSpace
+
+@fkbyf14  - bioinformatician, PRS scores
+
 
 ### [Our twitter](https://twitter.com/just_dna_seq) ###
 ### [Our github](https://github.com/dna-seq/) ###
 ### [Our gitcoin](https://gitcoin.co/grants/4048/just-dna-seq) ###
-
 ### [Register link](https://docs.google.com/forms/d/1cb0pSPUlYWK8st-7aKY3dSjqytyPweKJZX2kMgkX7hM/edit) ###

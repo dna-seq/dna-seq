@@ -2,8 +2,8 @@
 ![Image](just_dna_seq.png)
 
 Just DNA-Seq is a set of opensource libraries and pipelines designed to help everybody to:
-* annotate your own genome with known longevity and health information ( https://github.com/dna-seq/opencravat-longevity )
-* the pipeline to realign your genome and do variant calling with the latest tools ( https://github.com/dna-seq/opencravat-longevity )
+* annotate your own genome with known longevity and health information with [OpenCravat plugins](https://github.com/dna-seq/opencravat-longevity)
+* realign your genome and do variant calling with the latest tools using [Bioinformatic pipelines](https://github.com/dna-seq/dna-seq)
 * get transparent opensource polygenic health risk predictions (work only started)
 
 ## Why Just DNA-Seq? ##
@@ -19,5 +19,25 @@ More to that, what if we want to see how well our genes align with the prospect 
 At the same time, all the information necessary to do your own analysis is out there, lying in the open generously shared by the scientific community. 
 So, why not use existing open source solutions developed by large academic groups then? 
 Well, no luck here either! 
-We looked through the existing ones and found out there are no tools to cover one topic very close to our hearts: genetics of longevity. That’s when DNA-Seq comes into play - we decided to take existing data from longevity gene variants databases and write a longevity annotations plugin for OpenCravat (Open Custom Ranked Analysis of Variants Toolkit) that we are using for genetic variant annotations
 
+We looked through the existing ones and found out there are no tools to cover one topic very close to our hearts: genetics of longevity. 
+
+That’s when DNA-Seq comes into play!
+
+### Our team: ###
+
+@antonkulaga - bioinformatician at Systems Biology of Aging Group
+
+@winternewt - programmer with a chemical background
+
+@Alex-Karmazin -  web-developer, Senior Computer Vision Engineer
+
+@OlgaBorysova  - biologist, geneticist, mitochondria expert, and founder of [MitoSpace](http://www.mt-eva.space/en/)
+
+@fkbyf14  - bioinformatician, PRS scores
+
+### [Our twitter](https://twitter.com/just_dna_seq) ###
+### [Our github](https://github.com/dna-seq/) ###
+### [Our gitcoin](https://gitcoin.co/grants/4048/just-dna-seq) ###
+### [Register link](https://docs.google.com/forms/d/1cb0pSPUlYWK8st-7aKY3dSjqytyPweKJZX2kMgkX7hM/edit) ###
+### [Our workshops](https://dna-seq.github.io/dna-seq/workshop/)
