@@ -2,13 +2,17 @@
 
 # Just-DNA workshop #
 
-A free virtual event dedicated to providing guidance in personal genomic data analyzing, and discovering longevity genetics.
+A free virtual event dedicated to providing guidance in personal genomic data analyzing, and longevity genetics.
 
-If You are interested in personal genome analyzing and longevity this event is for You.
-Join us for free and learn how to analyze Your personal genome with an open-source platform, how to choose modules for investigating different aspects of Your genome (health risk prediction, personal drug response, etc.). You will learn about existing human longevity genes databases and how actually genetics affects our lifespan. 
+If you are interested in analyzing your own genome and in the genetics of longevity this workshop is for you.
+
+Join us and learn:
+* how to analyze your personal genome with an open-source platform 
+* how to choose modules for investigating different aspects of your genome (health risk prediction, personal drug response, etc.). 
+* which longevity genes databases exist and how genetics affects our lifespan. 
 
 Event address: https://meet.jit.si/just-dna-seq-workshop
-Event Timing: 9th of June, 18:00-22:00 GMT+3, 2022
+Event Timing: 18:00-22:00 GMT+3 (Bucharest timezone), 9th of June, 2022
 
 
 [Register now link](https://docs.google.com/forms/d/1cb0pSPUlYWK8st-7aKY3dSjqytyPweKJZX2kMgkX7hM/edit)
@@ -17,18 +21,18 @@ Organizer: Just-DNA-Seq Team and [Societatea Română de Bioinformatică](www.rs
 ![Image](RSBI.png)
 
 ## Who is the workshop addressed to: ##
-* Bioinformatician
+* People having their DNA sequenced and interested in analyzing it
+* Bioinformaticians
 * Biologists 
-* People having their DNA sequenced and interested in analysis
 * Everyone interested in longevity genetics
 * Doctors interested in DNA analyzing tools
-* Biohakers
+* Biohackers
 
 ## Agenda: ##
 * About personalized genomics: methods of sequencing, analysis and interpretation of the genome.
-* Genetic investigation. You will be faced with  3 real Clinical cases trying to find answers with  genome analysis tools.
+* Genetics of Longevity. Existing databases and polymorphisms.
+* Genetic investigation. You will be faced with  3 real Clinical cases trying to find answers with genome analysis tools.
 * Polygenic risk scores - ML models for genetic risk predictions.
-* Genetics of Longevity. Existing databases.
 * Optional "BioWeapons" module (if time allows):  how to CRISPR-away the gene you do not like, pack it in adenovirus and get quotation in USD?
 
 ## Who we are: ##
