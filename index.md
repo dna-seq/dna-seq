@@ -26,15 +26,15 @@ That’s when DNA-Seq comes into play!
 
 ### Our team: ###
 
-@antonkulaga - bioinformatician at Systems Biology of Aging Group
+[@antonkulaga](http://github.com/antonkulaga) - bioinformatician at [Systems Biology of Aging Group](http://aging-research.group) and [CellFabrik](http://cellfabrik.bio)
 
-@winternewt - programmer with a chemical background
+[@winternewt](http://github.com/winternewt) - software developer with a chemical background, bioinformatic pipelines developer
 
-@Alex-Karmazin -  web-developer, Senior Computer Vision Engineer
+[@Alex-Karmazin](http://github.com/Alex-Karmazin) -  senior computer vision engineer, web developer
 
-@OlgaBorysova  - biologist, geneticist, mitochondria expert, and founder of [MitoSpace](http://www.mt-eva.space/en/)
+[@OlgaBorysova](http://github.com/OlgaBorysova) - biologist, geneticist, mitochondria expert, and founder of [MitoSpace](http://www.mt-eva.space/en/)
 
-@fkbyf14  - bioinformatician, PRS scores
+[@fkbyf14](http://github.com/fkbyf14)  - bioinformatician
 
 ### [Our twitter](https://twitter.com/just_dna_seq) ###
 ### [Our github](https://github.com/dna-seq/) ###
