@@ -11,7 +11,6 @@ Join us and learn:
 * how to choose modules for investigating different aspects of your genome (health risk prediction, personal drug response, etc.). 
 * which longevity genes databases exist and how genetics affects our lifespan. 
 
-Event address: https://meet.jit.si/just-dna-seq-workshop
 Event Timing: 18:00-22:00 GMT+3 (Bucharest timezone), 9th of June, 2022
 
 
