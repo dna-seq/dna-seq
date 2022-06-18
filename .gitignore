@@ -52,5 +52,6 @@ dna-seq-pipeline/inputs/OC_plus.json
 !/data/ensembl/*
 !/data/gwas/*
 newton*
+/data/gwas/anton
 #track local gitignore
 !/data/.gitignore

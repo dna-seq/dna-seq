@@ -11,7 +11,7 @@ workflow alignment {
         File? reference_index #used only if bwa-mem2 is an aligner
         String name
         String destination
-        String sequence_aligner = "minimap2"
+        String sequence_aligner = "bwa_mem2"
         Boolean copy_cleaned = true
         Int align_threads# = 12
         Int sort_threads# = 12
