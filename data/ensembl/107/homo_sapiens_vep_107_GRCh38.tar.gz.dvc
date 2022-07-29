@@ -1,0 +1,5 @@
+frozen: false
+deps:
+- path: http://ftp.ensembl.org/pub/release-103/variation/vep/homo_sapiens_vep_107_GRCh38.tar.gz
+outs:
+- path: homo_sapiens_vep_107_GRCh38.tar.gz

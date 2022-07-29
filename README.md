@@ -15,7 +15,7 @@ Recently we started working on longevity applications as there are no good tools
 Getting started
 ---------------
 
-In the project we are using [WDL](https://openwdl.org/) (Workflow Description Language) pipelines as well as OpenCravat variant annotation system.
+In the project we are using [WDL](https://openwdl.org/) (Workflow Description Language) pipelines as well as OakVar variant annotation system.
 If you want to run the whole pipeline make sure you have at least 500GB or more of free space and >=16GB of RAM. 
 All tools are dockerized, for this reason make sure that Docker is installed.
 
@@ -23,8 +23,8 @@ If genetic pipelines are something new for you, it can be useful to watch the Br
 Even though we do not use Broad-s GATK pipeline and mix our tools a bit differently (for example we use [DeepVariant](https://academic.oup.com/bioinformatics/article/36/24/5582/6064144) for variant calling), the video explains some useful concepts in genomic analysis.
 For the users with only high-school knowledge of biology, I would also recommend taking any free biology 101 or genetics 101 course ( https://www.edx.org/course/introduction-to-biology-the-secret-of-life-3 is a good example)
 
-For gene annotations we use [OpenCravat](https://opencravat.org/) as well as VEP (as an alternative solution).
-Opencravat is included in the conda environment. 
+For gene annotations we use [OakVar](https://rkimoakbioinformatics.github.io/oakvar/) as well as VEP (as an alternative solution).
+OakVar is included in the conda environment. 
 
 
 Install conda environment
@@ -43,7 +43,7 @@ source ~/.bashrc
 To create a micromamba environment use:
 ```
 micromamba create -f environment.yaml
-micromamba activate gwas
+micromamba activate dna-seq
 ```
 
 The instructions above are provided for Linux and MacOS (note: in MacOS you have to install wget). 
@@ -64,8 +64,8 @@ Of course, you can try to download all the data with:
 dvc repro
 ```
 However, it may take quite a while as ensembl_vep_cache (which is required for VEP annotations) is >14GB. 
-And it may happen that OpenCravat will be enough for your needs.
-In the Future, we plan to focus on OpenCravat leaving VEP as a legacy annotation system.
+And it may happen that OakVar will be enough for your needs.
+In the Future, we plan to focus on OakVar leaving VEP as a legacy annotation system.
 
 
 Running services
@@ -137,16 +137,16 @@ There are three major ways of running any of the pipelines in the repository:
 Genome annotations
 ==================
 
-There are two alternative annotation tools: VEP and [OpenCravat](https://opencravat.org/). VEP is more established and oldfashioned. OpenCravat is newer and more user-friendly. I recommend starting from OpenCravat.
+There are two alternative annotation tools: VEP and [OakVar](https://rkimoakbioinformatics.github.io/oakvar/). VEP is more established and oldfashioned. OakVar is newer and more user-friendly. I recommend starting from OakVar.
 
-Opencravat annotations
+OakVar annotations
 ======================
 
-Opencravat is included to the environment.
+OakVar is included to the environment.
 Before starting, it is recommended to install annotation modules of your interest.
 There is a dvc stage for the default modules:
 ```bash
-dvc repro install_opencravat
+dvc repro install_oakvar
 ```
 
 VEP annotations
@@ -165,7 +165,7 @@ Development plan
 
 The pipeline still requires some technical skills to run, we plan to improve ease of use and stream-line it a bit.
 One of the most important parts is variant filtering and annotations. 
-OpenCravat does a great job of installing a huge number of annotation sources. 
+OakVar does a great job of installing a huge number of annotation sources. 
 However, its output requires some biological skills to read, we are working now on:
 * reporting plugins to make reports for pre-selected genes
 * longevity plugin for analysis of gene variants associated with longevity.

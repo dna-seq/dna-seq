@@ -1,0 +1,4 @@
+deps:
+- path: http://ftp.ensembl.org/pub/release-107/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+outs:
+- path: Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
