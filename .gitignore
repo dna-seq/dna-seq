@@ -1,6 +1,9 @@
 test
 *.class
-*.log
+**.log
+**.old
+**.tmp
+
 logs
 
 #VIM specific
@@ -23,9 +26,32 @@ project/boot/
 project/plugins/project/
 .idea
 .idea/*
-
+#### dna-seq
 services/data/cromwell-client-logs/*
 services/data/cromwell-executions/*
 services/data/cromwell-workflow-logs/*
 dna-seq-pipeline/inputs/OC_plus.json
 /homo_sapiens_vep_103_GRCh38.tar.gz
+
+#### from data
+#ignore data root level, logs and bakups
+/data/*
+#dvc wants folders themselves ignored as files...
+!**.dvc
+!/data/cromwell-client-logs
+!/data/cromwell-executions
+!/data/cromwell-workflow-logs
+!/data/databases/mysql
+!/data/ensembl
+!/data/gwas
+#track innards
+!/data/cromwell-client-logs/*
+!/data/cromwell-executions/*
+!/data/cromwell-workflow-logs/*
+!/data/databases/mysql/*
+!/data/ensembl/*
+!/data/gwas/*
+newton*
+/data/gwas/anton
+#track local gitignore
+!/data/.gitignore

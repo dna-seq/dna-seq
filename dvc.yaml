@@ -9,29 +9,38 @@ stages:
     cmd: docker-compose down
   prepare_genome:
     deps:
-      - data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+#      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.amb
+#      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.ann
+#      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.0123
+#      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.bwt.2bit.64
+#      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.pac
+      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
     cmd: >-
-      gunzip -k data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz &&
-      samtools faidx data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa &&
-      samtools dict data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa -o data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+      gunzip -k data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz &&
+      samtools faidx data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa &&
+      samtools dict data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa -o data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+      md5sum data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.* > data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
     outs:
-      - data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-      - data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
-      - data/ensembl/103/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
+      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+      - data/ensembl/106/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
   prepare_vep_cache:
     deps:
-      - data/ensembl/103/cache/homo_sapiens_vep_103_GRCh38.tar.gz
-    cmd: tar -zxf data/ensembl/103/cache/homo_sapiens_vep_103_GRCh38.tar.gz -C data/ensembl/103/cache/
+      - data/ensembl/106/homo_sapiens_vep_106_GRCh38.tar.gz
+    cmd: >-
+      tar -zxf data/ensembl/106/homo_sapiens_vep_106_GRCh38.tar.gz -C data/ensembl/106/cache/ &&
+      md5sum data/ensembl/106/homo_sapiens_vep_106_GRCh38.tar.gz > data/ensembl/106/homo_sapiens_vep_106_GRCh38.tar.gz.md5
     outs:
-      - data/ensembl/103/cache/homo_sapiens
+      - data/ensembl/106/cache/homo_sapiens
   prepare_vep_plugins:
     deps:
-      - data/ensembl/103/103.zip
+      - data/ensembl/106/106.zip
     cmd: >-
-      unzip -u data/ensembl/103/103.zip -d data/ensembl/103/ &&
-      mv data/ensembl/103/VEP_plugins-release-103 data/ensembl/103/plugins
+      unzip -u data/ensembl/106/106.zip -d data/ensembl/106/ &&
+      mv data/ensembl/106/VEP_plugins-release-106 data/ensembl/106/plugins
     outs:
-      - data/ensembl/103/plugins/
+      - data/ensembl/106/plugins/
   prepare_annotations_digenet:
     deps:
       - data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz
@@ -49,19 +58,25 @@ stages:
       - data/gwas/annotations/clinvar.vcf.gz.tbi
     cmd: echo "Clinvars annotations prepared"       
 # https://www.ebi.ac.uk/gene2phenotype/downloads/ has no E-Tag!
-  prepare_annotations_gene2phenotype: 
-    deps:
-      - data/gwas/annotations/gene2phenotype/DDG2P.csv
-      - data/gwas/annotations/gene2phenotype/CancerG2P.csv
-      - data/gwas/annotations/gene2phenotype/EyeG2P.csv
-      - data/gwas/annotations/gene2phenotype/SkinG2P.csv
-    cmd: >- 
-      rm -f data/gwas/annotations/gene2phenotype/AllG2P.csv &&
-      awk '(NR == 1) || (FNR > 1)' data/gwas/annotations/gene2phenotype/*.csv 
-      > data/gwas/annotations/gene2phenotype/AllG2P.csv
+#  prepare_annotations_gene2phenotype: 
+#    deps:
+#      - data/gwas/annotations/gene2phenotype/DDG2P.csv
+#      - data/gwas/annotations/gene2phenotype/CancerG2P.csv
+#      - data/gwas/annotations/gene2phenotype/EyeG2P.csv
+#      - data/gwas/annotations/gene2phenotype/SkinG2P.csv
+#    cmd: >- 
+#      rm -f data/gwas/annotations/gene2phenotype/AllG2P.csv &&
+#      awk '(NR == 1) || (FNR > 1)' data/gwas/annotations/gene2phenotype/*.csv 
+#      > data/gwas/annotations/gene2phenotype/AllG2P.csv
 #     && for f in data/gwas/annotations/gene2phenotype/*.gz ; do gunzip -c "$f" > data/gwas/annotations/gene2phenotype/"${f%.*}" ; done 
+#    outs:
+#      - data/gwas/annotations/gene2phenotype/AllG2P.csv
+# https://genomics.senescence.info/longevity/longevity_genes.zip has no E-Tag!
+  prepare_annotations_longevity: 
+    cmd: >- 
+      wget -qO- --timestamping https://genomics.senescence.info/longevity/longevity_genes.zip | bsdtar -xvf- -C data/gwas/annotations/ longevity.csv
     outs:
-      - data/gwas/annotations/gene2phenotype/AllG2P.csv
+      - data/gwas/annotations/longevity.csv
   install_opencravat:
     cmd: >-
       oc module install-base && oc module install -y clinvar clinvar_acmg biogrid uk10k_cohort uniprot pubmed provean polyphen2 cardioboost civic civic_gene cosmic cosmic_gene go sift ensembl_regulatory_build dgi cvdkp

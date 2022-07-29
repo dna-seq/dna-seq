@@ -1,0 +1,10 @@
+md5: f1e7bc7dabd9e7ff10c564174768bc33
+frozen: true
+deps:
+- checksum: '"621cc22b-48162418e"'
+  size: 19350569358
+  path: http://ftp.ensembl.org/pub/release-106/variation/indexed_vep_cache/homo_sapiens_vep_106_GRCh38.tar.gz
+outs:
+- md5: f2d4487002a86fe4c39a9ca0fbfab9da
+  size: 19350569358
+  path: homo_sapiens_vep_106_GRCh38.tar.gz

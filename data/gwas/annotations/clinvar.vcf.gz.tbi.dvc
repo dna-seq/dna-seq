@@ -1,9 +1,10 @@
-md5: b783831befdec2610625c610149f882f
+md5: 11cd74c741c895dd93ee6b5cb6b560aa
 deps:
-- etag: '"47ab0-5badda736c31d"'
-  path: http://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz.tbi
+- path: http://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz.tbi
+  size: 327433
+  etag: '"4ff09-5df53b3941210"'
 outs:
-- md5: b85b29f474a7f6899ddf1ad8b8c21140
-  size: 293552
+- md5: 32876337b3454813376f2599b38fd96a
+  size: 327433
   path: clinvar.vcf.gz.tbi
   cache: false

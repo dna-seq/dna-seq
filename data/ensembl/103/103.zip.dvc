@@ -1,10 +1,10 @@
-md5: 4855d03a7f0c71356866a1ccec262bfa
-frozen: true
+md5: 36f096940c0a02e57176d0ff94dcc710
 deps:
-- etag: W/"327c3a8df1228f13f343a95ebd267da462e49ba33cc8914598ae940581c22018"
+- etag: W/"a38a484a91bb65bce05d3ab2f533094b1f5400f5f7745c7dd4e4fb3c314753af"
   path: https://github.com/Ensembl/VEP_plugins/archive/release/103.zip
 outs:
-- md5: 1a92f647fcef1d1b28743a1514665fa0
-  size: 492625
+- md5: 13167f0a7f8c267a9df159c0c1c7e8ae
+  size: 492623
   path: 103.zip
   cache: false
+

@@ -1,0 +1,9 @@
+deps:
+- etag: '"3e4720f78c6b07a0"'
+  size: 6199501436
+  path: http://agingkills.eu:8001/data/indexes/bwa-mem2/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.0123
+outs:
+- md5: 8ad686825dc680c5acb0a403a16bfa4f
+  size: 6199501436
+  path: Homo_sapiens.GRCh38.dna.primary_assembly.fa.0123
+md5: d8f2eeda224211164d3a2342296d749a
