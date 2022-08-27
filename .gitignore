@@ -23,3 +23,5 @@ project/boot/
 project/plugins/project/
 .idea
 .idea/*
+
+*.xcf
