@@ -34,7 +34,7 @@ The platform consists of  OakVar (open-source Genomic Variant Analysis Platform)
 
 ![Longevity variants report](images/longevity-variants.webp)
 
-Longevity variants report is based on 1900 variants from LongevityMap and other datasources which are scored and prioritized according to multiple criteria. It also depends on ClinGene, dbSNP and ClinVar modules.
+Longevity variants report is based on 1900 variants from LongevityMap and other data sources which are scored and prioritized according to multiple criteria. It also depends on ClinGene, dbSNP and ClinVar modules.
 
 ![Longevity PRS](images/longevity-PRS.webp)
 
@@ -48,7 +48,10 @@ Plenty of drugs are frequently prescribed at an elder age, moreover, some drugs 
 
 It is not enough to have "centenarian" genes to become one, it is needed to cut down major health risks to gain longevity escape velocity. Hereditary Cancers are caused by a genetic defect that determine a higher-than-normal risk of developing cancer. Report includes about  300 genes, related to cancer predisposition,  progression and tumor cell motility.
 
+## How to work with personal genome ##
 
+Detailed user documentation is still in the making and will be availible at [https://just-dna-seq.readthedocs.io](https://just-dna-seq.readthedocs.io)
+Meanwhile we recommend watching our workshop where measure use-cases are explained with examples that you can reproduce [https://www.youtube.com/watch?v=SL7F6LRJ_Ao](https://www.youtube.com/watch?v=SL7F6LRJ_Ao)
 
 ### Our team: ###
 
@@ -66,4 +69,3 @@ It is not enough to have "centenarian" genes to become one, it is needed to cut 
 ### [Our github](https://github.com/dna-seq/) ###
 ### [Your YouTube channel](https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw/) ###
 ### [Our gitcoin](https://gitcoin.co/grants/4048/just-dna-seq) ###
-### [Our workshops](https://dna-seq.github.io/dna-seq/workshop/)
