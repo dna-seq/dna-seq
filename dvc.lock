@@ -29,11 +29,21 @@ stages:
       > data/ensembl/107/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
     deps:
     - path: data/ensembl/107/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+      md5: f58a039f83d8944ceb79cdd16cbda583
+      size: 881211416
     outs:
     - path: data/ensembl/107/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+      md5: 9e6b9465dc708d92bf6d67e9c9fa9389
+      size: 3151425857
     - path: data/ensembl/107/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+      md5: e00d5ab5d08021f14131925cfe452fc2
+      size: 34186
     - path: data/ensembl/107/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
+      md5: d527f3eb6b664020cf4d882b5820056f
+      size: 6406
     - path: data/ensembl/107/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
+      md5: d41d8cd98f00b204e9800998ecf8427e
+      size: 0
   prepare_vep:
     cmd: unzip -u data/ensembl/107/107.zip -d data/ensembl/107/ && mv data/ensembl/107/VEP_plugins-release-107
       data/ensembl/107/plugins
