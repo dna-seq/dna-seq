@@ -58,4 +58,4 @@ Meanwhile we recommend [watching our workshop](https://www.youtube.com/watch?v=S
 
 [@fkbyf14](http://github.com/fkbyf14)  - bioinformatician
 
-### <p align="center"> [Our Github](https://github.com/dna-seq/) <img width="50"> [Our Gitcoin](https://gitcoin.co/grants/4048/just-dna-seq) <img width="50">  [Our Twitter](https://twitter.com/just_dna_seq) <img width="50"> [Our YouTube](https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw/)  </p> ###
+### [Our Github](https://github.com/dna-seq/) <img width="50"> [Our Gitcoin](https://gitcoin.co/grants/4048/just-dna-seq) <img width="50">  [Our Twitter](https://twitter.com/just_dna_seq) <img width="50"> [Our YouTube](https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw/) ###
