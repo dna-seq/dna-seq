@@ -46,7 +46,7 @@ Detailed user documentation is still in the making and will be available at [htt
 
 Meanwhile we recommend [watching our workshop](https://www.youtube.com/watch?v=SL7F6LRJ_Ao)! It demonstrates and explains common use-cases are with the examples that you can reproduce. 
 
-### Our team: ###
+## Our team: ##
 
 [@antonkulaga](http://github.com/antonkulaga) - bioinformatician at [Systems Biology of Aging Group](http://aging-research.group) and [CellFabrik](http://cellfabrik.bio)
 
@@ -57,5 +57,7 @@ Meanwhile we recommend [watching our workshop](https://www.youtube.com/watch?v=S
 [@Alex-Karmazin](http://github.com/Alex-Karmazin) -  senior computer vision engineer, web developer
 
 [@fkbyf14](http://github.com/fkbyf14)  - bioinformatician
+
+------
 
 ### [Our Github](https://github.com/dna-seq/) <img width="50"> [Our Gitcoin](https://gitcoin.co/grants/4048/just-dna-seq) <img width="50">  [Our Twitter](https://twitter.com/just_dna_seq) <img width="50"> [Our YouTube](https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw/) ###
