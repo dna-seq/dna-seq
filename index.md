@@ -1,5 +1,5 @@
 # _Just DNA-Seq_ #
-<p align="center"> <img width="80%" src="just_dna_seq.png" alt="Just DNA Seq Logo"> </p>
+<p align="center"> <img width="100%" src="just_dna_seq.png" alt="Just DNA Seq Logo"> </p>
 
 _Just DNA-Seq_ is a set of open-source libraries and pipelines designed to help you with:
 * realigning your raw genome reads and doing variant calling using the latest tools and [Bioinformatic pipelines](https://github.com/dna-seq/dna-seq)
@@ -43,7 +43,8 @@ The _Just DNA-Seq_ platform consists of _OakVar_ (Open-source Genomic Variant An
 ## How to work with personal genome ##
 
 Detailed user documentation is still in the making and will be available at [https://just-dna-seq.readthedocs.io](https://just-dna-seq.readthedocs.io)
-Meanwhile we recommend watching our workshop! In it, common use-cases are explained with the examples that you can reproduce [https://www.youtube.com/watch?v=SL7F6LRJ_Ao](https://www.youtube.com/watch?v=SL7F6LRJ_Ao)
+
+Meanwhile we recommend [watching our workshop](https://www.youtube.com/watch?v=SL7F6LRJ_Ao)! It demonstrates and explains common use-cases are with the examples that you can reproduce. 
 
 ### Our team: ###
 
@@ -57,7 +58,4 @@ Meanwhile we recommend watching our workshop! In it, common use-cases are explai
 
 [@fkbyf14](http://github.com/fkbyf14)  - bioinformatician
 
-### [Our twitter](https://twitter.com/just_dna_seq) ###
-### [Our github](https://github.com/dna-seq/) ###
-### [Our YouTube channel](https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw/) ###
-### [Our gitcoin](https://gitcoin.co/grants/4048/just-dna-seq) ###
+### <p align="center"> [Our Github](https://github.com/dna-seq/) <img width="50"> [Our Gitcoin](https://gitcoin.co/grants/4048/just-dna-seq) <img width="50">  [Our Twitter](https://twitter.com/just_dna_seq) <img width="50"> [Our YouTube](https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw/)  </p> ###
