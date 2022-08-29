@@ -1,4 +1,4 @@
-# _Just DNA-Seq_ #
+<h1 align="center"> <i>Just DNA-Seq</i> </h1>
 <p align="center"> <img width="100%" src="just_dna_seq.png" alt="Just DNA Seq Logo"> </p>
 
 _Just DNA-Seq_ is a set of open-source libraries and pipelines designed to help you with:
@@ -8,7 +8,7 @@ _Just DNA-Seq_ is a set of open-source libraries and pipelines designed to help 
   * known [drug interactions](https://github.com/dna-seq/gero-drugs-module)
 * getting a transparent open source polygenic health risk predictions
 
-## Why _Just DNA-Seq_? ##
+<h2 align="center"> Why <i>Just DNA-Seq</i>? </h2>
 
 First human genome sequencing project concluded Apr 14, 2003 after more than 12 years of labor and costing around 3,000,000,000$. 
 Today it turned from a great human endeavor to something widely accessible. Sequencing is commercially available at a price of roughly 400-800$. You get both sequencing and interpretation of the results for the price. In fact, the sequencing job is often served as a side dish to predictions.
@@ -27,7 +27,7 @@ So, why not to use existing open-source solutions then? Well, no luck here eithe
 
 That’s when _Just DNA-Seq_ comes into play!
 
-## How it works ##
+<h2 align="center"> How it works </h2>
 
 The _Just DNA-Seq_ platform consists of _OakVar_ (Open-source Genomic Variant Analysis Platform) modules, bioinformatics pipelines, and additional libraries. One can realign and annotate the genome of interest employing _Just DNA-Seq_ tools to to retrieve polygenic risk scores (PRS), information about variants associated with age-related diseases or major life threatening risks and longevity-associated variants present in genome. 
 
@@ -40,13 +40,13 @@ The _Just DNA-Seq_ platform consists of _OakVar_ (Open-source Genomic Variant An
 |![Oncological risks](images/oncorisks.webp)                   | Of the major life threatening risks, Hereditary Cancers are the ones reliably predictable based on genetic variants data. Certain genetic variants determine a higher-than-average risk of developing a specific kind of cancer. The Oncological risks report includes about 300 genes, which are related to cancer predisposition, cancer progression and tumor cell motility.
 |![Longevity drugs](images/longevity-drugs.webp)               | Aging is commonly associated with deteriorating health. As a result, plenty of drugs are commonly prescribed at an older age. Moreover, some of these drugs are now known to have geroprotective action in addition to their primary indications for medicine use (e.g. statins, metformin, rapamycin, etc.). To a large extent Drug metabolism is highly dependent on a person’s genetic polymorphisms because these variations affect the activity of xenobiotics-transforming enzymes. As a result, individual dose correction or even medication replacement is frequently required in order to avoid adverse effects. Longevity-drugs report is mostly based on data from PharmGKB database (https://www.pharmgkb.org/) and DrugAge and provides insight into one’s drug metabolism dispositions for a number of widely used drugs.|
 
-## How to work with personal genome ##
+<h2 align="center"> How to work with personal genome </h2>
 
 Detailed user documentation is still in the making and will be available at [https://just-dna-seq.readthedocs.io](https://just-dna-seq.readthedocs.io)
 
 Meanwhile we recommend [watching our workshop](https://www.youtube.com/watch?v=SL7F6LRJ_Ao)! It demonstrates and explains common use-cases are with the examples that you can reproduce. 
 
-## Our team: ##
+<h2 align="center"> Our team: </h2>
 
 [@antonkulaga](http://github.com/antonkulaga) - bioinformatician at [Systems Biology of Aging Group](http://aging-research.group) and [CellFabrik](http://cellfabrik.bio)
 
@@ -60,4 +60,4 @@ Meanwhile we recommend [watching our workshop](https://www.youtube.com/watch?v=S
 
 ------
 
-### [Our Github](https://github.com/dna-seq/) <img width="50"> [Our Gitcoin](https://gitcoin.co/grants/4048/just-dna-seq) <img width="50">  [Our Twitter](https://twitter.com/just_dna_seq) <img width="50"> [Our YouTube](https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw/) ###
+<h3 align="center"> <a href="https://github.com/dna-seq/"> Our Github </a> <img width="50"> <a href="https://gitcoin.co/grants/4048/just-dna-seq">Our Gitcoin</a> <img width="50"> <a href="https://twitter.com/just_dna_seq">Our Twitter</a> <img width="50"> <a href="https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw/">Our YouTube</a> </h3>
