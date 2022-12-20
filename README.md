@@ -176,4 +176,4 @@ Links
 ----------------
 
 * Documentation:  https://just-dna-seq.readthedocs.io/en/oakvar/
-* Discord: https://discord.gg/echwwX5Z
+* Discord: https://discord.gg/5WU6aSANXy
