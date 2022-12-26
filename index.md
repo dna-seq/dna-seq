@@ -60,4 +60,4 @@ Meanwhile we recommend [watching our workshop](https://www.youtube.com/watch?v=S
 
 ------
 
-<h3 align="center"> <a href="https://github.com/dna-seq/"> Our Github </a> <img width="50"> <a href="https://gitcoin.co/grants/4048/just-dna-seq">Our Gitcoin</a> <img width="50"> <a href="https://twitter.com/just_dna_seq">Our Twitter</a> <img width="50"> <a href="https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw/">Our YouTube</a> </h3>
+<h3 align="center"> <a href="https://github.com/dna-seq/"> Our Github </a> <img width="50"> <a href="https://gitcoin.co/grants/4048/just-dna-seq">Our Gitcoin</a> <img width="50"> <a href="https://twitter.com/just_dna_seq">Our Twitter</a> <img width="50"> <a href="https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw/">Our YouTube</a> <a href="https://discord.gg/5WU6aSANXy">Our Discord</a> </h3>
