@@ -13,12 +13,12 @@
 </head>
 <body>
     <div class="container">
-    <h1>Just DNA-Seq</h1>
     <img src="./images/just_dna_seq_up.png" class="back">
-    <img src="./images/just_dna_seq.png" alt="just-dna-seq logo" height="200px;" class="logo">
-    <div class="intro">
+    <h1>Just DNA-Seq</h1>
+    <div class="not intro">
+        <section class="white white-intro">
         <p>Just DNA-Seq is a set of open-source libraries and pipelines designed to help you with:</p>
-        <ul>
+        <ul class="outer">
             <li>realigning your raw genome reads and doing variant calling using the latest tools and <a href="https://github.com/dna-seq/dna-seq">Bioinformatic pipelines</a></li>
             <li>annotating your own genome with:
                 <ul>
@@ -28,10 +28,12 @@
             </li>
             <li>getting a comprehensive and transparent open-source report, inclusive of all previously mentioned information as well as polygenic health risk predictions</li>
         </ul>
-        <p>You can test the project right now! Click the link to access our online portal <a href="http://agingkills.eu:8081/index.html">http://agingkills.eu</a> and explore it.</p>
+        <p style="margin-top:3vw;">You can test the project right now! Click the link to access our online portal <a href="http://agingkills.eu:8081/index.html">http://agingkills.eu</a> and explore it.</p>
+    </section>
     </div>
-    <div>
+    <div class="not">
         <h2>Why Just DNA-Seq?</h2>
+        <section class="white white-why">
         <p>First human genome sequencing project concluded Apr 14, 2003 after more than 12 years of labor and costing around 3,000,000,000$. Today it turned from a great human endeavor to something widely accessible. Sequencing is commercially available at a price of roughly 400-800$. You get both sequencing and interpretation of the results for the price. In fact, the sequencing job is often served as a side dish to predictions.</p>
         <p>So, why bother with the DIY approach when there is such a variety of commercical options?</p>
         <p>The lack of transparency, privacy and, most importantly, room for customization are the main drivers for us, Just DNA-Seq team, to develop a DIY toolbox.</p>
@@ -40,17 +42,23 @@
         <p>At the same time, all the information necessary to do your own genomics research is out there, generously shared by the scientific community and openly available.</p>
         <p>So, why not to use existing open-source solutions then? Well, no luck here either! We’ve looked through the available solutions and found out there are no tools to cover one topic very close to our hearts: genetics of longevity.</p>
         <p>That’s when Just DNA-Seq comes into play!</p>
+    </section>
     </div>
 
     <div>
+        <div class="not">
         <h2>How it works</h2>
+        <section class="white white-how">
         <p>The Just DNA-Seq platform consists of OakVar (Open-source Genomic Variant Analysis Platform) modules, bioinformatics pipelines, and additional libraries. One can realign and annotate the genome of interest employing Just DNA-Seq tools to to retrieve polygenic risk scores (PRS), information about variants associated with age-related diseases or major life threatening risks and longevity-associated variants present in genome.</p>
-        <img src="./images/how-it-works.jpg" height="1000vw;">
+        <img src="./images/how-it-works.jpg" class="image">
+        </section>
+    </div>
+    <div class="tables">
         <section class="sections sections1">
         <table>
                 <tr class="row1">
                     <th>
-                        <img src="./images/longevity-variants.png" height="200vw;">
+                        <img src="./images/longevity-variants.png" class="icon">
                     </th>
                     <th>
                         <section>
@@ -64,7 +72,7 @@
         <table>
                 <tr class="row2">
                     <th>
-                        <img src="./images/longevity-PRS.png" height="200px;">
+                        <img src="./images/longevity-PRS.png" class="icon">
                     </th>
                     <th>
                         <section>
@@ -78,7 +86,7 @@
         <table>
                 <tr class="row3">
                     <th>
-                        <img src="./images/oncorisks.png" height="200px;">
+                        <img src="./images/oncorisks.png" class="icon">
                     </th>
                     <th>
                         <section>
@@ -92,7 +100,7 @@
         <table>
                 <tr class="row4">
                     <th>
-                        <img src="./images/longevity-drugs.png" height="200px;">
+                        <img src="./images/longevity-drugs.png" class="icon">
                     </th>
                     <th>
                         <section>
@@ -106,7 +114,7 @@
         <table>
                 <tr class="row5">
                     <th>
-                        <img src="./images/cardiohereditary.png" height="200px;">
+                        <img src="./images/cardiohereditary.png" class="icon">
                     </th>
                     <th>
                         <section>
@@ -118,12 +126,14 @@
         </table>
     </section>
     </div>
-    <div>
+    </div>
+    <div class="contact-info">
+    <div class="not">
         <h2>How to work with personal genome</h2>
         <p>Detailed user documentation is still in the making and will be available at <a href="https://just-dna-seq.readthedocs.io/en/oakvar/">https://just-dna-seq.readthedocs.io</a></p>
         <p>Meanwhile we recommend <a href="https://www.youtube.com/watch?v=SL7F6LRJ_Ao">watching our workshop</a>! It demonstrates and explains common use-cases are with the examples that you can reproduce.</p>
     </div>
-    <div class="contacts">
+    <div class="not contacts">
         <ul>
             <li><a href="https://github.com/antonkulaga">@antonkulaga</a> - bioinformatician at <a href="https://aging-research.group/">Systems Biology of Aging Group</a> and <a href="https://cellfabrik.bio/">CellFabrik</a></li>
             <li><a href="https://github.com/winternewt">@winternewt</a> - software developer with a chemical background, bioinformatic pipelines developer</li>
@@ -132,13 +142,16 @@
             <li><a href="https://github.com/fkbyf14">@fkbyf14</a> - bioinformatician</li>
         </ul>
     </div>
-    <footer>
-            <a href="https://github.com/dna-seq/" class="link1"><li>Our Github </li></a>
-            <a href="https://gitcoin.co/grants/4048/just-dna-seq" class="link2"><li>Our Gitcoin </li></a>
-            <a href="https://twitter.com/just_dna_seq" class="link3"><li>Our Twitter </li></a>
-            <a href="https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw" class="link4"><li>Our YouTube </li></a>
-            <a href="https://discord.com/invite/5WU6aSANXy" class="link5"><li> Our Discord</li></a>
-    </footer>
 </div>
+</div>
+<footer>
+    <div class="footer-container">
+        <a href="https://github.com/dna-seq/" class="link1"><li>Our Github </li></a>
+        <a href="https://gitcoin.co/grants/4048/just-dna-seq" class="link2"><li>Our Gitcoin </li></a>
+        <a href="https://twitter.com/just_dna_seq" class="link3"><li>Our Twitter </li></a>
+        <a href="https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw" class="link4"><li>Our YouTube </li></a>
+        <a href="https://discord.com/invite/5WU6aSANXy" class="link5"><li> Our Discord</li></a>
+    </div>
+</footer>
 </body>
 </html>
