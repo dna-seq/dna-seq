@@ -5,12 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="./images/just_dna_seq.png">
     <title>Just DNA-Seq</title>
 </head>
 <body>
+    <div class="container">
     <h1>Just DNA-Seq</h1>
-    <img src="./images/just-dna.png" alt="just-dna-seq logo">
-    <div>
+    <img src="./images/just_dna_seq_up.png" class="back">
+    <img src="./images/just_dna_seq.png" alt="just-dna-seq logo" height="200px;" class="logo">
+    <div class="intro">
         <p>Just DNA-Seq is a set of open-source libraries and pipelines designed to help you with:</p>
         <ul>
             <li>realigning your raw genome reads and doing variant calling using the latest tools and <a href="https://github.com/dna-seq/dna-seq">Bioinformatic pipelines</a></li>
@@ -39,22 +45,12 @@
     <div>
         <h2>How it works</h2>
         <p>The Just DNA-Seq platform consists of OakVar (Open-source Genomic Variant Analysis Platform) modules, bioinformatics pipelines, and additional libraries. One can realign and annotate the genome of interest employing Just DNA-Seq tools to to retrieve polygenic risk scores (PRS), information about variants associated with age-related diseases or major life threatening risks and longevity-associated variants present in genome.</p>
-        <img src="./images/how-it-works.jpg">
+        <img src="./images/how-it-works.jpg" height="1000vw;">
+        <section class="sections sections1">
         <table>
-            <thead>
-                <tr>
+                <tr class="row1">
                     <th>
-                        Section
-                    </th>
-                    <th>
-                        Description
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th>
-                        <img src="./images/longevity-variants.webp">
+                        <img src="./images/longevity-variants.png" height="200vw;">
                     </th>
                     <th>
                         <section>
@@ -62,9 +58,13 @@
                         </section>
                     </th>
                 </tr>
-                <tr>
+        </table>
+    </section>
+    <section class="sections sections2">
+        <table>
+                <tr class="row2">
                     <th>
-                        <img src="./images/longevity-PRS.webp">
+                        <img src="./images/longevity-PRS.png" height="200px;">
                     </th>
                     <th>
                         <section>
@@ -72,9 +72,13 @@
                         </section>
                     </th>
                 </tr>
-                <tr>
+        </table>
+    </section>
+    <section class="sections sections3">
+        <table>
+                <tr class="row3">
                     <th>
-                        <img src="./images/oncorisks.webp">
+                        <img src="./images/oncorisks.png" height="200px;">
                     </th>
                     <th>
                         <section>
@@ -82,9 +86,13 @@
                         </section>
                     </th>
                 </tr>
-                <tr>
+        </table>
+    </section>
+    <section class="sections sections4">
+        <table>
+                <tr class="row4">
                     <th>
-                        <img src="./images/longevity-drugs.webp">
+                        <img src="./images/longevity-drugs.png" height="200px;">
                     </th>
                     <th>
                         <section>
@@ -92,9 +100,13 @@
                         </section>
                     </th>
                 </tr>
-                <tr>
+        </table>
+    </section>
+    <section class="sections sections5">
+        <table>
+                <tr class="row5">
                     <th>
-                        <img src="./images/cardiohereditary.webp">
+                        <img src="./images/cardiohereditary.png" height="200px;">
                     </th>
                     <th>
                         <section>
@@ -104,13 +116,14 @@
                 </tr>
             </tbody>
         </table>
+    </section>
     </div>
     <div>
         <h2>How to work with personal genome</h2>
         <p>Detailed user documentation is still in the making and will be available at <a href="https://just-dna-seq.readthedocs.io/en/oakvar/">https://just-dna-seq.readthedocs.io</a></p>
         <p>Meanwhile we recommend <a href="https://www.youtube.com/watch?v=SL7F6LRJ_Ao">watching our workshop</a>! It demonstrates and explains common use-cases are with the examples that you can reproduce.</p>
     </div>
-    <div>
+    <div class="contacts">
         <ul>
             <li><a href="https://github.com/antonkulaga">@antonkulaga</a> - bioinformatician at <a href="https://aging-research.group/">Systems Biology of Aging Group</a> and <a href="https://cellfabrik.bio/">CellFabrik</a></li>
             <li><a href="https://github.com/winternewt">@winternewt</a> - software developer with a chemical background, bioinformatic pipelines developer</li>
@@ -120,13 +133,12 @@
         </ul>
     </div>
     <footer>
-        <ul>
-            <a href="https://github.com/dna-seq/"><li>Our Github </li></a>
-            <a href="https://gitcoin.co/grants/4048/just-dna-seq"><li>Our Gitcoin </li></a>
-            <a href="https://twitter.com/just_dna_seq"><li>Our Twitter </li></a>
-            <a href="https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw"><li>Our YouTube </li></a>
-            <a href="https://discord.com/invite/5WU6aSANXy"><li> Our Discord</li></a>
-        </ul>
+            <a href="https://github.com/dna-seq/" class="link1"><li>Our Github </li></a>
+            <a href="https://gitcoin.co/grants/4048/just-dna-seq" class="link2"><li>Our Gitcoin </li></a>
+            <a href="https://twitter.com/just_dna_seq" class="link3"><li>Our Twitter </li></a>
+            <a href="https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw" class="link4"><li>Our YouTube </li></a>
+            <a href="https://discord.com/invite/5WU6aSANXy" class="link5"><li> Our Discord</li></a>
     </footer>
+</div>
 </body>
 </html>
