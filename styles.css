@@ -18,7 +18,7 @@ div .not{
 h1{
     margin-top:100px;
     text-align: center;
-    font-size: 3vw;
+    font-size: 3.5vw;
     font-weight: 300;
     margin-bottom: 2vw;
 }
@@ -117,7 +117,36 @@ a{
 .link5:hover{
     color:rgb(137, 168, 255);
 }
-
+span{
+}
+.D{
+    color:#c7ff5e;
+}
+.N{
+    color:#c7ff5e;
+}
+.A{
+    color:#c7ff5e;
+}
+.just{
+    color:#ffcb5a;
+}
+.seq{
+    color:#57dae4;
+}
+.why{
+    color:#ffcb5a;
+    font-weight: 400;
+}
+.how{
+    color:#b2e457;
+    font-weight: 400;
+}
+.work{
+    color:#577de4;
+    font-weight: 400;
+    margin-bottom: 2.5vw;
+}
 .white-intro{
     padding-top: 3vw;
     padding-bottom: 3vw;
@@ -140,6 +169,7 @@ a{
 .icon{
     width: 10vw;
 }
+
 .white-how{
     line-height: 1.3;
     border-radius: 40px;
@@ -171,7 +201,7 @@ a{
 
 .sections{
     background-color: white;;
-    margin-top: 100px;
+    margin-top: 8vw;
     border-radius: 10px;
     line-height: 1.23;
 }
@@ -213,4 +243,7 @@ table th{
 }
 th{
     padding: 20px;
+}
+.tables{
+    margin-bottom: 11vw;
 }
