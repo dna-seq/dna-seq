@@ -45,9 +45,8 @@ h2{
     background-color: rgba(255, 255, 255, 0.9);
 }
 .contact-info{
-    margin-right: 14vw;
+    margin-right: 16vw;
     margin-left: -2vw;
-    
 }
 .contacts{
     margin-top: 3vw;
@@ -200,7 +199,7 @@ span{
 }
 
 .sections{
-    background-color: white;;
+    background-color: white;
     margin-top: 8vw;
     border-radius: 10px;
     line-height: 1.23;
@@ -245,5 +244,204 @@ th{
     padding: 20px;
 }
 .tables{
-    margin-bottom: 11vw;
+    margin-bottom: 15vw;
+}
+@media only screen and (max-width: 1800px) and (min-width: 1001px){
+    .back{
+        right: 0vw;
+        height: 67vw;
+        width: 40vw;
+    }
+    section{
+        font-size: 1.5vw;
+    }
+    .icon{
+        width: 15vw;
+    }
+    p{
+        font-size: 1.5vw;
+    }
+    li{
+        font-size: 1.5vw;
+    }
+    .footer-container li{
+        font-size: 1.7vw;
+    }
+    h1{
+        font-size: 4vw;
+    }
+    h2{
+        font-size: 2.7vw;
+    }
+    .contact-info{
+        margin-right: 20vw;
+        margin-left: -9vw;
+    }
+    .footer-container{
+        margin-left: 3vw;
+        margin-right: 3vw;
+    }
+}
+@media only screen and (max-width: 1600px) and (min-width: 1001px){
+    .back{
+        visibility: hidden;
+    }
+    .contact-info{
+        margin-right: 0vw;
+        margin-left: 0vw;
+    }
+    .footer-container{
+        margin-left: 10vw;
+        margin-right: 10vw;
+    }
+    .not{
+        border-radius: 5px;
+        margin-right:-8vw;
+        margin-left: -8vw;
+    }
+    p{
+        font-size: 2vw;
+    }
+    section{
+        font-size: 2vw;
+    }
+    li{
+        font-size: 2vw;
+    }
+    .footer-container li{
+        font-size: 2vw;
+    }
+    .footer-container{
+        margin-left: 1vw;
+        margin-right:1vw;
+    }
+    .image{
+        width: 65vw;
+    }
+    .sections1{
+        margin-right: -2vw;
+        margin-left:-2vw;
+    }
+    
+    .sections2{
+        margin-right: -4vw;
+        margin-left:-4vw;
+    }
+    .sections3{
+        margin-right: -6vw;
+        margin-left:-6vw;
+    }
+    .sections4{
+        margin-right: -8vw;
+        margin-left:-8vw;
+    }
+    .sections5{
+        margin-right: -10vw;
+        margin-left:-10vw;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    h1{
+        margin-top: 50px;
+        font-size: 8vw;
+        margin-bottom: 3vw;
+    }
+    .white-intro, .white-how, .white-why{
+        border-radius: 5px;
+        margin-right:-8vw;
+        margin-left: -8vw;
+    }
+    .not{
+        margin-right:-8vw;
+        margin-left: -8vw;
+    }
+    p{
+        font-size: 3vw;
+    }
+    h2{
+        font-size: 5vw;
+    }
+    .intro ul{
+        font-size: 3vw;
+        }
+    .white-intro{
+        padding-left: 3vw;
+        padding-right: 3vw;
+        }
+    .outer{
+        margin-left: 2vw;
+        margin-right: 2vw;
+        line-height: 2;
+        }
+    .white-why, .white-how{
+        padding: 3vw 3vw 5vw 5vw;
+    }
+    .image{
+        width: 70vw;
+    }
+    .sections{
+        border-radius: 5px;
+    }
+    .sections1{
+        margin-right: 0vw;
+        margin-left:0vw;
+        border:#d8b145 solid 1vw;
+    }
+
+    .sections2{
+        margin-left: -2vw;
+        margin-right: -2vw;
+        border:#5dd845 solid 1vw;
+    }
+    .sections3{
+        margin-right: -4vw;
+        margin-left:-4vw;
+        border:#57dae4 solid 1vw;
+    }
+    .sections4{
+        margin-left:-6vw;
+        margin-right: -6vw;
+        border:#a0cf47 solid 1vw;
+    }
+    .sections5{
+        margin-right: -8vw;
+        margin-left:-8vw;
+        border:#577de4 solid 1vw;
+    }
+    .icon{
+        width: 23vw;
+    }
+    th{
+        padding: 5px;
+    }
+    section{
+        font-size: 2.7vw;
+    }
+    .back{
+        right: 0vw;
+        height: 30vw;
+        position: absolute;
+    }
+    .footer-container li{
+        font-size: 3.2vw;
+    }
+    .contacts ul{
+        font-size: 3vw;
+    }
+    .footer-container li{
+        display:initial;
+    }
+    .contact-info{
+        margin-right: -3vw;
+        margin-left: -3vw;
+    }
+    .footer-container{
+        margin-left: 0;
+        margin-right: 0;
+    }
+    footer{
+        margin-top: 0vw;
+        height: 80px;
+    }
 }
