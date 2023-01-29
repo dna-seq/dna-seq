@@ -171,3 +171,9 @@ However, its output requires some biological skills to read, we are working now 
 * longevity plugin for analysis of gene variants associated with longevity.
 * mitochondrial variant calling
 * longevity annotations
+
+Links
+----------------
+
+* Documentation:  https://just-dna-seq.readthedocs.io/en/oakvar/
+* Discord: https://discord.gg/5WU6aSANXy
