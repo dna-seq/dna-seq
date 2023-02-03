@@ -72,7 +72,11 @@ footer{
 }
 
 
-
+.test{
+    width: 100px;
+    height: 100px;
+    background-color: #54a2c7;
+}
 a{
     text-decoration: none;
     color: #54a2c7;
@@ -165,6 +169,13 @@ span{
     margin-left:auto;
     width: 50vw;
 }
+.report{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 35vw;
+    margin-top:50px;
+}
 .icon{
     width: 10vw;
 }
@@ -246,11 +257,15 @@ th{
 .tables{
     margin-bottom: 15vw;
 }
+
 @media only screen and (max-width: 1800px) and (min-width: 1001px){
     .back{
         right: 0vw;
         height: 67vw;
         width: 40vw;
+    }
+    .report{
+        width: 45vw;
     }
     section{
         font-size: 1.5vw;
@@ -285,6 +300,9 @@ th{
 @media only screen and (max-width: 1600px) and (min-width: 1001px){
     .back{
         visibility: hidden;
+    }
+    .report{
+        width: 60vw;
     }
     .contact-info{
         margin-right: 0vw;
@@ -347,10 +365,13 @@ th{
         font-size: 8vw;
         margin-bottom: 3vw;
     }
+    .report{
+        width: 80vw;
+    }
     .white-intro, .white-how, .white-why{
         border-radius: 5px;
-        margin-right:-8vw;
-        margin-left: -8vw;
+        margin-right:-5vw;
+        margin-left: -5vw;
     }
     .not{
         margin-right:-8vw;
@@ -437,9 +458,23 @@ th{
         margin-left: -3vw;
     }
     .footer-container{
+        flex-direction: column;
+        justify-content:center;
         margin-left: 0;
         margin-right: 0;
     }
+    .footer-container li{
+        text-align: center;
+        display: block;
+        margin-bottom: 10vw;
+        font-size: 5vw;
+    }
+    .footer-container a:first-child{
+        margin-top:10vw;
+    } 
+    .footer-container a:last-child{
+        margin-bottom:10vw;
+    } 
     footer{
         margin-top: 0vw;
         height: 80px;
