@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="./images/just_dna_seq.png">
+    <script src="./scripts.js" defer></script>
+    <title>Just DNA-Seq</title>
+</head>
+<body>
+    <div class="container">
+    <img src="./images/just_dna_seq_up.png" class="back">
+    <h1><span class="just">Just</span> <span class="D">D</span><span class="N">N</span><span class="A">A</span><span class="seq">-Seq</span></h1>
+    <div class="not intro">
+        <section class="white white-intro">
+        <p>Just DNA-Seq is a set of open-source libraries and pipelines designed to help you with:</p>
+        <ul class="outer">
+            <li>realigning your raw genome reads and doing variant calling using the latest tools and <a href="https://github.com/dna-seq/dna-seq">Bioinformatic pipelines</a></li>
+            <li>annotating your own genome with:
+                <ul>
+                    <li>known longevity, cancer risks, cardio heridetary diseases, coronary artery disease variations with <a href="https://github.com/dna-seq/oakvar-longevity">longevity OakVar plugin</a></li>
+                    <li>known <a href="https://github.com/dna-seq/gero-drugs-module">drug interactions</a></li>
+                </ul>
+            </li>
+            <li>getting a comprehensive and transparent open-source report, inclusive of all previously mentioned information as well as polygenic health risk predictions:</li>
+        </ul>
+        <img src="./images/report.png" class="report" alt="report">
+        <p style="margin-top:3vw;">You can test the project right now! Click the link to access our online portal <a href="http://agingkills.eu:8081/index.html">http://agingkills.eu</a> and explore it.</p>
+    </section>
+    </div>
+    <div class="not">
+        <h2 class="why">Why Just DNA-Seq?</h2>
+        <section class="white white-why">
+        <p>First human genome sequencing project concluded Apr 14, 2003 after more than 12 years of labor and costing around 3,000,000,000$. Today it turned from a great human endeavor to something widely accessible. Sequencing is commercially available at a price of roughly 400-800$. You get both sequencing and interpretation of the results for the price. In fact, the sequencing job is often served as a side dish to predictions.</p>
+        <p>So, why bother with the DIY approach when there is such a variety of commercical options?</p>
+        <p>The lack of transparency, privacy and, most importantly, room for customization are the main drivers for us, Just DNA-Seq team, to develop a DIY toolbox.</p>
+        <p>Reports contents are typically decided by the service provider, your choice is limited with their product line. Results you get from such services are based on proprietary databases and algorithms. While having large R&D departments and a lot of medical data to base conclusions upon, their methods are not transparent at all, in many cases, you have no idea why they made this or that prediction. Verifying or comparing their results is therefore troublesome, especially, when you get totally different predictions from different companies.</p>
+        <p>More to that, what if we want to see how well our genes align with the prospect of longevity? On one hand, it is known that surviving up to 90 years is more about lifestyle choices. On the other hand living longer depends more on the genetics. People with exceptional longevity are not distinct in terms of lifestyle factors from the general population [<a href="https://agsjournals.onlinelibrary.wiley.com/doi/10.1111/j.1532-5415.2011.03498.x">PMID: 21812767</a>]. Unfortunately, there are simply no commercial offerings at all to address the demand for longevity-related predictions.</p>
+        <p>At the same time, all the information necessary to do your own genomics research is out there, generously shared by the scientific community and openly available.</p>
+        <p>So, why not to use existing open-source solutions then? Well, no luck here either! We’ve looked through the available solutions and found out there are no tools to cover one topic very close to our hearts: genetics of longevity.</p>
+        <p>That’s when Just DNA-Seq comes into play!</p>
+    </section>
+    </div>
+
+    <div>
+        <div class="not">
+        <h2 class="how">How it works</h2>
+        <section class="white white-how">
+        <p>The Just DNA-Seq platform consists of OakVar (Open-source Genomic Variant Analysis Platform) modules, bioinformatics pipelines, and additional libraries. One can realign and annotate the genome of interest employing Just DNA-Seq tools to to retrieve polygenic risk scores (PRS), information about variants associated with age-related diseases or major life threatening risks and longevity-associated variants present in genome.</p>
+        <img src="./images/how-it-works.jpg" class="image">
+        </section>
+    </div>
+    <div class="tables">
+        <section class="sections sections1">
+        <table>
+                <tr class="row1">
+                    <th>
+                        <img src="./images/longevity-variants.png" class="icon">
+                    </th>
+                    <th>
+                        <section>
+                            Longevity variants report is based on 1900 variants from LongevityMap and other data sources which are scored and prioritized according to multiple criteria. It also depends on ClinGene, dbSNP and ClinVar modules.
+                        </section>
+                    </th>
+                </tr>
+        </table>
+    </section>
+    <div class="sections-wrapper">
+    <section class="sections sections2">
+        <table>
+                <tr class="row2">
+                    <th>
+                        <img src="./images/longevity-PRS.png" class="icon">
+                    </th>
+                    <th>
+                        <section>
+                            Longevity PRS report is based on existing longevity polygenic scores. At the moment, our best performing PRS is implements the score presented in [<a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8087277/">PMC8087277</a>] and comprises 330 variants. This PRS was shown to be significantly associated with cognitively healthy aging and with prolonged survival. While it is not enough to have “centenarian” genes to become one, they are still needed to cut down major health risks and therefore gain longevity escape velocity.
+                        </section>
+                    </th>
+                </tr>
+        </table>
+    </section>
+    </div>
+    <div class="sections-wrapper">
+    <section class="sections sections3">
+        <table>
+                <tr class="row3">
+                    <th>
+                        <img src="./images/oncorisks.png" class="icon">
+                    </th>
+                    <th>
+                        <section>
+                            Of the major life threatening risks, Hereditary Cancers are the ones reliably predictable based on genetic variants data. Certain genetic variants determine a higher-than-average risk of developing a specific kind of cancer. The Oncological risks report includes about 300 genes, which are related to cancer predisposition, cancer progression and tumor cell motility.
+                        </section>
+                    </th>
+                </tr>
+        </table>
+    </section>
+</div>
+<div class="sections-wrapper">
+    <section class="sections sections4">
+        <table>
+                <tr class="row4">
+                    <th>
+                        <img src="./images/longevity-drugs.png" class="icon">
+                    </th>
+                    <th>
+                        <section>
+                            Aging is commonly associated with deteriorating health. As a result, plenty of drugs are commonly prescribed at an older age. Moreover, some of these drugs are now known to have geroprotective action in addition to their primary indications for medicine use (e.g. statins, metformin, rapamycin, etc.). To a large extent Drug metabolism is highly dependent on a person’s genetic polymorphisms because these variations affect the activity of xenobiotics-transforming enzymes. As a result, individual dose correction or even medication replacement is frequently required in order to avoid adverse effects. Longevity-drugs report is mostly based on data from PharmGKB database (https://www.pharmgkb.org/) and DrugAge and provides insight into one’s drug metabolism dispositions for a number of widely used drugs.
+                        </section>
+                    </th>
+                </tr>
+        </table>
+    </section>
+</div>
+<div class="sections-wrapper">
+    <section class="sections sections5">
+        <table>
+                <tr class="row5">
+                    <th>
+                        <img src="./images/cardiohereditary.png" class="icon">
+                    </th>
+                    <th>
+                        <section>
+                            We keep expanding our “Major risks” module with information about other common diseases which are among leading causes of death worldwide and are major contributors to decreased longevity. This part contains the information about hereditary cardio desisease and coronary artery disease (CAD). Timely detection and diagnosis of heart disorders can lead to enhanced treatment options, help to prevent sudden cardiac death, and improve prognosis. Our report analyzes the most relevant genes for arrhythmias, congenital heart disease, and cardiomyopathies. Analyzed gene abnormalities may cause the following syndromes: Long and short QT, Brugada syndrome, catecholaminergic polymorphic ventricular tachycardia, cardiomyopathies dilated and hypertrophic, and congenital heart defects. In addition, this panel includes vascular abnormalities, such as dolichoectasia and hereditary hemorrhagic telangiectasia.Identifying individuals with a genetic predisposition to CAD allows for earlier detection and intervention, which can prevent serious complications and improve outcomes. And understanding a person’s genetic makeup can help tailor treatment plans to their specific needs. For example, if a person has a genetic variant that increases their risk of CAD, their healthcare provider may recommend more aggressive treatment or lifestyle changes.
+                        </section>
+                    </th>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>
+    </div>
+    </div>
+    <div class="contact-info">
+    <div class="not">
+        <h2 class="work">How to work with personal genome</h2>
+        <p>Detailed user documentation is still in the making and will be available at <a href="https://just-dna-seq.readthedocs.io/en/oakvar/">https://just-dna-seq.readthedocs.io</a></p>
+        <p>Meanwhile we recommend <a href="https://www.youtube.com/watch?v=SL7F6LRJ_Ao">watching our workshop</a>! It demonstrates and explains common use-cases are with the examples that you can reproduce.</p>
+    </div>
+    <div class="not contacts">
+        <ul>
+            <li><a href="https://github.com/antonkulaga">@antonkulaga</a> - bioinformatician at <a href="https://aging-research.group/">Systems Biology of Aging Group</a> and <a href="https://cellfabrik.bio/">CellFabrik</a></li>
+            <li><a href="https://github.com/winternewt">@winternewt</a> - software developer with a chemical background, bioinformatic pipelines developer</li>
+            <li><a href="https://github.com/OlgaBorysova">@OlgaBorysova</a> - biologist, geneticist, mitochondria expert, and founder of <a href="http://www.mt-eva.space/en/">MitoSpace</a></li>
+            <li><a href="https://github.com/Alex-Karmazin">@Alex-Karmazin</a> - senior computer vision engineer, web developer</li>
+            <li><a href="https://github.com/fkbyf14">@fkbyf14</a> - bioinformatician</li>
+            <li><a href="https://github.com/marfantyk">@marfantyk</a> - junior software developer with a medical background</li>
+        </ul>
+    </div>
+</div>
+</div>
+<footer>
+    <div class="footer-container">
+        <a href="https://github.com/dna-seq/" class="link1" target="_blank" rel="noopener noreferrer"><li>Our Github </li></a>
+        <a href="https://gitcoin.co/grants/4048/just-dna-seq" class="link2" target="_blank" rel="noopener noreferrer"><li>Our Gitcoin </li></a>
+        <a href="https://twitter.com/just_dna_seq" class="link3" target="_blank" rel="noopener noreferrer"><li>Our Twitter </li></a>
+        <a href="https://www.youtube.com/channel/UCKJPXRJgi4Rxh9Lb1G_9SZw" class="link4" target="_blank" rel="noopener noreferrer"><li>Our YouTube </li></a>
+        <a href="https://discord.com/invite/5WU6aSANXy" class="link5" target="_blank" rel="noopener noreferrer"><li> Our Discord</li></a>
+    </div>
+</footer>
+</body>
+</html>
