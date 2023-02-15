@@ -1,0 +1,10 @@
+md5: c1a35e2adfa9f9a05406c73a87e72248
+frozen: true
+deps:
+- checksum: '"0c6aa53e9685cd80a78c814a6f1bb012e5c981c563fc8053652320466743b4e7"'
+  size: 546595
+  path: https://github.com/Ensembl/VEP_plugins/archive/release/109.zip
+outs:
+- md5: 71e85d54f56b05706a277040d1c4528f
+  size: 546595
+  path: 109.zip
