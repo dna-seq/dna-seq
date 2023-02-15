@@ -56,3 +56,4 @@ newton*
 /data/gwas/anton
 #track local gitignore
 /data/.gitignore
+data/.gitignore
