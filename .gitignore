@@ -36,6 +36,7 @@ dna-seq-pipeline/inputs/OC_plus.json
 #### from data
 #ignore data root level, logs and bakups
 /data/*
+
 #dvc wants folders themselves ignored as files...
 !**.dvc
 !/data/cromwell-client-logs
@@ -54,4 +55,4 @@ dna-seq-pipeline/inputs/OC_plus.json
 newton*
 /data/gwas/anton
 #track local gitignore
-!/data/.gitignore
+/data/.gitignore
