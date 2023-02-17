@@ -71,19 +71,29 @@ stages:
     - path: data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
     - path: data/gwas/annotations/gene2phenotype/AllG2P.csv
   prepare_vep_plugins:
-    cmd: unzip -u data/ensembl/107/107.zip -d data/ensembl/107/ && mv data/ensembl/107/VEP_plugins-release-107
-      data/ensembl/107/plugins
+    cmd: unzip -u data/ensembl/109/109.zip -d data/ensembl/109/ && mv data/ensembl/109/VEP_plugins-release-109
+      data/ensembl/109/plugins
     deps:
-    - path: data/ensembl/107/107.zip
+    - path: data/ensembl/109/109.zip
+      md5: 71e85d54f56b05706a277040d1c4528f
+      size: 546595
     outs:
-    - path: data/ensembl/107/plugins/
+    - path: data/ensembl/109/plugins/
+      md5: 5adcc05fd98e76419fe6b60e76ae8e96.dir
+      size: 1568486
+      nfiles: 84
   prepare_vep_cache:
-    cmd: tar -zxf data/ensembl/107/homo_sapiens_vep_107_GRCh38.tar.gz -C data/ensembl/107/cache/
-      && md5sum data/ensembl/107/homo_sapiens_vep_107_GRCh38.tar.gz > data/ensembl/107/homo_sapiens_vep_107_GRCh38.tar.gz.md5
+    cmd: tar -zxf data/ensembl/109/homo_sapiens_vep_109_GRCh38.tar.gz -C data/ensembl/109/cache/
+      && md5sum data/ensembl/109/homo_sapiens_vep_109_GRCh38.tar.gz > data/ensembl/109/homo_sapiens_vep_109_GRCh38.tar.gz.md5
     deps:
-    - path: data/ensembl/107/homo_sapiens_vep_107_GRCh38.tar.gz
+    - path: data/ensembl/109/homo_sapiens_vep_109_GRCh38.tar.gz
+      md5: 8c3c2f1008c1d0fe32f6349b17056b7b
+      size: 26814637616
     outs:
-    - path: data/ensembl/107/cache/homo_sapiens
+    - path: data/ensembl/109/cache/homo_sapiens
+      md5: dae205e594fda66d2807accf96c3a16e.dir
+      size: 26911521503
+      nfiles: 13892
   prepare_annotations_clinvar:
     cmd: echo "Clinvars annotations prepared"
     deps:
