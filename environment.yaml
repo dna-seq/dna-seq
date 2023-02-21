@@ -4,19 +4,18 @@ channels:
   - bioconda
   - defaults
 dependencies:
-  - python=3.9
+  - python=3.10
   - jupyterlab
   - nbresuse # extension to monitor resource usage
   - jupyterlab-lsp
   - jupyterlab_code_formatter
   - python-language-server
   - seaborn
-  - dvc=2.9.2
+  - dvc=2.15.0
   - pydrive2
-  - open-cravat=2.2.7
   - samtools
   - pyreadr
   - pip:
       - pyfunctional
       - pycomfort
-
+      - oakvar
