@@ -1,7 +1,7 @@
 {
   "Lumpy.name": "antonkulaga",
-  "Lumpy.ref": "/data/gwas/references/homo_sapiens_ensembl_99/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
-  "Lumpy.ref_fai": "/data/gwas/references/homo_sapiens_ensembl_99/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai",
+  "Lumpy.ref": "/data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa",
+  "Lumpy.ref_fai": "/data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai",
   "Lumpy.bam": "/data/gwas/anton/bam/aligned/antonkulaga.sorted.bam",
   "Lumpy.destination": "/data/gwas/anton",
   "Lumpy.bai": "/data/gwas/anton/bam/aligned/antonkulaga.sorted.bai"
