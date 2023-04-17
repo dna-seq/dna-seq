@@ -11,13 +11,14 @@ We also wanted to use the latest version of the tools as we discovered that, for
 The project consists of multiple pipelines and scripts and can be either used separately or altogether.
 Recently we started working on integration of [Plex Web 3 technology to run scientific workflows on decentralized infrastructure](https://github.com/labdao/plex).
 
-About Just-DNA-Seq project and Web3
-------------------------------------
+About Just-DNA-Seq project, De-Sci and Web3
+-------------------------------------------
 
 This repository became a start of a larger [Just-DNA-Seq project](http://dna-seq.github.io/) with its own [Github Organization](https://github.com/dna-seq) and 23 source code repository.
 Just-DNA-Seq project was funded by Longevity Gitcoin round in 2022 and reached most of its objective, including longevity and health risk genetic annotations, polygenic risk scores for longevity and multiple diseases, its scientific research paper is currently in a draft state.
-While everybody could maintain their privacy by running both the pipelines and annotations on their own PC-s, the pipeline part requires some technical knowledge and a lot of RAM. Now we are working on utilizing PLEX for running workflows in a decentralized and privacy preserving ways.
-We are also working on integration with Genomes DAO.
+While everybody could maintain their privacy by running both the pipelines and annotations on their own PC-s, the pipeline part requires some technical knowledge and a lot of RAM. 
+Now we are working ( together with [LabDAO](https://labdao.xyz/) ) on adding PLEX support in our workflows to run them in a decentralized and privacy preserving ways.
+We are also collaborating with [Genomes DAO](http://genomes.io) to add support of Just-DNA-Seq annotators and pipelines in DNA Vaults, owned and controlled by the user
 
 Getting started
 ---------------
