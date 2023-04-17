@@ -1,5 +1,5 @@
-Just DNA-Seq
-==============
+Just DNA-Seq pipelines
+======================
 
 Just a DNA-Seq analysis pipeline for personal and public genomes with some plugins and scripts on top of it.
 
@@ -8,9 +8,16 @@ There are multiple sequencing and analysis proprietary services, however, their 
 
 Just DNA-Seq project was created primarily for transparency reasons: we wanted to understand what is happening. 
 We also wanted to use the latest version of the tools as we discovered that, for example, DANTE-labs were using an outdated version of the genomes and GATK.
-
 The project consists of multiple pipelines and scripts and can be either used separately or altogether.
-Recently we started working on longevity applications as there are no good tools or plugins for longevity genetic variant annotations.
+Recently we started working on integration of [Plex Web 3 technology to run scientific workflows on decentralized infrastructure](https://github.com/labdao/plex).
+
+About Just-DNA-Seq project and Web3
+------------------------------------
+
+This repository became a start of a larger [Just-DNA-Seq project](http://dna-seq.github.io/) with its own [Github Organization](https://github.com/dna-seq) and 23 source code repository.
+Just-DNA-Seq project was funded by Longevity Gitcoin round in 2022 and reached most of its objective, including longevity and health risk genetic annotations, polygenic risk scores for longevity and multiple diseases, its scientific research paper is currently in a draft state.
+While everybody could maintain their privacy by running both the pipelines and annotations on their own PC-s, the pipeline part requires some technical knowledge and a lot of RAM. Now we are working on utilizing PLEX for running workflows in a decentralized and privacy preserving ways.
+We are also working on integration with Genomes DAO.
 
 Getting started
 ---------------
