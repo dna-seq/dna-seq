@@ -1,0 +1,16 @@
+{
+    "DeepTrio.parent1_sample_name": "NA12891",
+    "DeepTrio.parent1_bam": "data/testdata/input/NA12891.chr20.10_10p1mb_sorted.bam",
+    "DeepTrio.parent1_bai": "data/testdata/input/NA12891.chr20.10_10p1mb_sorted.bam.bai",
+    "DeepTrio.parent2_sample_name": "NA12892",
+    "DeepTrio.parent2_bam": "data/testdata/input/NA12892.chr20.10_10p1mb_sorted.bam",
+    "DeepTrio.parent2_bai": "data/testdata/input/NA12892.chr20.10_10p1mb_sorted.bam.bai",
+    "DeepTrio.child_sample_name"  : "HG001",
+    "DeepTrio.child_bam"  : "data/testdata/input/HG001.chr20.10_10p1mb_sorted.bam",
+    "DeepTrio.child_bai"  : "data/testdata/input/HG001.chr20.10_10p1mb_sorted.bam.bai",
+    "DeepTrio.reference": "data/testdata/input/hs37d5.chr20.fa",
+    "DeepTrio.reference_fai": "data/testdata/input/hs37d5.chr20.fa.fai",
+    "DeepTrio.threads": 8,
+    "DeepTrio.mode": "WGS",
+    "DeepTrio.destination": "data/gwas/test/deeptrio"
+}
