@@ -1,7 +1,7 @@
 version development
 
-#alternative deep-variant-based pipeline, work in progress
-#using https://github.com/google/deepvariant/blob/r1.1/docs/deepvariant-quick-start.md as reference
+#Deep-variant-based pipeline
+#using https://github.com/google/deepvariant/blob/r1.8/docs/deepvariant-quick-start.md as reference
 
 import "https://raw.githubusercontent.com/antonkulaga/bioworkflows/main/common/files.wdl" as files
 
@@ -67,11 +67,12 @@ task go_deep{
         --output_vcf=~{output_vcf} \
         --output_gvcf=~{output_gvcf} \
         --intermediate_results_dir interim \
-        --num_shards=~{threads}
+        --num_shards=~{threads} \
+        --vcf_stats_report
     }
-
+    #    --report_title=~{name + ".visual_report.html"} \
     runtime {
-        docker: "google/deepvariant:1.5.0"
+        docker: "google/deepvariant:1.8.0"
     }
 
     output {
