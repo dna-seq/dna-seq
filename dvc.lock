@@ -1,12 +1,14 @@
 schema: '2.0'
 stages:
   prepare:
-    cmd: gunzip -k data/gwas/homo_sapiens_ensembl_107/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    cmd: gunzip -k 
+      data/gwas/homo_sapiens_ensembl_107/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
       && unzip -o -d data/ensembl/107 data/ensembl/107/107.zip && mv data/ensembl/107/VEP_plugins-release-107
       data/ensembl/107/plugins
     deps:
     - path: data/ensembl/107/107.zip
-    - path: data/gwas/homo_sapiens_ensembl_107/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    - path: 
+        data/gwas/homo_sapiens_ensembl_107/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
     outs:
     - path: data/ensembl/107/plugins
     - path: data/gwas/homo_sapiens_ensembl_107/Homo_sapiens.GRCh38.dna.primary_assembly.fa
@@ -21,29 +23,40 @@ stages:
     outs:
     - path: data/ensembl/107/cache/homo_sapiens
   prepare_genome:
-    cmd: gunzip -k data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
-      && samtools faidx data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-      && samtools dict data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-      -o data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
-      md5sum data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.*
-      > data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
+    cmd: gunzip -k 
+      data/ensembl/113/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+      && samtools faidx 
+      data/ensembl/113/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+      && samtools dict 
+      data/ensembl/113/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+      -o 
+      data/ensembl/113/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+      && md5sum 
+      data/ensembl/113/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.*
+      > 
+      data/ensembl/113/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
     deps:
-    - path: data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
-      md5: f58a039f83d8944ceb79cdd16cbda583
-      size: 881211416
+    - path: 
+        data/ensembl/113/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+      hash: md5
+      md5: 1c8c1d3ebfa7e615cd9ac2cf00853423
+      size: 881964081
     outs:
-    - path: data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
-      md5: 9e6b9465dc708d92bf6d67e9c9fa9389
-      size: 3151425857
-    - path: data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
-      md5: 8c9283a11da7b4bb19f7a39bdc9f73e1
+    - path: 
+        data/ensembl/113/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+      hash: md5
+      md5: a65212262de00761b43869d5c08c8e4d
+      size: 3151425851
+    - path: 
+        data/ensembl/113/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+      hash: md5
+      md5: 7298443f9f172d2e564c6bf1b123345b
       size: 34186
-    - path: data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
-      md5: d527f3eb6b664020cf4d882b5820056f
+    - path: 
+        data/ensembl/113/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
+      hash: md5
+      md5: 06640e0e262c0a1494700e32f48685e1
       size: 6406
-    - path: data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
-      md5: d41d8cd98f00b204e9800998ecf8427e
-      size: 0
   prepare_vep:
     cmd: unzip -u data/ensembl/107/107.zip -d data/ensembl/107/ && mv data/ensembl/107/VEP_plugins-release-107
       data/ensembl/107/plugins
@@ -53,12 +66,12 @@ stages:
     outs:
     - path: data/ensembl/107/plugins/
   prepare_annotations:
-    cmd: "gunzip -c data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz\
-      \ |\n   awk '($1 ~ /^snpId/ || $2 ~ /NA/) {next} {print $0}' |\n   sort -t $'\\\
-      t' -k2,2 -k3,3n |\n   awk '{ gsub (/\\t +/, \"\\t\", $0); print}' |\n   bgzip\
-      \ -c > data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz\
-      \ &&\nrm -f data/gwas/annotations/gene2phenotype/AllG2P.csv && awk '(NR == 1)\
-      \ || (FNR > 1)' data/gwas/annotations/gene2phenotype/*.csv  > data/gwas/annotations/gene2phenotype/AllG2P.csv"
+    cmd: "gunzip -c data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz
+      |\n   awk '($1 ~ /^snpId/ || $2 ~ /NA/) {next} {print $0}' |\n   sort -t $'\\\
+      t' -k2,2 -k3,3n |\n   awk '{ gsub (/\\t +/, \"\\t\", $0); print}' |\n   bgzip
+      -c > data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
+      &&\nrm -f data/gwas/annotations/gene2phenotype/AllG2P.csv && awk '(NR == 1)
+      || (FNR > 1)' data/gwas/annotations/gene2phenotype/*.csv  > data/gwas/annotations/gene2phenotype/AllG2P.csv"
     deps:
     - path: data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz
     - path: data/gwas/annotations/clinvar.vcf.gz
@@ -110,10 +123,10 @@ stages:
     outs:
     - path: data/gwas/annotations/gene2phenotype/AllG2P.csv
   prepare_annotations_digenet:
-    cmd: "gunzip -c data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz\
-      \ |\n   awk '($1 ~ /^snpId/ || $2 ~ /NA/) {next} {print $0}' |\n   sort -t $'\\\
-      t' -k2,2 -k3,3n |\n   awk '{ gsub (/\\t +/, \"\\t\", $0); print}' |\n   bgzip\
-      \ -c > data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz"
+    cmd: "gunzip -c data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz
+      |\n   awk '($1 ~ /^snpId/ || $2 ~ /NA/) {next} {print $0}' |\n   sort -t $'\\\
+      t' -k2,2 -k3,3n |\n   awk '{ gsub (/\\t +/, \"\\t\", $0); print}' |\n   bgzip
+      -c > data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz"
     deps:
     - path: data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz
     outs:

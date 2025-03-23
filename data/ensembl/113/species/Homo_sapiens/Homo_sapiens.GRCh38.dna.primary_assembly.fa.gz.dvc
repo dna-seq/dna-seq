@@ -1,0 +1,12 @@
+md5: 2963a4a99fd08aa8ba7f69e87b6941c3
+deps:
+- checksum: '"3491b431-61fbdb3e09f20"'
+  size: 881964081
+  hash: md5
+  path: 
+    http://ftp.ensembl.org/pub/release-113/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+outs:
+- md5: 1c8c1d3ebfa7e615cd9ac2cf00853423
+  size: 881964081
+  hash: md5
+  path: Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz

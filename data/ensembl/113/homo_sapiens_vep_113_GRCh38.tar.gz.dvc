@@ -1,0 +1,12 @@
+md5: 226c4483abd31d32363c56e8445c3670
+deps:
+- checksum: '"5ccfb44f1-62178dc121b64"'
+  size: 24913855729
+  hash: md5
+  path: 
+    http://ftp.ensembl.org/pub/release-113/variation/indexed_vep_cache/homo_sapiens_vep_113_GRCh38.tar.gz
+outs:
+- md5: fe60337087db2df3b45ebe23a5e5df3b
+  size: 24913855729
+  hash: md5
+  path: homo_sapiens_vep_113_GRCh38.tar.gz

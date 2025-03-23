@@ -59,3 +59,4 @@ newton*
 #track local gitignore
 /data/.gitignore
 data/.gitignore
+/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz

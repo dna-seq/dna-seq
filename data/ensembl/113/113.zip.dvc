@@ -1,0 +1,11 @@
+md5: 4fa113af84a9216fc32b4b5c5cdbce8d
+deps:
+- checksum: '"4937c603be0b314b0cf304139134a661c86a6ef07f4b14b56e12e278d6576c90"'
+  size: 609073
+  hash: md5
+  path: https://github.com/Ensembl/VEP_plugins/archive/release/113.zip
+outs:
+- md5: 1fdc31e2f2d615c815e649fcd7f4a6fa
+  size: 609073
+  hash: md5
+  path: 113.zip
