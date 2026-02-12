@@ -1,0 +1,37 @@
+FROM ubuntu:24.04 AS builder
+
+ARG LDC_VERSION=1.41.0
+
+RUN apt-get update && apt-get install -y \
+      build-essential \
+      curl \
+      git \
+      python3 python3-pip \
+      xz-utils \
+      zlib1g-dev \
+      liblz4-dev && \
+    rm -rf /var/lib/apt/lists/*
+
+# Install prebuilt ldc2
+RUN curl -fsSL https://github.com/ldc-developers/ldc/releases/download/v${LDC_VERSION}/ldc2-${LDC_VERSION}-linux-x86_64.tar.xz \
+      -o /tmp/ldc2.tar.xz && \
+    tar -xf /tmp/ldc2.tar.xz -C /opt && \
+    rm /tmp/ldc2.tar.xz
+
+ENV PATH="/opt/ldc2-${LDC_VERSION}-linux-x86_64/bin:${PATH}"
+ENV LIBRARY_PATH="/opt/ldc2-${LDC_VERSION}-linux-x86_64/lib:${LIBRARY_PATH}"
+
+# Build sambamba
+WORKDIR /build
+RUN git clone --recursive https://github.com/biod/sambamba.git && \
+    cd sambamba && \
+    make -j$(nproc) && \
+    cp bin/sambamba-1.0.1 /usr/local/bin/sambamba-1.0.1
+
+FROM ubuntu:24.04
+RUN apt-get update && apt-get install -y \
+      zlib1g \
+      liblz4-1 && \
+    rm -rf /var/lib/apt/lists/*
+COPY --from=builder /usr/local/bin/sambamba-1.0.1 /usr/local/bin/sambamba
+COPY --from=builder /usr/local/bin/sambamba-1.0.1 /usr/bin/sambamba

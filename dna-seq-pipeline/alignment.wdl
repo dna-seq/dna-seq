@@ -1,7 +1,7 @@
 version development
 
-import "https://raw.githubusercontent.com/antonkulaga/bioworkflows/main/quality/clean_reads.wdl" as cleaner
-import "https://raw.githubusercontent.com/antonkulaga/bioworkflows/main/align/align_reads.wdl" as aligner
+import "https://raw.githubusercontent.com/dna-seq/dna-seq/master/dna-seq-pipeline/clean_reads.wdl" as cleaner
+import "https://raw.githubusercontent.com/dna-seq/dna-seq/master/dna-seq-pipeline/align_reads.wdl" as aligner
 
 
 workflow alignment {
@@ -89,7 +89,7 @@ task coverage {
     }
 
      runtime {
-            docker: "quay.io/biocontainers/bedtools@sha256:02e198f8f61329f9eafd1b9fc55828a31020b383403adec22079592b7d868006" #2.29.2--hc088bd4_0
+            docker: "staphb/samtools:2.31.1" 
             maxRetries: 2
           }
 
@@ -121,7 +121,7 @@ task get_rg {
 
     runtime {
         docker_cpu: "1"
-        docker: "quay.io/biocontainers/samtools:1.14--hb421002_0"
+        docker: "staphb/samtools:1.23"
     }
 
     output {

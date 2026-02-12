@@ -72,7 +72,7 @@ task go_deep{
     }
     #    --report_title=~{name + ".visual_report.html"} \
     runtime {
-        docker: "google/deepvariant:1.8.0"
+        docker: "google/deepvariant:1.9.0"
     }
 
     output {

@@ -1,9 +1,9 @@
 version development
 
 # production configuration
-import "https://raw.githubusercontent.com/antonkulaga/dna-seq/master/dna-seq-pipeline/alignment.wdl" as alignment
-import "https://raw.githubusercontent.com/antonkulaga/dna-seq/master/dna-seq-pipeline/simple_variant_calling.wdl" as vc
-import "https://raw.githubusercontent.com/antonkulaga/dna-seq/master/dna-seq-pipeline/deep_variant.wdl" as deep
+import "https://raw.githubusercontent.com/dna-seq/dna-seq/master/dna-seq-pipeline/alignment.wdl" as alignment
+import "https://raw.githubusercontent.com/dna-seq/dna-seq/master/dna-seq-pipeline/simple_variant_calling.wdl" as vc
+import "https://raw.githubusercontent.com/dna-seq/dna-seq/master/dna-seq-pipeline/deep_variant.wdl" as deep
 
 # debug local configuration (uncomment for debugging)
 #import "alignment.wdl" as alignment

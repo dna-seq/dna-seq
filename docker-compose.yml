@@ -1,7 +1,38 @@
 version: '3'
 services:
+  sambamba:
+    build:
+      context: .
+      dockerfile: Dockerfile.sambamba
+    image: justdnaseq/sambamba:1.0.1
+    deploy:
+      replicas: 0
+  fastp:
+    build:
+      context: .
+      dockerfile: Dockerfile.fastp
+    image: justdnaseq/fastp:1.1.0   # tags the built image with this name
+    deploy:
+      replicas: 0
+  bwa-mem2:
+    build:
+      context: .
+      dockerfile: Dockerfile.bwa-mem2
+    image: justdnaseq/bwa-mem2:2.3
+    deploy:
+      replicas: 0
+  minimap2:
+    build:
+      context: .
+      dockerfile: Dockerfile.minimap2
+    image: justdnaseq/minimap2:2.30
+    deploy:
+      replicas: 0
   cromwell:
-    image: "quay.io/comp-bio-aging/cromwell:master"
+    build:
+      context: .
+      dockerfile: Dockerfile.cromwell   # or just Dockerfile
+    # image: "quay.io/comp-bio-aging/cromwell:master"
     volumes:
       - ./data:/data
       - ./config:/config

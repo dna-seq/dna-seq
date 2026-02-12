@@ -1,0 +1,85 @@
+stages:
+  start:
+    desc: "convenience stage to start services"
+    frozen: true
+    cmd: docker-compose up
+  stop:
+    desc: "convenience stage to stop services"
+    frozen: true
+    cmd: docker-compose down
+  prepare_genome:
+    deps:
+#      - data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.amb
+#      - data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.ann
+#      - data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.0123
+#      - data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.bwt.2bit.64
+#      - data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.pac
+      - data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz
+    cmd: >-
+      gunzip -k data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.gz &&
+      samtools faidx data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa &&
+      samtools dict data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa -o data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+      md5sum data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.* > data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
+    outs:
+      - data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa
+      - data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.fai
+      - data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.dict
+      - data/ensembl/109/species/Homo_sapiens/Homo_sapiens.GRCh38.dna.primary_assembly.fa.md5
+  prepare_vep_cache:
+    deps:
+      - data/ensembl/109/homo_sapiens_vep_109_GRCh38.tar.gz
+    cmd: >-
+      tar -zxf data/ensembl/109/homo_sapiens_vep_109_GRCh38.tar.gz -C data/ensembl/109/cache/ &&
+      md5sum data/ensembl/109/homo_sapiens_vep_109_GRCh38.tar.gz > data/ensembl/109/homo_sapiens_vep_109_GRCh38.tar.gz.md5
+    outs:
+      - data/ensembl/109/cache/homo_sapiens
+  prepare_vep_plugins:
+    deps:
+      - data/ensembl/109/109.zip
+    cmd: >-
+      unzip -u data/ensembl/109/109.zip -d data/ensembl/109/ &&
+      mv data/ensembl/109/VEP_plugins-release-109 data/ensembl/109/plugins
+    outs:
+      - data/ensembl/109/plugins/
+  prepare_annotations_digenet:
+    deps:
+      - data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz
+    cmd: >-
+      gunzip -c data/gwas/annotations/all_variant_disease_pmid_associations.tsv.gz |
+         awk '($1 ~ /^snpId/ || $2 ~ /NA/) {next} {print $0}' |
+         sort -t $'\t' -k2,2 -k3,3n |
+         awk '{ gsub (/\t +/, "\t", $0); print}' |
+         bgzip -c > data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
+    outs:
+      - data/gwas/annotations/all_variant_disease_pmid_associations_final.tsv.gz
+  prepare_annotations_clinvar:
+    deps:
+      - data/gwas/annotations/clinvar.vcf.gz
+      - data/gwas/annotations/clinvar.vcf.gz.tbi
+    cmd: echo "Clinvars annotations prepared"       
+# https://www.ebi.ac.uk/gene2phenotype/downloads/ has no E-Tag!
+#  prepare_annotations_gene2phenotype: 
+#    deps:
+#      - data/gwas/annotations/gene2phenotype/DDG2P.csv
+#      - data/gwas/annotations/gene2phenotype/CancerG2P.csv
+#      - data/gwas/annotations/gene2phenotype/EyeG2P.csv
+#      - data/gwas/annotations/gene2phenotype/SkinG2P.csv
+#    cmd: >- 
+#      rm -f data/gwas/annotations/gene2phenotype/AllG2P.csv &&
+#      awk '(NR == 1) || (FNR > 1)' data/gwas/annotations/gene2phenotype/*.csv 
+#      > data/gwas/annotations/gene2phenotype/AllG2P.csv
+#     && for f in data/gwas/annotations/gene2phenotype/*.gz ; do gunzip -c "$f" > data/gwas/annotations/gene2phenotype/"${f%.*}" ; done 
+#    outs:
+#      - data/gwas/annotations/gene2phenotype/AllG2P.csv
+# https://genomics.senescence.info/longevity/longevity_genes.zip has no E-Tag!
+  prepare_annotations_longevity: 
+    cmd: >- 
+      wget -qO- --timestamping https://genomics.senescence.info/longevity/longevity_genes.zip | bsdtar -xvf- -C data/gwas/annotations/ longevity.csv
+    outs:
+      - data/gwas/annotations/longevity.csv
+  install_oakvar:
+    cmd: >-
+      ov module install-base && ov module install -y clinvar clinvar_acmg biogrid uk10k_cohort uniprot pubmed provean polyphen2 cardioboost civic civic_gene cosmic cosmic_gene go sift ensembl_regulatory_build dgi cvdkp
+  install_cancer:
+    cmd: >-
+      ov module install chasmplus cgc cgl cancer_genome_interpreter cancer_hotspots civic

@@ -1,0 +1,30 @@
+FROM broadinstitute/cromwell:latest
+
+ENV NB_USER=cromwell
+
+RUN apt-get update && apt-get upgrade -y && \
+    apt-get install -y \
+      apt-transport-https \
+      ca-certificates \
+      curl \
+      gnupg \
+      git \
+      apt-utils && \
+    # Install Docker CLI only (current version)
+    install -m 0755 -d /etc/apt/keyrings && \
+    curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg && \
+    echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+      $(. /etc/os-release && echo "$VERSION_CODENAME") stable" > /etc/apt/sources.list.d/docker.list && \
+    apt-get update && \
+    apt-get install -y docker-ce-cli docker-compose-plugin && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN git clone https://github.com/vishnubob/wait-for-it.git
+
+RUN useradd -r -u 1004 $NB_USER && \
+    groupadd -f docker && \
+    usermod -aG docker $NB_USER
+
+ENV EUID=1004
+EXPOSE 8000
+ENTRYPOINT ["/bin/sh", "-c"]
